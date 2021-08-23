@@ -9,9 +9,6 @@
 </div >
 
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
-AngularJS-powered HTML5 Markdown editor.
-
 - SSAFY 6기
 - 영남대학교 컴공
 - ✨ Algorithm & Web Studying ✨
