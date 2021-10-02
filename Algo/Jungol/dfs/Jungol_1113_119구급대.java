@@ -41,11 +41,11 @@ public class Jungol_1113_119구급대 {
 		dfs(0,0,1);
 		dfs(0,0,2);
 		dfs(0,0,3);
-		for (int i = 0; i < R; i++) {
+		/*for (int i = 0; i < R; i++) {
 			for (int j = 0; j < C; j++) {
 				System.out.print(dist[i][j] == 1000_00_000 ? "0 " : dist[i][j] +" ");
 			}System.out.println();
-		}
+		}*/
 		
 		System.out.println(dist[N][M]);
 	}
