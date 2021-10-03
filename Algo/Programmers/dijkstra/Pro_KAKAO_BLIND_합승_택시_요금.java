@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
  * 
  * 처음에는 단순 무식하게 dijkstra로 해서 그냥 다 체킹 하는 방식으로 짰는데 효율성에서 낮은 점수를 받았다
  * -> 모든 거 다가보니깐 Floyd - Warshall
- * 
+ * -> 또는 A 그리고 B 그리고 S 로 부터 만나는 한 노드를 구해서 거기로 가는 최소 값들을 찾으면 됨 다익스트라 3번해서 구할 수 있다.
  */
 public class Pro_KAKAO_BLIND_합승_택시_요금 {
 	/*static class Data implements Comparable<Data>{
