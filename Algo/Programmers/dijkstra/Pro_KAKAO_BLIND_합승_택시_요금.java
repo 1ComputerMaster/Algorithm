@@ -77,12 +77,7 @@ public class Pro_KAKAO_BLIND_합승_택시_요금 {
 		}
 		return dist[end];
 	}*/
-	
-	/*
-	 * 정확성: 50.0
-	 * 효율성: 48.3
-	 * 합계: 98.3 / 100.0
-	 */
+	//아이디어 : 합석해서 가다가 떠나기 때문에 같은 경유지를 거쳐서 지나가는 것과 같다
 	static int d[][];
     public int solution(int n, int s, int a, int b, int[][] fares) {
         int answer = 1000_000_000;
