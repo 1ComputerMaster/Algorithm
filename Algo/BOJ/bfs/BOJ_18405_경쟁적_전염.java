@@ -108,11 +108,6 @@ public class BOJ_18405_경쟁적_전염 {
 				arr[nx][ny] = arr[x][y];
 				list.add(new Weight(nx,ny,arr[nx][ny]));
 			}
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < N; j++) {
-					System.out.print(arr[i][j] + " ");
-				}System.out.println();
-			}System.out.println("========================");
 			return arr;
 		}
 		return arr;
