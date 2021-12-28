@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class BOJ_14503_로봇청소기 {
 	static int arr[][];
 	static int N, M;
-	static int dx[] = { -1, 0, 1, 0 }; // 북,동,남,서 public
+	static int dx[] = { -1, 0, 1, 0 }; // 북,동,남,서
 	static int dy[] = { 0, 1, 0, -1 };
 	static int ans = 0;
 	
