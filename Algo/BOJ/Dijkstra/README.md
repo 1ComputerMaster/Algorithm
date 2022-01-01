@@ -70,5 +70,5 @@ minEdge의 상태
 ![image](https://user-images.githubusercontent.com/87481266/147853371-794e7071-4491-4c22-b5f5-3f3f8321b66c.png)
 |||||||
 |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-|<span style="color:red">0</span>|<span style="color:red">2</span>|<span style="color:red">3</span>|<span style="color:red">1</span>|<span style="color:red">2</span>|<span style="color:red">4</span>|
+|<span style="background-color:red">0</span>|<span style="color:red">2</span>|<span style="color:red">3</span>|<span style="color:red">1</span>|<span style="color:red">2</span>|<span style="color:red">4</span>|
 **0**	**2**	**3**	**1**	**2**	**4**
