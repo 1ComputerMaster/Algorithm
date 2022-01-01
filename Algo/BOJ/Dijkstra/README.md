@@ -68,4 +68,5 @@ minEdge의 상태
 **0**	**2**	**3**	**1**	**2**	4
 
 ![image](https://user-images.githubusercontent.com/87481266/147853371-794e7071-4491-4c22-b5f5-3f3f8321b66c.png)
+
 **0**	**2**	**3**	**1**	**2**	**4**
