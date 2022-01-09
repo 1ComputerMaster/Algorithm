@@ -13,4 +13,4 @@ dp[i][j] = dp[i-1] + dp[i][j-1] - dp[i-1][j-1] + map[i][j];
 
 ## 1 - 2. 문제에서 질문한 넓이를 구하는 점화식
 
-![image](https://user-images.githubusercontent.com/87481266/148667193-77f5bea2-4cf0-4e39-9d8e-fa03e6fa1b79.png)
+![image](https://user-images.githubusercontent.com/87481266/148667268-7cc15d84-25ea-480f-96c5-bf80cdcb54ce.png)
