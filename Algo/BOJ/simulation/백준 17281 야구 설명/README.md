@@ -9,114 +9,89 @@
 ```
 package simulation;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class BOJ_17281_야구 {
-	/**
-	 * 백준 17281 야구 (https://www.acmicpc.net/problem/17281)
-	 */
-	private static int n;
-	private static int[][] map;
-	private static boolean[] visit;
-	
-	private static int[] player;
-	
-	private static int result = 0;
-	
+public class BOJ_17281_야구{
+	static int N,arr[][];
+	static boolean visited[];
+	static int[] runner;
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(in.readLine());
 		
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		arr = new int[N+1][10];
 		
-		n = Integer.parseInt(reader.readLine());
-		
-		map = new int[n+1][10];
-		
-		StringTokenizer st;
-		for (int i=1; i<=n; i++) {
-			st = new StringTokenizer(reader.readLine());
+		StringTokenizer tk;
+		for (int i=1; i<=N; i++) {
+			tk = new StringTokenizer(in.readLine());
 			for (int j=1; j<=9; j++) {
-				map[i][j] = Integer.parseInt(st.nextToken());
+				arr[i][j] = Integer.parseInt(tk.nextToken());
 			}
 		}
 		
-		visit = new boolean[10];
-		player = new int[10];
+		visited = new boolean[10];
+		runner = new int[10];
 		
-		visit[4] = true; //이미 4번 타자는 정해진꼴
-		player[4] = 1; //어짜피 1번이 4번 타자로 들어가니깐
-		
-		dfs(2);
-		
-		System.out.println(result);
-		
+		visited[4] = true; //이미 4번 타자는 정해진꼴
+		runner[4] = 1; //어짜피 1번이 4번 타자로 들어가니깐
+		perm(2);
+		System.out.println(ans);
 	}
-
-	private static void dfs(int count) {
-
-		if (count == 10) {
-			
-			//순서 조합 끝
-			
-			//경기 시작
+	static boolean base[];
+	private static int ans = 0;
+	private static void perm(int count) {
+		if(count == 10) {
 			play();
-			
-		} else {
-			
-			for (int i=1; i<=9; i++) {
-				if (!visit[i]) { //등록 안 된 곳만 다시 재 배정한다.
-					visit[i] = true;
-					player[i] = count; //순서를 count로 배치
-					dfs(count+1);
-					visit[i] = false;
+		}
+		else {
+			for (int i = 1; i < 10; i++) {
+				if(visited[i]) {
+					continue;
 				}
+				visited[i] = true;
+				runner[i] = count;
+				perm(count+1);
+				visited[i] = false;
 			}
 		}
-		
-	}//dfs
-
-	private static void play() { //정해진 player 순서를 기반으로 시작한다.
-		
-		int score = 0;
+	}
+	
+	private static void play() {
+		int point = 0;
 		int startPlayer = 1;
-		boolean[] base;
-		
-		for (int i=1; i<=n; i++) {
+		for (int i = 1; i <= N; i++) {
 			int outCnt = 0;
 			base = new boolean[4];
-			
-			finish : while(true) {
-				for (int j=startPlayer; j<=9; j++) { //1번 플레이어 부터 시작한다.
-					int hitter = map[i][player[j]]; //1번 플레이어의 배치는 count로 순열로 정해진 순서가 들어간다.
-					//그때의 hitter의 점수가 나오고
-					switch (hitter) {
-					case 0: //아웃
-						outCnt++; //아웃 카운터 한 번 올라간다.
-						break;
-					case 1: //1루타
+			loop : while(true) {
+				for (int j = startPlayer; j < 10; j++) { //시작 플레이어 부터 시작함
+					
+					int hitter = arr[i][runner[j]]; //해당 이닝의 순번의 선수의 포인트가 들어옴
+					
+					if(hitter == 0) {
+						outCnt++;
+					}else if(hitter == 1) { //1점
 						for (int k=3; k>=1; k--) {
 							if (base[k]) {
-								if (k==3) {
-									score++;
-									base[k] = false;
+								if (k==3) { //3 루타 지점에 있던 주자 출루
+									point++; //점수 나고
+									base[k] = false; // 그 자리 이제 사람 없으니깐 false
 									continue;
 								}
-
-								base[k] = false;
+								base[k] = false; //만약에 2루타나 1루타에 사람이 있으면 그 사람ㅁ들은 다시 3루 2루 출루하므로
 								base[k+1] = true;
 							}
 							
 						}
-						base[1] = true;
-						break;
-					case 2: //2루타
+						base[1] = true; //1루타는 쳤으므로
+					}else if(hitter == 2) //2 루타
+					{
 						for (int k=3; k>=1; k--) {
 							if (base[k]) {
 								if (k==3 || k==2) {
-									score++;
+									point++;
 									base[k] = false;
 									continue;
 								}
@@ -125,33 +100,29 @@ public class BOJ_17281_야구 {
 							}
 						}
 						base[2] = true;
-						break;
-					case 3: //3루타
+					}else if(hitter == 3) { // 3 루타
 						for (int k=1; k<=3; k++) {
 							if (base[k]) {
-								score++;
+								point++;
 								base[k] = false;
 							}
 						}
 						base[3] = true;
-						break;
-					case 4: //홈런
+					}else if (hitter == 4){
 						for (int k=1; k<=3; k++) {
 							if (base[k]) {
-								score++;
+								point++;
 								base[k] = false;
 							}
 						}
-						score++;
-						break;
+						point++;
 					}
-
-					if (outCnt == 3) { //아웃 카운터가 3이면
-						startPlayer = j + 1; //startPlayer의 순서가 j + 1로 부터 저장하여야 다음 이닝때 그 순서 부터 시작한다.
-						if (startPlayer == 10) { //10번이면 다시 1번으로
-							startPlayer = 1;
+					if(outCnt == 3) {
+						startPlayer = j+1;
+						if(startPlayer == 10) {
+							startPlayer = 1; //원형 큐 처럼 도는 형식
 						}
-						break finish;
+						break loop;
 					}
 				}
 				//아웃 안 되고 startPlayer가 9까지 다 와버려서 끝나면 다시 처음 부터 그 player 배열에서 시작한다
@@ -159,11 +130,8 @@ public class BOJ_17281_야구 {
 				startPlayer = 1;
 			}
 		}
-		
-		result = Math.max(result, score);
-		
-	}//play
+		ans = Math.max(ans, point);
+	}
 }
-
 
 ```
