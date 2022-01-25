@@ -57,4 +57,5 @@
 
 ## 배포 명령어 정리
 
-    ![image](https://user-images.githubusercontent.com/87481266/150916614-ca6756a1-6ea7-4ba8-9006-507c4c800593.png)
+
+![image](https://user-images.githubusercontent.com/87481266/150916614-ca6756a1-6ea7-4ba8-9006-507c4c800593.png)
