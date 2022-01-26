@@ -44,7 +44,8 @@ for(int i = 1; i< 10; i+=2){
 			}
 		}
 	}
-	public static boolean isPrime(int num){ //소수 인지 판별하는 알고리즘 -> 에라토스테네스의 체
+	public static boolean isPrime(int num){ //소수 인지 판별하는 알고리즘 -> 에라토스테네스의 체 응용 -> 각 수의 제곱근까지만 약수를 판별 
+	//-> 어짜피 약수 나열 했을때 반만 계산해도 된다.
         if(num == 1 || num == 2) {
         	return true;
         }
