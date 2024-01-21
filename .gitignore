@@ -1,8 +1,15 @@
-image.jpg
-HTML_file.html
-Temp.mp4
-CSS3STYLE.html
-CSS_STYLE_BASIC.html
-CSS_TEST.html
-Solution.java
-sample_input1.txt
+# # Ignore everything
+# *
+
+# But not these files...
+!src/**/*
+!.gitignore
+
+
+# Ignore .idea, .vscode, Algo, bin, out folders
+.idea/
+.vscode/
+Algo/
+bin/
+out/
+
