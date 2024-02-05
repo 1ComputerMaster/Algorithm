@@ -1,11 +1,10 @@
-package BOJ.Dijkstra;
+package BOJ.shortest_path;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 

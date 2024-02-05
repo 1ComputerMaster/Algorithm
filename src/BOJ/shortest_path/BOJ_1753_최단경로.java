@@ -1,9 +1,8 @@
-package BOJ.Dijkstra;
+package BOJ.shortest_path;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;

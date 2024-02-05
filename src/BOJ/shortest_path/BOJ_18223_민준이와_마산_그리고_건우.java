@@ -1,4 +1,4 @@
-package BOJ.Dijkstra;
+package BOJ.shortest_path;
 
 import java.util.ArrayList;
 import java.util.Arrays;
