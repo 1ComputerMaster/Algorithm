@@ -26,9 +26,9 @@ public class BOJ_20440 {
             int end = Integer.parseInt(st.nextToken());
             time[i] = new Time(start, end);
         }
-        Arrays.sort(time, Comparator.comparingInt(o -> o.s));
+        Arrays.sort(time, Comparator.comparingInt(o -> o.s)); //시작 지점으로 오름차순 정렬 진행
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); //PriorityQueue Endpoint로 오름차순 정렬 진행
         int cnt = 1;
         int s = time[0].s;
         int e = time[0].e;
