@@ -24,7 +24,7 @@ public class BOJ_15663_re {
         num = new int[N];
         arr = new int[M];
         tk = new StringTokenizer(in.readLine()," ");
-        strSet = new LinkedHashSet<String>();
+        strSet = new LinkedHashSet<>();
         for (int i = 0; i < N; i++){
             num[i] = Integer.parseInt(tk.nextToken());
         }
@@ -32,7 +32,7 @@ public class BOJ_15663_re {
 
         backtracking(0);
         StringBuilder sb = new StringBuilder();
-        strSet.stream().forEach(e -> sb.append(e + "\n"));
+        strSet.forEach(e -> sb.append(e).append("\n"));
         bw.write(sb.toString());
         bw.flush();
         bw.close();
@@ -40,11 +40,11 @@ public class BOJ_15663_re {
 
     private static void backtracking(int cnt) {
         if(cnt == M){
-            String s = "";
+            StringBuilder s = new StringBuilder();
             for (int i = 0; i < M; i++){
-                s += (arr[i] + " ");
+                s.append(arr[i]).append(" ");
             }
-            strSet.add(s);
+            strSet.add(s.toString());
             return;
         }
         for (int i = 0; i < N; i++){
