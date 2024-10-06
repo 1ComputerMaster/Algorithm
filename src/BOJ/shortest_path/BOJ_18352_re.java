@@ -11,7 +11,6 @@ public class BOJ_18352_re {
         int X = sc.nextInt();
 
         List<Integer>[] graph = new ArrayList[N + 1];
-        boolean[] visited = new boolean[N + 1];
         int[] dist = new int[N + 1];
         Arrays.fill(dist, 1000_000_000);
 
@@ -23,38 +22,30 @@ public class BOJ_18352_re {
             int from = sc.nextInt();
             int to = sc.nextInt();
             graph[from].add(to);
-            graph[to].add(from);
         }
-        dijkstra(X, dist, visited, graph);
-
-        boolean checker = false;
+        dijkstra(X, dist, graph);
+        boolean check = false;
         for (int i = 0; i < dist.length; i++){
             if(dist[i] == K){
                 System.out.println(i);
-                checker = true;
+                check = true;
             }
         }
-        if(!checker){
+        if(!check){
             System.out.println(-1);
         }
     }
-
-    private static void dijkstra(int x, int[] dist, boolean[] visited, List<Integer>[] graph) {
-        Queue<Integer> q = new LinkedList<>();
-        q.add(x);
+    private static void dijkstra(int x, int[] dist, List<Integer>[] graph){
+        Queue<Integer> pq = new PriorityQueue<>();
+        pq.add(x);
         dist[x] = 0;
-        while (!q.isEmpty()){
-            int curNode = q.poll();
-            if(!visited[curNode]){
-                visited[curNode] = true;
-            }else{
-                continue;
-            }
-            for (int j = 0; j < graph[curNode].size(); j++){
-                int nextNode = graph[curNode].get(j);
-                if(dist[nextNode] > dist[curNode] + 1){
-                    q.add(nextNode);
-                    dist[nextNode] = dist[curNode] + 1;
+        while (!pq.isEmpty()){
+            int cur = pq.poll();
+            for (int i = 0; i < graph[cur].size(); i++){
+                int next = graph[cur].get(i);
+                if(dist[next] > dist[cur] + 1){
+                    pq.offer(next);
+                    dist[next] = dist[cur] + 1;
                 }
             }
         }
