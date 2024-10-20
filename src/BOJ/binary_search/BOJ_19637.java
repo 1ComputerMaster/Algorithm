@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class BOJ_19637 {
@@ -24,9 +23,9 @@ public class BOJ_19637 {
         int N = Integer.parseInt(tk.nextToken());
         int M = Integer.parseInt(tk.nextToken());
 
-        List<Data> list = new ArrayList<Data>();
+        List<Data> list = new ArrayList<>();
 
-        List<Integer> characterList = new ArrayList<Integer>();
+        List<Integer> characterList = new ArrayList<>();
 
 
         for (int i = 0; i < N; i++){
@@ -51,7 +50,7 @@ public class BOJ_19637 {
                     left = mid + 1;
                 }
             }
-            sb.append(list.get(left).strength + "\n");
+            sb.append(list.get(left).strength).append("\n");
         }
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
