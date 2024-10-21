@@ -29,7 +29,7 @@ public class BOJ_11663 {
             int count = getPointCount(start, end);
             sb.append(count).append("\n");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     // start와 end 범위 안에 있는 점의 개수를 찾는다.
