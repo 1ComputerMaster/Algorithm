@@ -12,7 +12,7 @@ public class BOJ_1654 {
         int K = sc.nextInt(); //랜선의 갯수
         int N = sc.nextInt(); //필요한 랜선의 갯수
 
-        List<Long> lenLine = new ArrayList<Long>();
+        List<Long> lenLine = new ArrayList<>();
         for (int i = 0; i < K; i++){
             lenLine.add(sc.nextLong());
         }
