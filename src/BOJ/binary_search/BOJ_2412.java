@@ -31,11 +31,8 @@ public class BOJ_2412 {
 
     private static int bfs() {
         Queue<int[]> queue = new LinkedList<>();
-        boolean[] visited = new boolean[20001];
-
         int steps = 0;
         queue.add(new int[] {0,0});
-
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int s = 0; s < size; s++) {
