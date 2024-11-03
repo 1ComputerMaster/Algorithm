@@ -37,8 +37,6 @@ public class BOJ_13397 {
 
         }
         System.out.println(ans);
-
-
     }
     private static int canIgo(int mid) {
         //각 구간에서 <= mid가 되는지를 검사합니다.
