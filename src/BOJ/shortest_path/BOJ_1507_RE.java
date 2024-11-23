@@ -1,6 +1,5 @@
 package BOJ.shortest_path;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BOJ_1507_RE {
