@@ -53,51 +53,53 @@ public class BOJ_20007 {
         }
     }
 
-    private static long[] dijkstra(int N, int start) {
-        long[] dist = new long[N];
-        Arrays.fill(dist, Long.MAX_VALUE);
-        dist[start] = 0;
-
-        PriorityQueue<Data> pq = new PriorityQueue<>();
-        pq.add(new Data(start, 0));
-
-        while (!pq.isEmpty()) {
-            Data cur = pq.poll();
-            if (cur.distance > dist[cur.node]) continue;
-
-            for (Data next : graph[cur.node]) {
-                long newDist = cur.distance + next.distance;
-                if (newDist < dist[next.node]) {
-                    dist[next.node] = newDist;
-                    pq.add(new Data(next.node, newDist));
-                }
+    private static boolean canVisitAll(long[] dist, long x) {
+        for (int i = 0; i < dist.length; i++){
+            if(dist[i] * 2 > x || dist[i] == Long.MAX_VALUE){
+                return false;
             }
-        }
-        return dist;
-    }
-
-    private static boolean canVisitAll(long[] dist, long maxDistance) {
-        for (long d : dist) {
-            if (d == Long.MAX_VALUE || d * 2 > maxDistance) return false; // 방문할 수 없는 집이 존재
         }
         return true;
     }
 
-    private static int minDaysToVisit(long[] dist, long maxDistance) {
-        Arrays.sort(dist); // 가까운 거리부터 방문
-        int days = 0;
-        long dailyDistance = 0;
-
-        for (long d : dist) {
-            long roundTrip = 2 * d; // 왕복 거리
-            if (dailyDistance + roundTrip > maxDistance) {
-                days++; // 새로운 하루 시작
-                dailyDistance = 0;
+    private static int minDaysToVisit(long[] dist, long x) {
+        Arrays.sort(dist);
+        int day = 0;
+        long dayDistance = 0;
+        int i = 0;
+        for (long d : dist){
+            if(dayDistance + d * 2 > x){
+                day++;
+               dayDistance = 0;
             }
-            dailyDistance += roundTrip;
+            dayDistance += d * 2;
         }
+        if (dayDistance > 0) day++;
+        return day;
+    }
 
-        if (dailyDistance > 0) days++; // 마지막 남은 거리 처리
-        return days;
+    private static long[] dijkstra(int n, int start) {
+        PriorityQueue<Data> pq = new PriorityQueue<>();
+        pq.add(new Data(start, 0));
+        boolean[] visited = new boolean[n];
+        long[] dist = new long[n];
+        Arrays.fill(dist, Long.MAX_VALUE);
+        dist[start] = 0;
+
+        while (!pq.isEmpty()){
+            Data cur = pq.poll();
+            if(visited[cur.node]){
+                continue;
+            }
+            visited[cur.node] = true;
+
+            for (Data next : graph[cur.node]){
+                if(!visited[next.node] && dist[next.node] > cur.distance + next.distance) {
+                    pq.add(new Data(next.node, cur.distance + next.distance));
+                    dist[next.node] = cur.distance + next.distance;
+                }
+            }
+        }
+        return dist;
     }
 }
