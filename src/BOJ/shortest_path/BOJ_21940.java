@@ -47,7 +47,6 @@ public class BOJ_21940 {
 
         for (int city = 1; city <= N; city++) {
             long maxDistance = 0;
-            boolean reachable = true;
 
             for (int friend : friends) {
                 //단뱡항 그래프
