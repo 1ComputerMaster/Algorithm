@@ -38,16 +38,13 @@ public class BOJ_17485 {
                 //왼쪽에서 오는 경우
                 if(j - 1 >= 0){
                     //이전에 내려온 경우와 이전에 오른쪽에서 온 경우
-                    dp[i][j][0] = Math.min(dp[i - 1][j - 1][1] + map[i][j], dp[i][j][0]); 
-                    dp[i][j][0] = Math.min(dp[i - 1][j - 1][2] + map[i][j], dp[i][j][0]);
+                    dp[i][j][0] = Math.min(Math.min(dp[i - 1][j - 1][1] + map[i][j], dp[i][j][0]), dp[i - 1][j - 1][2] + map[i][j]);
                 }
                 //오른쪽에서 오는 경우
                 if(j + 1 < M){
-                    dp[i][j][2] = Math.min(dp[i - 1][j + 1][0] + map[i][j], dp[i][j][2]);
-                    dp[i][j][2] = Math.min(dp[i - 1][j + 1][1] + map[i][j], dp[i][j][2]);
+                    dp[i][j][2] = Math.min(dp[i - 1][j + 1][1] + map[i][j],Math.min(dp[i - 1][j + 1][0] + map[i][j], dp[i][j][2]));
                 }
-                dp[i][j][1] = Math.min(dp[i - 1][j][0] + map[i][j], dp[i][j][1]);
-                dp[i][j][1] = Math.min(dp[i - 1][j][2] + map[i][j], dp[i][j][1]);
+                dp[i][j][1] = Math.min(dp[i - 1][j][2] + map[i][j],Math.min(dp[i - 1][j][0] + map[i][j], dp[i][j][1]));
             }
         }
         long ans = Long.MAX_VALUE / 2;
