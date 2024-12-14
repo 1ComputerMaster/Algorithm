@@ -25,14 +25,14 @@ public class BOJ_14567 {
         for (int i = 0; i < M; i++){
             list[i] = (new Pair(sc.nextInt(),sc.nextInt()));
         }
-        long dp[] = new long[N + 1];
+        long[] dp = new long[N + 1];
 
         Arrays.sort(list);
 
         Arrays.fill(dp, 1);
 
-        for (int i = 0; i < list.length; i++){
-            dp[list[i].to] = Math.max(dp[list[i].from] + 1, dp[list[i].to]);
+        for (Pair pair : list) {
+            dp[pair.to] = Math.max(dp[pair.from] + 1, dp[pair.to]);
         }
         for (int i = 1; i < N + 1; i++)
             System.out.println(dp[i]);
