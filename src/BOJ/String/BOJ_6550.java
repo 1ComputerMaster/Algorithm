@@ -18,7 +18,7 @@ public class BOJ_6550 {
 
     private static boolean subStringCheck(String s, String t) {
         int nextIndex = 0;
-        boolean isSubString = false;
+        boolean isSubString;
         for (int j = 0; j < s.length(); j++) {
             isSubString = false;
             for (int i = nextIndex; i < t.length(); i++) {
