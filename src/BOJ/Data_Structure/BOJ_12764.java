@@ -29,23 +29,22 @@ public class BOJ_12764 {
 
     private static void solve(int[][] times, PriorityQueue<int[]> occupiedSeats, PriorityQueue<Integer> freeSeats, List<Integer> usageCounts) {
         for (int[] time : times){
-           int start =  time[0];
-           int end = time[1];
+            int start = time[0];
+            int end = time[1];
 
-           while (!occupiedSeats.isEmpty() && occupiedSeats.peek()[0] <= start){ //이미 시간이 지났다.
-               int freedSeat = occupiedSeats.poll()[1]; //현재 시트는 빈자리임
-               freeSeats.add(freedSeat); //이거 빈자리로 만들자
-           }
-           
-           int seat;
-           if(freeSeats.isEmpty()){ //빈자리가 없으면 새 자리 할당
-               seat = usageCounts.size();
-               usageCounts.add(0);
-           } else { //빈자리다 들어가자
-               seat = freeSeats.poll();
-           }
-           usageCounts.set(seat, usageCounts.get(seat) + 1); //그 빈자리에는 내가 들어간다. (없으면 0 + 1 임)
-           occupiedSeats.add(new int[]{end, seat});
+            while (!occupiedSeats.isEmpty() && occupiedSeats.peek()[0] < start){
+                int freedSeat = occupiedSeats.poll()[1]; //현재 시트는 빈자리임
+                freeSeats.add(freedSeat); //이거 빈자리로 만들자
+            }
+            int seat;
+            if(freeSeats.isEmpty()){
+                seat = usageCounts.size();
+                usageCounts.add(0);
+            }else{
+                seat = freeSeats.poll();
+            }
+            usageCounts.set(seat, usageCounts.get(seat) + 1);
+            occupiedSeats.add(new int[]{end, seat});
         }
     }
 
