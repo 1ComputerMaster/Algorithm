@@ -49,8 +49,8 @@ public class BOJ_12764_RE {
             occupiedSeat.add(new int[] {end, seat});
         }
         System.out.println(usingCount.size());
-        for (int i =0; i < usingCount.size(); i++) {
-            System.out.print(usingCount.get(i) + " ");
+        for (Integer count : usingCount) {
+            System.out.print(count + " ");
         }
     }
 
