@@ -76,15 +76,16 @@ public class BOJ_5212 {
                 if(map[i][j].equals("X")){
                     int desertCnt = 0;
                     for (int d = 0; d < 4; d++){
+                        if(desertCnt > 1){
+                            continue;
+                        }
                         int nx = i + dx[d];
                         int ny = j + dy[d];
 
                         if(nx >= 0 && nx < map.length && ny >= 0 && ny < map[i].length){
+
                             if(!map[nx][ny].equals(".")){
                                 desertCnt++;
-                            }
-                            if(desertCnt > 1){
-                                continue;
                             }
                         }
                     }
