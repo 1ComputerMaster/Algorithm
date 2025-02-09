@@ -44,20 +44,15 @@ public class BOJ_14891 {
     }
 
     private static void check(int num, int[] dist, int go){
+        dist[num] = go;
         if(num + 1 < 4 && dist[num + 1] == 0) {
-            if (circleWheels[num][2] == circleWheels[num + 1][6]) {
-                dist[num] = go;
-            } else {
-                dist[num] = go;
+            if (circleWheels[num][2] != circleWheels[num + 1][6]) {
                 dist[num + 1] = -go;
                 check(num + 1, dist, -go);
             }
         }
         if (num - 1 >= 0 && dist[num - 1] == 0) {
-            if (circleWheels[num][6] == circleWheels[num - 1][2]) {
-                dist[num] = go;
-            } else {
-                dist[num] = go;
+            if (circleWheels[num][6] != circleWheels[num - 1][2]) {
                 dist[num - 1] = -go;
                 check(num - 1, dist, -go);
             }
