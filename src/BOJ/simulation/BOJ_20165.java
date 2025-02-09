@@ -8,8 +8,8 @@ public class BOJ_20165 {
     static String[][] visitedMap;
     static int[][] map;
     //북 (N), 서(W), 남(S), 동(E)
-    static int dx[] = {-1, 0, 1, 0};
-    static int dy[] = {0, -1, 0, 1};
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, -1, 0, 1};
     static int N;
     static int M;
 
@@ -69,18 +69,13 @@ public class BOJ_20165 {
     }
 
     private static int getDirection(String way) {
-        switch (way) {
-            case "N":
-                return 0;
-            case "W":
-                return 1;
-            case "S":
-                return 2;
-            case "E":
-                return 3;
-            default:
-                return -1;
-        }
+        return switch (way) {
+            case "N" -> 0;
+            case "W" -> 1;
+            case "S" -> 2;
+            case "E" -> 3;
+            default -> -1;
+        };
     }
 
 
