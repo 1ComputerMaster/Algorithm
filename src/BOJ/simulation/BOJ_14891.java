@@ -26,7 +26,7 @@ public class BOJ_14891 {
                     circleWheels[i] = clockDist(circleWheels[i]);
                 }
                 else if(visited[i] == -1){
-                    circleWheels[i] = oppositClockDist(circleWheels[i]);
+                    circleWheels[i] = oppositeClockDist(circleWheels[i]);
                 }
             }
         }
@@ -71,7 +71,7 @@ public class BOJ_14891 {
         }
         return tmpWheel;
     }
-    private static int[] oppositClockDist(int [] wheel){
+    private static int[] oppositeClockDist(int [] wheel){
         int[] tmpWheel = new int[8];
         for (int i = 0; i < 8; i++){
             tmpWheel[i] = wheel[((i + 1) >= 8) ? 0 : i + 1];
