@@ -19,14 +19,14 @@ public class BOJ_1439_RE {
             zeroCnt++;
         }
 
-        for (int i = 0; i < crr.length; i++){
-            if(crr[i] == '1' && start != crr[i]){
+        for (char c : crr) {
+            if (c == '1' && start != c) {
                 oneCnt++;
-                start = crr[i];
+                start = c;
             }
-            if(crr[i] == '0' && start != crr[i]){
+            if (c == '0' && start != c) {
                 zeroCnt++;
-                start = crr[i];
+                start = c;
             }
         }
 
