@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_15683 {
-    private static int[][] map;
     private static int N, M;
     private static int ans = 1000_000_000;
 
@@ -37,7 +36,7 @@ public class BOJ_15683 {
         StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         N = Integer.parseInt(tk.nextToken());
         M = Integer.parseInt(tk.nextToken());
-        map = new int[N][M];
+        int[][] map = new int[N][M];
         int cnt = 0;
         cctvList = new ArrayList<>();
         for (int i = 0; i < N; i++) {
@@ -50,8 +49,7 @@ public class BOJ_15683 {
                 }
             }
         }
-        int[][] tmpMap = createTempMap(map);
-        dfs(tmpMap, cnt);
+        dfs(map, cnt);
         System.out.println(ans);
     }
 
@@ -159,8 +157,6 @@ public class BOJ_15683 {
                 break;
         }
     }
-
-
     private static int countMap(int[][] tmpMap) {
         int cnt = 0;
         for (int i = 0; i <  N; i++){
@@ -177,15 +173,6 @@ public class BOJ_15683 {
             map[changedPoint.x][changedPoint.y] = 0;
         }
     }
-    private static int[][] createTempMap(int[][] src) {
-        int[][] tmpMap = new int[N][M];
-
-        for (int i = 0; i < N; i++){
-            if (M >= 0) System.arraycopy(src[i], 0, tmpMap[i], 0, M);
-        }
-        return tmpMap;
-    }
-
     private static List<Point> goEast(int[][] tempMap, int startX, int startY) {
         List<Point> changed = new ArrayList<>();
         for (int j = startY + 1; j < M; j++) {
