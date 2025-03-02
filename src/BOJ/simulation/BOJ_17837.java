@@ -97,8 +97,8 @@ public class BOJ_17837 {
                 break;
             }
         }
-        for (int i = malMap[x][y].size() - 1; i >= stackIndex; i--) {
-            malMap[x][y].remove(i);
+        if (malMap[x][y].size() > stackIndex) {
+            malMap[x][y].subList(stackIndex, malMap[x][y].size()).clear();
         }
 
         int nx = x + dx[d];
