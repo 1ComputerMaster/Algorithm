@@ -59,7 +59,7 @@ public class BOJ_17837 {
         while (turn++ < 1000)
         {
             for (int i = 0; i < K; i++){
-                WhiteCase(i);
+                moveMal(i);
                 if(isGameOver(turn)){
                     return;
                 }
@@ -80,7 +80,7 @@ public class BOJ_17837 {
         return false;
     }
     // 말 i를 한 번 이동시키고 리턴
-    private static void WhiteCase(int nowMal){
+    private static void moveMal(int nowMal){
         MalPosition malPosition = malPositionMap.get(nowMal);
         int x = malPosition.H;
         int y = malPosition.W;
