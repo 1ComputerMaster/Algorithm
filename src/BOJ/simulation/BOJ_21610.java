@@ -57,32 +57,31 @@ public class BOJ_21610 {
             moveClouds(d, s);
 
             // 2. 구름이 있는 칸 물 1 증가
-            boolean[][] visited = new boolean[N][N]; // 이번 턴에 구름 있었던 칸
-            for(Point c : clouds){
-                A[c.x][c.y]++;
+            boolean[][] visited = new boolean[N][N];
+            for (Point c : clouds){
                 visited[c.x][c.y] = true;
+                A[c.x][c.y]++;
             }
 
             // 3. 물복사버그 (대각선 체크)
-            for(Point c : clouds){
+            for (Point c : clouds) {
                 int count = 0;
-                for(int idx = 0; idx < 4; idx++){
+                for (int idx = 0; idx < 4; idx++) {
                     int nx = c.x + diagX[idx];
                     int ny = c.y + diagY[idx];
-                    if(inRange(nx, ny) && A[nx][ny] > 0){
+                    if(inRange(nx, ny) && A[nx][ny] > 0) {
                         count++;
                     }
                 }
                 A[c.x][c.y] += count;
             }
-
             // 4. 구름 사라짐 → 새 구름 생성
             // 새 구름은 이번 턴에 구름이 없었던 칸 중 A[r][c]>=2 인 곳
             // 물 2 감소
             List<Point> newClouds = new ArrayList<>();
-            for(int r=0; r<N; r++){
-                for(int c=0; c<N; c++){
-                    if(!visited[r][c] && A[r][c]>=2){
+            for (int r = 0; r < N; r++){
+                for (int c = 0; c < N; c++){
+                    if(A[r][c] >= 2 && !visited[r][c]){
                         A[r][c] -= 2;
                         newClouds.add(new Point(r,c));
                     }
@@ -104,18 +103,17 @@ public class BOJ_21610 {
     // 구름 이동: 방향 d로 s칸
     // 격자는 torus처럼 연결 (wrap-around)
     static void moveClouds(int d, int s){
-        List<Point> moved = new ArrayList<>();
-        // s가 매우 커도, s % N 으로 줄이면 동일
+        List<Point> moveClouds = new ArrayList<>();
         s = s % N;
-        for(Point c : clouds){
+        for (Point c : clouds) {
             int nx = c.x + dx[d]*s;
             int ny = c.y + dy[d]*s;
-            // wrap-around
+
             nx = (nx % N + N) % N;
             ny = (ny % N + N) % N;
-            moved.add(new Point(nx, ny));
+            moveClouds.add(new Point(nx, ny));
         }
-        clouds = moved;
+        clouds = moveClouds;
     }
 
     static boolean inRange(int x, int y){
