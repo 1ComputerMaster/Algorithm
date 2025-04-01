@@ -4,7 +4,7 @@ import java.util.*;
 public class RemoveElements {
     public static void main(String[] args) {
         int[] nums = new int[]{3,2,2,3};
-        removeElement(nums, 3);
+        System.out.println("cnt : " + removeElement(nums, 3));
         int[] expectedNums = new int[]{2,2};
         int k = expectedNums.length;
         Arrays.sort(nums, 0, k);
