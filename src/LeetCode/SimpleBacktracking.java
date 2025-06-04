@@ -9,9 +9,7 @@ public class SimpleBacktracking {
         combine(n, k);
     }
     static List<List<Integer>> ansList;
-    static boolean[] visited;
     public static List<List<Integer>> combine(int n, int k) {
-        visited = new boolean[n];
         ansList = new ArrayList<>();
         comb(n, 0, 0, k, new ArrayList());
         return ansList;
