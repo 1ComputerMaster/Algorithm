@@ -16,31 +16,29 @@ public class MinimumGeneticMutation {
         q.add(startGene);
 
         while (!q.isEmpty()){
-            for (int i = q.size(); i > 0; i--) {
+            int initQueueSize = q.size();
+            for (int i = 0; i < initQueueSize; i++) {
                 String s = q.poll();
-                if(s.equals(endGene))
+                if(s.equals(endGene)){
                     return steps;
-                //changed voca
+                }
                 char[] ca = s.toCharArray();
-                for (int j = 0; j < endGene.length(); j++) {
-                    char oc = ca[j];
-                    for (int k = 0; k < 4; k++){
+                for (int j = 0; j < ca.length; j++) {
+                    char oa = ca[j];
+                    for (int k = 0; k < 4; k++) {
                         ca[j] = "ACGT".charAt(k);
-                        //재검증 시기에 ca[j]를 돌려 놓지 않으면 문제가 된다.
                         String t = new String(ca);
                         if (!vis.contains(t) && banks.contains(t)) {
-                            // push the next node to the queue
                             q.add(t);
-                            // and mark it visited
                             vis.add(t);
                         }
                     }
-                    //revart to since changed
-                    ca[j] = oc;
+                    ca[j] = oa;
                 }
             }
             steps++;
         }
         return -1;
     }
+
 }
