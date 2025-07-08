@@ -46,20 +46,16 @@ public class SortList {
     }
 
     private ListNode insertInSortedOrder(ListNode node, ListNode sortedList) {
-
-        if (sortedList == null || node.val <= sortedList.val) {
-            node.next = sortedList;
+        if(sortedList == null || node.val <= sortedList.val){
             return node;
         }
+        ListNode currentNode = sortedList;
 
-        ListNode current = sortedList;
-
-        while (current.next != null && current.next.val < node.val) {
-            current = current.next;
+        while (currentNode.next != null && currentNode.next.val < node.val){
+            currentNode = currentNode.next;
         }
-
-        node.next = current.next;
-        current.next = node;
+        node.next = currentNode.next;
+        currentNode.next = node;
 
         return sortedList;
     }
