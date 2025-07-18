@@ -1,5 +1,8 @@
 package LeetCode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         LongestSubstringWithoutRepeatingCharacters lswrc = new LongestSubstringWithoutRepeatingCharacters();
@@ -7,18 +10,17 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(lswrc.lengthOfLongestSubstring(s)); // Should return 3
     }
     public int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        int[] index = new int[26]; // ASCII character set
         int maxLength = 0;
-        int start = 0;
+        int left = 0;
+        Map<Character, Integer> lastSeen = new HashMap<>();
 
-        for (int end = 0; end < n; end++) {
-            int currentChar = s.charAt(end) - 'a';
-            if (index[currentChar] > start) {
-                start = index[currentChar];
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            if (lastSeen.containsKey(c) && lastSeen.get(c) >= left) {
+                left = lastSeen.get(c) + 1;
             }
-            index[currentChar] = end + 1; // Update the last seen index of the character
-            maxLength = Math.max(maxLength, end - start + 1);
+            maxLength = Math.max(maxLength, right - left + 1);
+            lastSeen.put(c, right);
         }
 
         return maxLength;
