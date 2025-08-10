@@ -22,14 +22,14 @@ public class MergeIntervals {
         int curStart = intervals[0][0];
         int curEnd   = intervals[0][1];
 
-        for(int i = 0; i < intervals.length; i++){
-            int s = intervals[i][0], e = intervals[i][1];
-            if(curEnd >= s){
+        for (int[] interval : intervals) {
+            int s = interval[0], e = interval[1];
+            if (curEnd >= s) {
                 curEnd = Math.max(curEnd, e);
-            }else{
+            } else {
                 res.add(new int[]{curStart, curEnd});
                 curStart = s;
-                curEnd   = e;
+                curEnd = e;
             }
         }
         res.add(new int[]{curStart, curEnd});
