@@ -12,8 +12,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
     * 6. 시간 복잡도 : O(log n)
     * 7. 공간 복잡도 : O(1)
     * */
-    public static void main(String[] args) {
-        int[] nums = {5,7,7,8,8,10};
+    public static void main(String[] args) {int[] nums = {5,7,7,8,8,10};
         int target = 8;
         FindFirstAndLastPositionOfElementInSortedArray sol = new FindFirstAndLastPositionOfElementInSortedArray();
         int[] ans = sol.searchRange(nums, target);
@@ -39,7 +38,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
 
 
     private int bounded(int left, int right, int target, int[] nums, boolean isBigger){
-        int ans = 0;
+        int ans;
 
         if(isBigger){
             ans = Integer.MIN_VALUE;
