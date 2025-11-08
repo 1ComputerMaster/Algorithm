@@ -1,48 +1,45 @@
 package LeetCode;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 public class LetterCombOfPhoneNum {
     public static void main(String[] args) {
+        LetterCombOfPhoneNum sol = new LetterCombOfPhoneNum();
         String digits = "23";
-        System.out.println(letterCombinations(digits));
+        System.out.println(sol.letterCombinations(digits));
     }
-    static char[][] crr;
-    static List<Integer> num;
-    static int cnt = 0;
-    static List<String> ansList;
-    public static List<String> letterCombinations(String digits) {
-        if(digits.isEmpty()){
-            return List.of();
-        }
-        num = new ArrayList<>();
+    static Map <Integer, String> alphabetMap;
+    static List<String> ans;
+    public List<String> letterCombinations(String digits) {
+        alphabetMap = new HashMap<>();
+        alphabetMap.put(2, "abc");
+        alphabetMap.put(3, "def");
+        alphabetMap.put(4, "ghi");
+        alphabetMap.put(5, "jkl");
+        alphabetMap.put(6, "mno");
+        alphabetMap.put(7, "pqrs");
+        alphabetMap.put(8, "tuv");
+        alphabetMap.put(9, "wxyz");
+        List<Integer> nums = new ArrayList<>();
         for(int i = 0; i < digits.length(); i++){
-            num.add(Integer.parseInt(String.valueOf(digits.charAt(i))));
+            nums.add(Integer.valueOf(digits.charAt(i) - '0'));
         }
-        cnt = num.size();
-        crr = new char[10][4];
-        init(crr);
-        ansList = new ArrayList<>();
-        comb(0, new StringBuilder());
-        return ansList;
+        ans = new ArrayList();
+        comb(nums,0 ,digits.length(), new StringBuilder());
+        return ans;
     }
-    private static void init(char[][] crr){
-        crr[2] = new char[]{'a', 'b', 'c'};
-        crr[3] = new char[]{'d','e','f'};
-        crr[4] = new char[]{'g','h','i'};
-        crr[5] = new char[]{'j','k','l'};
-        crr[6] = new char[]{'m','n','o'};
-        crr[7] = new char[]{'p','q','r','s'};
-        crr[8] = new char[]{'t','u','v'};
-        crr[9] = new char[]{'w','x','y','z'};
-    }
-    private static void comb(int count, StringBuilder sb){
-        if(cnt == count){
-            ansList.add(sb.toString());
-            return;
+    private void comb(List<Integer> nums,int start, int cnt, StringBuilder sb){
+        if(sb.length() == cnt){
+            ans.add(sb.toString());
         }
-        int where = num.get(count);
-        for(int i = 0; i < crr[where].length; i++){
-            comb(count + 1, sb.append(crr[where][i]));
-            sb.deleteCharAt(sb.length() - 1);
+        for(int i = start; i < nums.size(); i++){
+            String str = alphabetMap.get(nums.get(i));
+            for(int j = 0; j < str.length(); j++){
+                comb(nums, i + 1, cnt, sb.append(str.charAt(j) + ""));
+                sb.deleteCharAt(sb.length() - 1);
+            }
         }
     }
 }
