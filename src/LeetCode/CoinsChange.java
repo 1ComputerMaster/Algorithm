@@ -3,15 +3,26 @@ package LeetCode;
 import java.util.Arrays;
 
 public class CoinsChange {
+    /**
+    * dp[i] = i원을 만드는데 필요한 최소 동전 개수
+    *  dp[0] = 0
+    *  for i from 1 to amount:
+    *   for coin in coins:
+    *   if i - coin >= 0:
+    *   dp[i] = min(dp[i], dp[i - coin] + 1)
+    *   return dp[amount] == Integer.MAX_VALUE - 1 ? -1 : dp[amount]
+    *
+    **/
     public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[10001];
+        int[] dp = new int[amount + 1];
         Arrays.fill(dp, Integer.MAX_VALUE - 1);
         dp[0] = 0;
 
-        for(int i = 0; i < 10001; i++){
-            for(int c : coins){
-                if(i - c < dp.length && i - c >= 0)
-                    dp[i] = Math.min(dp[i], dp[i - c] + 1);
+        for(int i = 0; i < amount + 1; i++){
+            for(int j = 0; j < coins.length; j++){
+                if(i - coins[j] < amount + 1 && i - coins[j] >= 0){
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
             }
         }
         return dp[amount] == Integer.MAX_VALUE - 1 ? -1 : dp[amount];
