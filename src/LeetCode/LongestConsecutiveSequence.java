@@ -15,21 +15,18 @@ public class LongestConsecutiveSequence {
             numSet.add(num);
         }
 
-        int max = 0;
+        int longest = 0;
 
-        for(int x : numSet){
-
-            if(!numSet.contains(x - 1)){
+        for (int n : numSet){
+            if(!numSet.contains(n - 1)){
                 int length = 1;
-
-                while(numSet.contains(x + length)){
+                while(numSet.contains(n + length)){
                     length++;
                 }
-
-                max = Math.max(max, length);
+                longest = Math.max(longest, length);
             }
         }
-        return max;
+        return longest;
     }
 
 }
