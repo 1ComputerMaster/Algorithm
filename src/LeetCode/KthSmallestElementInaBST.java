@@ -1,7 +1,5 @@
 package LeetCode;
 
-import java.util.Stack;
-
 public class KthSmallestElementInaBST {
     public static void main(String[] args) {
         KthSmallestElementInaBST k = new KthSmallestElementInaBST();
@@ -21,23 +19,23 @@ public class KthSmallestElementInaBST {
             this.right = right;
         }
     }
+    private int count = 0;
+    private int result = 0;
     public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> st = new Stack();
+        inorderTraversal(root, k);
+        return result;
 
-        while(root != null){
-            st.push(root);
-            root = root.left;
+    }
+    private void inorderTraversal(TreeNode node, int k) {
+        if(node == null || count >= k){
+            return;
         }
-        while (k != 0) {
-            TreeNode n = st.pop();
-            k--;
-            if (k == 0) return n.val;
-            TreeNode right = n.right;
-            while (right != null) {
-                st.push(right);
-                right = right.left;
-            }
+        inorderTraversal(node.left, k);
+        count++;
+        if(count == k){
+            result = node.val;
+            return;
         }
-        return -1;
+        inorderTraversal(node.right, k);
     }
 }
