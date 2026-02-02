@@ -40,39 +40,22 @@ public class CloneGraph {
         Node clonedGraph = cloneGraph(node1);
         System.out.println("Cloned graph created with root value: " + clonedGraph.val);
     }
+    static Map<Node,Node> visitedMap;
     public static Node cloneGraph(Node node) {
-        if (node == null) {
-            return null;
-        }
-
-        // 1) 원본 노드 → 복제 노드 매핑
-        Map<Node, Node> cloneMap = new HashMap<>();
-        // 2) BFS용 큐
-        Queue<Node> q = new LinkedList<>();
-
-        // 시작 노드 복제 및 준비
-        cloneMap.put(node, new Node(node.val, new ArrayList<>()));
-        q.add(node);
-
-        // 3) BFS 순회
-        while (!q.isEmpty()) {
-            Node cur = q.poll();
-            Node curClone = cloneMap.get(cur);
-
-            // 이웃 처리
-            for (Node nei : cur.neighbors) {
-                // 아직 복제본이 없으면 새로 생성하고 큐에 추가
-                if (!cloneMap.containsKey(nei)) {
-                    cloneMap.put(nei, new Node(nei.val, new ArrayList<>()));
-                    q.add(nei);
-                }
-                // 복제본의 이웃 리스트에, 반드시 복제본을 추가
-                curClone.neighbors.add(cloneMap.get(nei));
-            }
-        }
-
-        // 첫 노드의 복제본 반환
-        return cloneMap.get(node);
+        visitedMap = new HashMap();
+        return dfs(node);
     }
+    private static Node dfs(Node node){
+        if(node == null) return null;
 
+        if(visitedMap.containsKey(node)){
+            return visitedMap.get(node);
+        }
+        visitedMap.put(node, new Node(node.val));
+
+        for(Node c : node.neighbors){
+            visitedMap.get(node).neighbors.add(dfs(c));
+        }
+        return visitedMap.get(node);
+    }
 }
