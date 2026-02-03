@@ -32,20 +32,25 @@ public class CopyListWithRandomPointer {
             cur = cur.next;
         }
     }
+    Map<Node, Node> visitedMap;
     public Node copyRandomList(Node head) {
-        if (head == null) return null;
-
-        Map<Node, Node> map = new HashMap<>();
-        // 1) 노드 복제만
-        for (Node cur = head; cur != null; cur = cur.next) {
-            map.put(cur, new Node(cur.val));
+        visitedMap = new HashMap();
+        return dfs(head);
+    }
+    private Node dfs(Node head){
+        if(head == null){
+            return null;
         }
-        // 2) 노드 붙여넣기
-        for (Node cur = head; cur != null; cur = cur.next) {
-            map.get(cur).next = map.get(cur.next);
-            map.get(cur).random = map.get(cur.random);
+        if(visitedMap.containsKey(head)){
+            return visitedMap.get(head);
         }
+        Node newNode = new Node(head.val);
 
-        return map.get(head);
+        visitedMap.put(head, newNode);
+
+        newNode.next = dfs(head.next);
+        newNode.random = dfs(head.random);
+
+        return newNode;
     }
 }
