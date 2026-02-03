@@ -38,21 +38,15 @@ public class InvertBinaryTree {
 
     }
     public TreeNode invertTree(TreeNode root) {
-        TreeNode ans = new TreeNode();
         return dfs(root);
     }
-    private TreeNode dfs(TreeNode root){
-        if (root == null) {
+    private TreeNode dfs(TreeNode node){
+        if(node == null) {
             return null;
         }
-        // 현재 노드 복제
-        TreeNode newNode = new TreeNode(root.val);
-        if(root.right != null){
-            newNode.left = dfs(root.right);
-        }
-        if(root.left != null){
-            newNode.right = dfs(root.left);
-        }
-        return newNode;
+        TreeNode go = new TreeNode(node.val);
+        go.right = dfs(node.left);
+        go.left = dfs(node.right);
+        return go;
     }
 }
