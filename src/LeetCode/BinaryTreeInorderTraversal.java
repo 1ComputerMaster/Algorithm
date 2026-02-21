@@ -24,25 +24,21 @@ public class BinaryTreeInorderTraversal {
         }
     }
 
-    List<Integer> ans = new ArrayList<>();
+    List<Integer> ans;
     public List<Integer> inorderTraversal(TreeNode root) {
+        if(root == null){
+            return List.of();
+        }
+        ans = new ArrayList<>();
         dfs(root);
         return ans;
     }
-
-    private void dfs(TreeNode root){
-        if(root == null){
+    private void dfs(TreeNode node){
+        if(node == null){
             return;
         }
-        if(root.left != null){
-            dfs(root.left);
-        }
-        if(root != null){
-            ans.add(root.val);
-        }
-        if(root.right != null){
-            dfs(root.right);
-        }
+        dfs(node.left);
+        ans.add(node.val);
+        dfs(node.right);
     }
-
 }

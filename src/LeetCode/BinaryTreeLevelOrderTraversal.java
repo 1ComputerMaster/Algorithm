@@ -1,7 +1,11 @@
 package LeetCode;
 
+import com.sun.source.tree.Tree;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
     public static class TreeNode {
@@ -37,35 +41,28 @@ public class BinaryTreeLevelOrderTraversal {
     List<List<Integer>> ansList = new ArrayList<>();
 
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<Integer> rootList = new ArrayList();
-        if (root != null) {
-            rootList.add(root.val);
-        } else {
-            return ansList;
-        }
-        ansList.add(rootList);
-        List<Integer> nextList = new ArrayList();
-        getTreeVal(root.left, 1);
-        getTreeVal(root.right, 1);
-        return ansList;
-    }
-
-    private void getTreeVal(TreeNode cur, int degree) {
-        if (cur != null) {
-            if (ansList.size() > degree) {
-                ansList.get(degree).add(cur.val);
-            } else {
-                ansList.add(degree, new ArrayList());
-                ansList.get(degree).add(cur.val);
+        Queue<TreeNode> queue;
+        queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> levelList = new ArrayList<>();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll();
+                if(node != null){
+                    levelList.add(node.val);
+                    if(node.left != null){
+                        queue.offer(node.left);
+                    }
+                    if(node.right != null) {
+                        queue.offer(node.right);
+                    }
+                }
             }
-        } else {
-            return;
+            if (!levelList.isEmpty()){
+                ansList.add(levelList);
+            }
         }
-        if (cur.left != null) {
-            getTreeVal(cur.left, degree + 1);
-        }
-        if (cur.right != null) {
-            getTreeVal(cur.right, degree + 1);
-        }
+        return ansList;
     }
 }

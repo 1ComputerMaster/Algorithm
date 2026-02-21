@@ -33,25 +33,27 @@ public class ConstructBinaryTreeFromPostorderandInorderTraversal {
         }
     }
     static int[] postOrder;
-    static Map<Integer, Integer> inOrderMap;
     static int postIdx;
+    static int[] inorder;
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        inOrderMap = new HashMap<>();
         postOrder = postorder;
         postIdx = postorder.length - 1;
-        for(int i = 0; i < inorder.length; i++){
-            inOrderMap.put(inorder[i], i);
-        }
-
-        return build(0, inorder.length - 1);
+        this.inorder = inorder;
+        return dfs(0, inorder.length);
     }
-    private TreeNode build(int inL, int inR){
-        if(inL > inR) return null;
-        int rootVal = postOrder[postIdx--];
-        TreeNode root = new TreeNode(rootVal);
-        int mid = inOrderMap.get(rootVal);
-        root.right = build(mid + 1, inR);
-        root.left = build(inL, mid - 1);
-        return root;
+    private TreeNode dfs(int inLeft, int inRight){
+        if (postIdx < 0 || inLeft >= inRight) {
+            return null;
+        }
+        int rootVal = postOrder[postIdx--]; // root 공급자
+        TreeNode node = new TreeNode(rootVal);
+        for(int i = inLeft; i < inRight; i++){
+            if(rootVal == inorder[i]){
+                node.right = dfs(i + 1, inRight);
+                node.left = dfs(inLeft, i); //위치 및 범위 분할용 inOrder
+                break;
+            }
+        }
+        return node;
     }
 }

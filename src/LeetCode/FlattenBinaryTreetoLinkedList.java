@@ -44,18 +44,24 @@ public class FlattenBinaryTreetoLinkedList {
     }
 
     private TreeNode flat(TreeNode node) {
-        if (node == null) return null;
-        TreeNode leftTail = flat(node.left); //4
-        TreeNode rightTail = flat(node.right); //6
-        if (node.left != null) {
-            TreeNode saved = node.right;
+        if(node == null) return null;
+
+        TreeNode leftTail = flat(node.left);
+        TreeNode rightTail = flat(node.right);
+
+        if(node.left != null) {
+            TreeNode savedRight = node.right;
             node.right = node.left;
             node.left = null;
-            leftTail.right = saved;
+            leftTail.right = savedRight;
         }
-        if (rightTail != null) return rightTail; // 오른쪽이 붙었다면 전체 꼬리는 그 끝
-        else if (leftTail != null) return leftTail; // 오른쪽이 없고 왼쪽만 있다면 왼쪽 끝
-        else return node; // 둘 다 없으면 리프가 곧 꼬리
+        if(rightTail != null) {
+            return rightTail;
+        }
+        if(leftTail != null) {
+            return leftTail;
+        }
+        return node;
     }
 
 }
