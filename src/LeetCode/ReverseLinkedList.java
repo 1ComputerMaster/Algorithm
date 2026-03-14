@@ -20,15 +20,14 @@ public class ReverseLinkedList {
         }
     }
     public ListNode reverseList(ListNode head) {
-        ListNode node = null;
-
-        while (head != null) {
-            ListNode temp = head.next;
-            head.next = node;
-            node = head;
-            head = temp;
+        ListNode prev = null;
+        ListNode cur = head;
+        while(cur != null){
+            ListNode next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
         }
-
-        return node;
+        return prev;
     }
 }
