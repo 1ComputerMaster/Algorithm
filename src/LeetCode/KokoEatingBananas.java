@@ -7,37 +7,34 @@ public class KokoEatingBananas {
         int h = 8;
         System.out.println(obj.minEatingSpeed(piles, h)); // Output: 4
     }
+
     public int minEatingSpeed(int[] piles, int h) {
         int left = 1;
-        int right = piles.length - 1;
-        for(int i = 0; i < piles.length; i++){
-            right = Math.max(piles[i], right);
+        int right = 1;
+        for (int pile : piles) {
+            right = Math.max(right, pile);
         }
-        int k = Integer.MAX_VALUE;
-        while(left <= right){
+        int result = right;
+        while(left < right){
             int mid = (left + right) / 2;
-            if(canTake(h, piles, mid)){
-                right = mid - 1;
-                k = Math.min(mid, k);
+            if(canTake(mid, piles, h)){
+                right = mid;
+                result = Math.min(result, mid);
             } else {
                 left = mid + 1;
             }
         }
-        return k;
+        return result;
     }
-    private boolean canTake(int h, int[] piles, int t){
+    private boolean canTake(int k, int[] piles, int h){
         long take = 0;
-        for(int pile : piles){
-            if(pile % t != 0)
-            {
-                take += ((pile / t) + 1);
-            }else{
-                take += (pile / t);
+        for (int pile : piles) {
+            if(pile % k == 0){
+                take += pile / k;
+            } else {
+                take += (pile / k) + 1;
             }
         }
-        if(h >= take){
-            return true;
-        }
-        return false;
+        return take <= h;
     }
 }
