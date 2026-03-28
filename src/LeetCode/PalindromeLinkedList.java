@@ -5,8 +5,9 @@ public class PalindromeLinkedList {
         PalindromeLinkedList p = new PalindromeLinkedList();
         ListNode head = p.new ListNode(1);
         head.next = p.new ListNode(2);
-        head.next.next = p.new ListNode(2);
-        head.next.next.next = p.new ListNode(1);
+        head.next.next = p.new ListNode(3);
+        head.next.next.next = p.new ListNode(2);
+        head.next.next.next.next = p.new ListNode(1);
         System.out.println(p.isPalindrome(head));
     }
     public boolean isPalindrome(ListNode head) {
@@ -18,6 +19,18 @@ public class PalindromeLinkedList {
             slow = slow.next;
             fast = fast.next.next;
         }
+        ListNode rev = reverse(slow);
+        while(rev != null){
+            if(rev.val != head.val){
+                return false;
+            }
+            rev = rev.next;
+            head = head.next;
+        }
+        return true;
+    }
+
+    private static ListNode reverse(ListNode slow) {
         ListNode prev = null, curr = slow, next = null;
         while(curr != null){
             next = curr.next;
@@ -25,15 +38,7 @@ public class PalindromeLinkedList {
             prev = curr;
             curr = next;
         }
-        ListNode left = head, right = prev;
-        while(right != null){
-            if(left.val != right.val){
-                return false;
-            }
-            left = left.next;
-            right = right.next;
-        }
-        return true;
+        return prev;
     }
 
     class ListNode {
