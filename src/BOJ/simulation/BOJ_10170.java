@@ -2,7 +2,7 @@ package BOJ.simulation;
 
 
 public class BOJ_10170 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         System.out.println("NFC West       W   L  T\n" +
                 "-----------------------\n" +
                 "Seattle        13  3  0\n" +

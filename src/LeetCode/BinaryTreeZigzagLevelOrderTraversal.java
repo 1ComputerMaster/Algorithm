@@ -5,22 +5,6 @@ import java.util.List;
 
 public class BinaryTreeZigzagLevelOrderTraversal {
 
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-        public TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
     public static void main(String[] args) {
         BinaryTreeZigzagLevelOrderTraversal btz = new BinaryTreeZigzagLevelOrderTraversal();
         TreeNode root = new TreeNode(3);
@@ -40,22 +24,38 @@ public class BinaryTreeZigzagLevelOrderTraversal {
     }
 
     private void travel(TreeNode curr, List<List<Integer>> sol, int level) {
-        if(curr != null){
+        if (curr != null) {
 
-            if(sol.size() <= level){
+            if (sol.size() <= level) {
                 List<Integer> collection = new ArrayList();
                 sol.add(collection);
             }
 
             List<Integer> travelLevel = sol.get(level);
 
-            if(level%2 == 0){
+            if (level % 2 == 0) {
                 travelLevel.add(curr.val);
-            }else{
+            } else {
                 travelLevel.add(0, curr.val);
             }
             travel(curr.left, sol, level + 1);
             travel(curr.right, sol, level + 1);
+        }
+    }
+
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
+        public TreeNode(int val) {
+            this.val = val;
         }
     }
 

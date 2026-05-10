@@ -4,9 +4,9 @@ public class RotateImage {
     public static void main(String[] args) {
         RotateImage ri = new RotateImage();
         int[][] matrix = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
         ri.rotate(matrix);
 
@@ -18,6 +18,7 @@ public class RotateImage {
             System.out.println();
         }
     }
+
     public void rotate(int[][] matrix) {
         int n = matrix.length;                                       // matrix is n x n :contentReference[oaicite:7]{index=7}
         // Loop over each “ring” layer

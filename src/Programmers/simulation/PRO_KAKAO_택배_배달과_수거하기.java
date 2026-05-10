@@ -7,9 +7,10 @@ public class PRO_KAKAO_택배_배달과_수거하기 {
         int[] deliveries = {1, 0, 2, 0, 1, 0, 2};
         int[] pickups = {0, 2, 0, 1, 0, 2, 0};
         PRO_KAKAO_택배_배달과_수거하기 sol = new PRO_KAKAO_택배_배달과_수거하기();
-        long ans = sol.solution(cap,n,deliveries,pickups);
+        long ans = sol.solution(cap, n, deliveries, pickups);
         System.out.println(ans);
     }
+
     public long solution(int cap, int n, int[] deliveries, int[] pickups) {
         long answer = 0;
 

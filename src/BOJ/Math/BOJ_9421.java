@@ -1,8 +1,9 @@
 package BOJ.Math;
+
 import java.util.*;
 
 public class BOJ_9421 {
-    static Map<Integer,Integer> map;
+    static Map<Integer, Integer> map;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,11 +13,11 @@ public class BOJ_9421 {
     }
 
     private static void makeNum(List<Integer> list) {
-        for(int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             map = new HashMap<>();
             String str = String.valueOf(list.get(i));
             int num = 0;
-            while(true) {
+            while (true) {
                 num = 0;
                 for (char c : str.toCharArray()) {
                     int n = c - '0';
@@ -37,20 +38,21 @@ public class BOJ_9421 {
             }
         }
     }
+
     private static List<Integer> getPrime(int n) {
 
         List<Integer> list = new ArrayList<>();
 
         boolean check = false;
-        for(int i = 2; i <= n; i++){
+        for (int i = 2; i <= n; i++) {
             check = false;
-            for(int j = 2; j*j <= i; j++){
-                if(i != j && i % j == 0){
+            for (int j = 2; j * j <= i; j++) {
+                if (i != j && i % j == 0) {
                     check = true;
                     break;
                 }
             }
-            if(!check){
+            if (!check) {
                 list.add(i);
             }
         }

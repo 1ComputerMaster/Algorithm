@@ -8,20 +8,21 @@ public class BOJ_16987 {
     static int N;
 
     static int ans;
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer tk = new StringTokenizer(br.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(br.readLine(), " ");
         N = Integer.parseInt(tk.nextToken());
 
         ans = Integer.MIN_VALUE;
         int arr[][] = new int[N][2];
-        for(int i = 0; i < N; i++){
-            tk = new StringTokenizer(br.readLine()," ");
+        for (int i = 0; i < N; i++) {
+            tk = new StringTokenizer(br.readLine(), " ");
             arr[i][0] = Integer.parseInt(tk.nextToken()); // Durability
             arr[i][1] = Integer.parseInt(tk.nextToken()); // Weight
         }
-        go(arr,0);
+        go(arr, 0);
         System.out.println(ans);
     }
 

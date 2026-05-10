@@ -14,7 +14,7 @@ public class BOJ_2805 {
 
         List<Integer> trees = new ArrayList<>();
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             trees.add(sc.nextInt());
         }
         Collections.sort(trees);
@@ -22,20 +22,20 @@ public class BOJ_2805 {
         int left = 0;
         int result = 0;
         int right = trees.get(trees.size() - 1);
-        while (left <= right){
+        while (left <= right) {
             int mid = (left + right) / 2;
             long meter = 0;
-            for (int i = 0; i < N; i++){
-                if(trees.get(i) < mid){
+            for (int i = 0; i < N; i++) {
+                if (trees.get(i) < mid) {
                     continue;
-                }else {
+                } else {
                     meter += (trees.get(i) - mid);
                 }
             }
-            if(meter >= M){
+            if (meter >= M) {
                 result = mid;
                 left = mid + 1;
-            }else {
+            } else {
                 right = mid - 1;
             }
         }

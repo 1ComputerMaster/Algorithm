@@ -3,7 +3,7 @@ package BOJ.Math;
 import java.util.Scanner;
 
 public class BOJ_2745 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         String B = sc.next();
         int N = sc.nextInt();
@@ -13,10 +13,10 @@ public class BOJ_2745 {
         int sum = 0;
         int num = 1; //자릿수
         char crr[] = B.toCharArray();
-        for (char c : crr){
-            if('A' <= c && 'Z' >= c ){
+        for (char c : crr) {
+            if ('A' <= c && 'Z' >= c) {
                 sum += (c - 'A' + 10) * num;
-            }else{
+            } else {
                 int n = (c - '0') * num;
                 sum += n;
             }

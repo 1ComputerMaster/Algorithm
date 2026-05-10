@@ -28,19 +28,19 @@ public class BOJ_12764 {
     }
 
     private static void solve(int[][] times, PriorityQueue<int[]> occupiedSeats, PriorityQueue<Integer> freeSeats, List<Integer> usageCounts) {
-        for (int[] time : times){
+        for (int[] time : times) {
             int start = time[0];
             int end = time[1];
 
-            while (!occupiedSeats.isEmpty() && occupiedSeats.peek()[0] < start){
+            while (!occupiedSeats.isEmpty() && occupiedSeats.peek()[0] < start) {
                 int freedSeat = occupiedSeats.poll()[1]; //현재 시트는 빈자리임
                 freeSeats.add(freedSeat); //이거 빈자리로 만들자
             }
             int seat;
-            if(freeSeats.isEmpty()){
+            if (freeSeats.isEmpty()) {
                 seat = usageCounts.size();
                 usageCounts.add(0);
-            }else{
+            } else {
                 seat = freeSeats.poll();
             }
             usageCounts.set(seat, usageCounts.get(seat) + 1);

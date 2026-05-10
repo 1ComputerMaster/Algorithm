@@ -1,7 +1,11 @@
 package BOJ.Data_Structure;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class BOJ_19583 {
     public static void main(String[] args) throws IOException {
@@ -27,10 +31,10 @@ public class BOJ_19583 {
             String name = token.nextToken();
 
             String[] currentTime = time.split(":");
-            if(compareTime(currentTime, startTime) <= 0){
+            if (compareTime(currentTime, startTime) <= 0) {
                 attendeesBeforeStart.add(name);
-            } else if (compareTime(currentTime, endTime) >= 0 && compareTime(currentTime, questTime) <= 0){
-                if(attendeesBeforeStart.contains(name))
+            } else if (compareTime(currentTime, endTime) >= 0 && compareTime(currentTime, questTime) <= 0) {
+                if (attendeesBeforeStart.contains(name))
                     attendeesAfterEnd.add(name);
             }
         }
@@ -45,6 +49,6 @@ public class BOJ_19583 {
         int srcMin = Integer.parseInt(src[1]);
 
         return srcHour != destHour ?
-                Integer.compare(srcHour,destHour) : Integer.compare(srcMin, destMin);
+                Integer.compare(srcHour, destHour) : Integer.compare(srcMin, destMin);
     }
 }

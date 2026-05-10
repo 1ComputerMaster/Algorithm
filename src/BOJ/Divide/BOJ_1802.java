@@ -23,12 +23,12 @@ public class BOJ_1802 {
     }
 
     private static boolean checkFold(String fold, int left, int right) {
-        if(left >= right){
+        if (left >= right) {
             return true;
         }
         int mid = (left + right) / 2;
-        for(int i = 0; i < mid - left; i++){
-            if(fold.charAt(left + i) == fold.charAt(right - i)){
+        for (int i = 0; i < mid - left; i++) {
+            if (fold.charAt(left + i) == fold.charAt(right - i)) {
                 return false;
             }
         }

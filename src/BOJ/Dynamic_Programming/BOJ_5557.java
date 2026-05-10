@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_5557 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         int N = Integer.parseInt(tk.nextToken());
-        tk = new StringTokenizer(in.readLine()," ");
+        tk = new StringTokenizer(in.readLine(), " ");
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             list.add(Integer.parseInt(tk.nextToken()));
         }
 

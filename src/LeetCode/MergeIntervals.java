@@ -13,6 +13,7 @@ public class MergeIntervals {
             System.out.print(Arrays.toString(interval) + " ");
         }
     }
+
     public int[][] merge(int[][] intervals) {
         if (intervals == null || intervals.length == 0) return new int[0][0];
 
@@ -20,7 +21,7 @@ public class MergeIntervals {
 
         List<int[]> res = new ArrayList<>();
         int curStart = intervals[0][0];
-        int curEnd   = intervals[0][1];
+        int curEnd = intervals[0][1];
 
         for (int[] interval : intervals) {
             int s = interval[0], e = interval[1];

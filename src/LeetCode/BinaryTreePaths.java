@@ -4,21 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTreePaths {
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {
-        }
-        TreeNode(int val) {
-            this.val = val;
-        }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+    List<String> ans = new ArrayList<>();
 
     public static void main(String[] args) {
         BinaryTreePaths btp = new BinaryTreePaths();
@@ -30,26 +16,43 @@ public class BinaryTreePaths {
         List<String> paths = btp.binaryTreePaths(root);
         System.out.println(paths); // Output: ["1->2->5", "1->3"]
     }
-    List<String> ans = new ArrayList<>();
+
     public List<String> binaryTreePaths(TreeNode root) {
-        if(root != null)
-        {
+        if (root != null) {
             dfs(root, root.val + "");
         }
         return ans;
     }
-    private void dfs(TreeNode root, String sb){
-        if(root.left == null && root.right == null){
+
+    private void dfs(TreeNode root, String sb) {
+        if (root.left == null && root.right == null) {
             ans.add(sb);
             return;
         }
-        if(root.left != null)
-        {
+        if (root.left != null) {
             dfs(root.left, sb + "->" + root.left.val);
         }
-        if(root.right != null)
-        {
+        if (root.right != null) {
             dfs(root.right, sb + "->" + root.right.val);
+        }
+    }
+
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
 

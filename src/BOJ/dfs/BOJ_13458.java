@@ -13,32 +13,32 @@ public class BOJ_13458 {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         List<Integer> A = new ArrayList<>();
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             A.add(sc.nextInt());
         }
         int B = sc.nextInt();
         int C = sc.nextInt();
         int temp = 0;
         long ans = 0;
-        for(int i = 0; i < N; i++){
-            temp=A.get(i)-B;
+        for (int i = 0; i < N; i++) {
+            temp = A.get(i) - B;
             ans++;
-            if(temp <= 0){
+            if (temp <= 0) {
                 continue;
-            }else{
-                if(temp/C > 0){
-                    ans += temp/C;
-                    if(temp%C == 0){
+            } else {
+                if (temp / C > 0) {
+                    ans += temp / C;
+                    if (temp % C == 0) {
                         continue;
-                    }else{
+                    } else {
                         ans++;
                     }
-                }else{
+                } else {
                     ans++;
                 }
             }
         }
         System.out.println(ans);
     }
-    
+
 }

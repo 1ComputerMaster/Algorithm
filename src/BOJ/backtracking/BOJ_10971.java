@@ -10,9 +10,10 @@ public class BOJ_10971 {
     static int ans;
 
     static boolean visited[];
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         N = Integer.parseInt(tk.nextToken());
 
@@ -21,10 +22,9 @@ public class BOJ_10971 {
         ans = Integer.MAX_VALUE;
 
 
-
-        for(int i = 0; i < N; i++){
-            tk = new StringTokenizer(in.readLine()," ");
-            for(int j = 0; j < N; j++) {
+        for (int i = 0; i < N; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
+            for (int j = 0; j < N; j++) {
                 w[i][j] = Integer.parseInt(tk.nextToken());
             }
         }
@@ -35,17 +35,18 @@ public class BOJ_10971 {
         System.out.println(ans);
 
     }
-    private static void go(int idx,int sum,int cnt) {
-        if(cnt == N && w[0][idx] != 0){
+
+    private static void go(int idx, int sum, int cnt) {
+        if (cnt == N && w[0][idx] != 0) {
             ans = Math.min(ans, sum + w[0][idx]);
             return;
-        }else if(cnt >= N-1){
+        } else if (cnt >= N - 1) {
             return;
         }
-        for(int i = 0; i < N; i++){
-            if(!visited[i] && w[i][idx] != 0){
+        for (int i = 0; i < N; i++) {
+            if (!visited[i] && w[i][idx] != 0) {
                 visited[i] = true;
-                go(i,sum + w[i][idx],cnt+1);
+                go(i, sum + w[i][idx], cnt + 1);
                 visited[i] = false;
             }
         }

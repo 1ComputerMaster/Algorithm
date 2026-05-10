@@ -1,15 +1,6 @@
 package LeetCode;
 
 public class LinkedListCycle {
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
     public static void main(String[] args) {
         // Example usage
         ListNode head = new ListNode(3);
@@ -35,6 +26,16 @@ public class LinkedListCycle {
         }
 
         return false;
+    }
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 
 }

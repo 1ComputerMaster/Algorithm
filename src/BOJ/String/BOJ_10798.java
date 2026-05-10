@@ -18,7 +18,7 @@ public class BOJ_10798 {
         for (int j = 0; j <= maxLen; j++) {
             for (int i = 0; i < stringList.size(); i++) {
                 char[] ctr = stringList.get(i).toCharArray();
-                if(ctr.length <= j){
+                if (ctr.length <= j) {
                     continue;
                 }
                 System.out.print(ctr[j]);

@@ -5,25 +5,10 @@ import java.util.Map;
 
 
 public class LRUCache {
-    static class Node {
-        int key;
-        int val;
-        Node prev;
-        Node next;
-
-        public Node(int key, int val) {
-            this.key = key;
-            this.val = val;
-            this.prev = null;
-            this.next = null;
-        }
-    }
-
     private int cap;
     private Map<Integer, Node> cache;
     private Node oldest;
     private Node latest;
-
     public LRUCache(int capacity) {
         this.cap = capacity;
         this.cache = new HashMap<>();
@@ -31,48 +16,6 @@ public class LRUCache {
         this.latest = new Node(0, 0);
         this.oldest.next = this.latest;
         this.latest.prev = this.oldest;
-    }
-
-
-    public int get(int key) {
-        if (cache.containsKey(key)) {
-            Node node = cache.get(key);
-            remove(node);
-            insert(node);
-            return node.val;
-        }
-        return -1;
-    }
-
-    public void put(int key, int value) {
-        if(cache.containsKey(key)){
-            remove(cache.get(key));
-        }
-        Node putter = new Node(key, value);
-        insert(putter);
-        cache.put(key, putter);
-        if(cache.size() > cap){
-            Node node = oldest.next;
-            cache.remove(node.key);
-            remove(node);
-        }
-    }
-    private void remove(Node node){
-        Node prev = node.prev;
-        Node next = node.next;
-        prev.next = next;
-        next.prev = prev;
-    }
-
-    private void insert(Node node){
-        Node next = latest;
-        Node prev = latest.prev;
-
-        node.next = next;
-        node.prev = prev;
-
-        prev.next = node;
-        next.prev = node;
     }
 
     public static void main(String[] args) {
@@ -86,5 +29,61 @@ public class LRUCache {
         System.out.println(lruCache.get(1));    // return -1 (not found)
         System.out.println(lruCache.get(3));    // return 3
         System.out.println(lruCache.get(4));    // return 4
+    }
+
+    public int get(int key) {
+        if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            remove(node);
+            insert(node);
+            return node.val;
+        }
+        return -1;
+    }
+
+    public void put(int key, int value) {
+        if (cache.containsKey(key)) {
+            remove(cache.get(key));
+        }
+        Node putter = new Node(key, value);
+        insert(putter);
+        cache.put(key, putter);
+        if (cache.size() > cap) {
+            Node node = oldest.next;
+            cache.remove(node.key);
+            remove(node);
+        }
+    }
+
+    private void remove(Node node) {
+        Node prev = node.prev;
+        Node next = node.next;
+        prev.next = next;
+        next.prev = prev;
+    }
+
+    private void insert(Node node) {
+        Node next = latest;
+        Node prev = latest.prev;
+
+        node.next = next;
+        node.prev = prev;
+
+        prev.next = node;
+        next.prev = node;
+    }
+
+    static class Node {
+        int key;
+        int val;
+        Node prev;
+        Node next;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+            this.prev = null;
+            this.next = null;
+        }
     }
 }

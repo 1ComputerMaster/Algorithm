@@ -22,10 +22,10 @@ public class BOJ_2876 {
                 if (desk[0] == grade || desk[1] == grade) {
                     count++;
                     check = true;
-                }else {
+                } else {
                     check = false;
                 }
-                if(!check){
+                if (!check) {
                     count = 0;
                 }
                 if (count > maxCount && check) {

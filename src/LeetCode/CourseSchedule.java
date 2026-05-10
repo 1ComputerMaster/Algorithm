@@ -1,19 +1,18 @@
 package LeetCode;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class CourseSchedule {
+    static List<Integer>[] graph;
+    static int[] state; // 0 = 미방문, 1 = 방문중, 2 = 방문완료
+
     public static void main(String[] args) {
         CourseSchedule cs = new CourseSchedule();
         int numCourses = 2;
-        int[][] prerequisites = {{1, 0},{0,1}};
+        int[][] prerequisites = {{1, 0}, {0, 1}};
         System.out.println(cs.canFinish(numCourses, prerequisites)); // Should return true
     }
-    static List<Integer>[] graph;
-    static int[] state; // 0 = 미방문, 1 = 방문중, 2 = 방문완료
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         if (numCourses <= 1 || prerequisites.length == 0)

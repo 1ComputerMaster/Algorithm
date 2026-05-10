@@ -1,5 +1,9 @@
 package BOJ.greedy;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class BOJ_1092 {
     public static void main(String[] args) {
@@ -26,13 +30,13 @@ public class BOJ_1092 {
 
         int count = 0;
 
-        while(!box.isEmpty()){
+        while (!box.isEmpty()) {
             int idx = 0;
-            for(int i = 0 ; i < crane.size(); i++){
-                if(idx == box.size()) break;
-                else if(crane.get(i) >= box.get(idx))
+            for (int i = 0; i < crane.size(); i++) {
+                if (idx == box.size()) break;
+                else if (crane.get(i) >= box.get(idx))
                     box.remove(idx);
-                else{
+                else {
                     idx++;
                     i--;
                 }

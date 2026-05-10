@@ -1,27 +1,25 @@
 package LeetCode;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class MedianOfTwoSortedArrays {
     public static void main(String[] args) {
-        int[] nums1 = {1,3};
+        int[] nums1 = {1, 3};
         int[] nums2 = {2};
 
         MedianOfTwoSortedArrays medianOfTwoSortedArrays = new MedianOfTwoSortedArrays();
         System.out.println(medianOfTwoSortedArrays.findMedianSortedArrays(nums1, nums2));
 
     }
+
     /*
-    * l1, l2 : 왼쪽 파티션의 '갯수'
-    * nums1 [...left... | ...right...]
-    *                 ^  ^
-    *                 l1 r1
-    * nums2 [...left... | ...right...]
-    *                  ^  ^
-    *                  l2 r2
-    * l1 < r2 && l2 < r1
-    * */
+     * l1, l2 : 왼쪽 파티션의 '갯수'
+     * nums1 [...left... | ...right...]
+     *                 ^  ^
+     *                 l1 r1
+     * nums2 [...left... | ...right...]
+     *                  ^  ^
+     *                  l2 r2
+     * l1 < r2 && l2 < r1
+     * */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         //중간 위치를 이진탐색으로 찾아보자
         int m = nums1.length;
@@ -43,11 +41,11 @@ public class MedianOfTwoSortedArrays {
 
             if (Aleft > Bright) {
                 imax = l1 - 1;
-            } else if(Bleft > Aright){
+            } else if (Bleft > Aright) {
                 imin = l1 + 1;
-            }else {
+            } else {
                 int maxLeft = Math.max(Aleft, Bleft);
-                if((m + n)  % 2 == 1){
+                if ((m + n) % 2 == 1) {
                     return maxLeft;
                 }
                 int minRight = Math.min(Aright, Bright);

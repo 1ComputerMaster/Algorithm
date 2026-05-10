@@ -9,17 +9,9 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_19637 {
-    static class Data{
-        String strength;
-        int power;
-        public Data(String strength, int power){
-            this.power = power;
-            this.strength = strength;
-        }
-    }
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         int N = Integer.parseInt(tk.nextToken());
         int M = Integer.parseInt(tk.nextToken());
 
@@ -28,13 +20,13 @@ public class BOJ_19637 {
         List<Integer> characterList = new ArrayList<>();
 
 
-        for (int i = 0; i < N; i++){
-            tk = new StringTokenizer(in.readLine()," ");
+        for (int i = 0; i < N; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
             list.add(new Data(tk.nextToken(), Integer.parseInt(tk.nextToken())));
         }
 
-        for (int i = 0; i < M; i++){
-            tk = new StringTokenizer(in.readLine()," ");
+        for (int i = 0; i < M; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
             characterList.add(Integer.parseInt(tk.nextToken()));
         }
 
@@ -46,7 +38,7 @@ public class BOJ_19637 {
                 int mid = (right + left) / 2;
                 if (list.get(mid).power >= characterList.get(i)) {
                     right = mid - 1;
-                }else{
+                } else {
                     left = mid + 1;
                 }
             }
@@ -57,5 +49,15 @@ public class BOJ_19637 {
         bw.append(sb.toString());
         bw.flush();
         bw.close();
+    }
+
+    static class Data {
+        String strength;
+        int power;
+
+        public Data(String strength, int power) {
+            this.power = power;
+            this.strength = strength;
+        }
     }
 }

@@ -5,6 +5,7 @@ public class PartitionLabels {
         String s = "ababcbacadefegdehijhklij";
         System.out.println(partitionLabels(s)); // Should return [9,7,8]
     }
+
     public static java.util.List<Integer> partitionLabels(String s) {
         java.util.List<Integer> result = new java.util.ArrayList<>();
         int[] lastIndex = new int[26];

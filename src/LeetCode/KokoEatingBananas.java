@@ -3,7 +3,7 @@ package LeetCode;
 public class KokoEatingBananas {
     public static void main(String[] args) {
         KokoEatingBananas obj = new KokoEatingBananas();
-        int[] piles = {3,6,7,11};
+        int[] piles = {3, 6, 7, 11};
         int h = 8;
         System.out.println(obj.minEatingSpeed(piles, h)); // Output: 4
     }
@@ -15,9 +15,9 @@ public class KokoEatingBananas {
             right = Math.max(right, pile);
         }
         int result = right;
-        while(left < right){
+        while (left < right) {
             int mid = (left + right) / 2;
-            if(canTake(mid, piles, h)){
+            if (canTake(mid, piles, h)) {
                 right = mid;
                 result = Math.min(result, mid);
             } else {
@@ -26,10 +26,11 @@ public class KokoEatingBananas {
         }
         return result;
     }
-    private boolean canTake(int k, int[] piles, int h){
+
+    private boolean canTake(int k, int[] piles, int h) {
         long take = 0;
         for (int pile : piles) {
-            if(pile % k == 0){
+            if (pile % k == 0) {
                 take += pile / k;
             } else {
                 take += (pile / k) + 1;

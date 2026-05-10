@@ -1,5 +1,7 @@
 package BOJ.Divide;
+
 import java.util.Scanner;
+
 public class BOJ_18222 {
 
     public static void main(String[] args) {
@@ -8,6 +10,7 @@ public class BOJ_18222 {
         scanner.close();
         System.out.println(findThueMorse(k - 1));
     }
+
     private static int findThueMorse(long k) {
         if (k == 0) {
             return 0;

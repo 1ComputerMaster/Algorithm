@@ -6,24 +6,10 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class BOJ_18769 {
-    static class Data implements Comparable<Data>{
-        int x;
-        int y;
-        public Data(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            return Integer.compare(this.y, o.y);
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
-        while (T-- > 0){
+        while (T-- > 0) {
             int R = sc.nextInt();
             int C = sc.nextInt();
             // 인접 리스트 생성
@@ -56,24 +42,40 @@ public class BOJ_18769 {
             System.out.println(MST(graph, R * C));
         }
     }
+
     private static int MST(List<Data>[] graph, int size) {
         PriorityQueue<Data> pq = new PriorityQueue<Data>();
-        pq.add(new Data(0,0));
+        pq.add(new Data(0, 0));
         boolean[] visited = new boolean[size];
         int res = 0;
-        while (!pq.isEmpty()){
+        while (!pq.isEmpty()) {
             Data cur = pq.poll();
-            if(visited[cur.x]){
+            if (visited[cur.x]) {
                 continue;
             }
             visited[cur.x] = true;
             res += cur.y;
-            for (Data next : graph[cur.x]){
-                if(!visited[next.x]){
+            for (Data next : graph[cur.x]) {
+                if (!visited[next.x]) {
                     pq.add(next);
                 }
             }
         }
         return res;
+    }
+
+    static class Data implements Comparable<Data> {
+        int x;
+        int y;
+
+        public Data(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            return Integer.compare(this.y, o.y);
+        }
     }
 }

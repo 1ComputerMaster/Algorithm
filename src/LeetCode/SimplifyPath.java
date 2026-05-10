@@ -8,6 +8,7 @@ public class SimplifyPath {
         String path = "/a/./b/../../c/";
         System.out.println(sp.simplifyPath(path)); // Should print "/c"
     }
+
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack<>();
         for (String part : path.split("/")) {

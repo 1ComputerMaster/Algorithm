@@ -7,6 +7,7 @@ public class ExcelSheetColumnNumber {
         int columnNumber = escn.titleToNumber(columnTitle);
         System.out.println("Column Title: " + columnTitle + " -> Column Number: " + columnNumber); // Should return 28
     }
+
     public int titleToNumber(String columnTitle) {
         int result = 0;
         for (int i = 0; i < columnTitle.length(); i++) {

@@ -1,5 +1,6 @@
 package BOJ.greedy;
-import java.util.*;
+
+import java.util.Scanner;
 
 class BOJ_1817 {
     public static void main(String[] args) {
@@ -9,17 +10,17 @@ class BOJ_1817 {
         int M = sc.nextInt(); //각 가방별 최대 무게
         int[] bag = new int[N];
         int bagCount = 0;
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int weightNow = sc.nextInt();
-            if(bag[bagCount] + weightNow > M){
+            if (bag[bagCount] + weightNow > M) {
                 bag[++bagCount] += weightNow;
-            }else{
+            } else {
                 bag[bagCount] += weightNow;
             }
         }
         int cnt = 0;
-        for(int i = 0; i < N; i++){
-            if(bag[i] == 0){
+        for (int i = 0; i < N; i++) {
+            if (bag[i] == 0) {
                 cnt = i;
                 break;
             }

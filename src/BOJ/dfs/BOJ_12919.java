@@ -1,4 +1,4 @@
-///*
+/// *
 //문제
 //수빈이는 A와 B로만 이루어진 영어 단어 존재한다는 사실에 놀랐다. 대표적인 예로 AB (Abdominal의 약자), BAA (양의 울음 소리), AA (용암의 종류), ABBA (스웨덴 팝 그룹)이 있다.
 //
@@ -95,12 +95,13 @@ import java.io.InputStreamReader;
 
 public class BOJ_12919 {
     static boolean check;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String S = br.readLine();
         String T = br.readLine();
 
-        canTransform(S,T);
+        canTransform(S, T);
 
         if (check) {
             System.out.println(1);
@@ -120,7 +121,7 @@ public class BOJ_12919 {
         if (T.charAt(T.length() - 1) == 'A') {
             T = T.substring(0, T.length() - 1);
             System.out.println(T);
-            canTransform(S,T);
+            canTransform(S, T);
         }
 
         if (T.charAt(0) == 'B') {
@@ -131,6 +132,7 @@ public class BOJ_12919 {
         }
 
     }
+
     private static String reverseString(String str) {
         StringBuilder sb = new StringBuilder(str);
         return sb.reverse().toString();

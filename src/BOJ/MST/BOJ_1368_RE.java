@@ -4,31 +4,19 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class BOJ_1368_RE {
-    static class Data implements Comparable<Data>{
-        int where;
-        int weight;
-        public Data(int where, int weight){
-            this.weight = weight;
-            this.where = where;
-        }
-        @Override
-        public int compareTo(Data o) {
-            return Integer.compare(this.weight, o.weight);
-        }
-    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
         int[] W = new int[N];
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             W[i] = sc.nextInt();
         }
 
         int[][] to = new int[N][N];
 
-        for (int i = 0; i < N; i++){
-            for (int j = 0; j < N; j++){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 to[i][j] = sc.nextInt();
             }
         }
@@ -61,6 +49,21 @@ public class BOJ_1368_RE {
             }
         }
         return res;
+    }
+
+    static class Data implements Comparable<Data> {
+        int where;
+        int weight;
+
+        public Data(int where, int weight) {
+            this.weight = weight;
+            this.where = where;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            return Integer.compare(this.weight, o.weight);
+        }
     }
 
 }

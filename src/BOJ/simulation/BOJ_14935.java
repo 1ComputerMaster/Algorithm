@@ -15,10 +15,9 @@ public class BOJ_14935 {
             x = String.valueOf(a * size);
             cnt++;
         }
-        if(cnt != 10000) {
+        if (cnt != 10000) {
             System.out.println("FA");
-        }
-        else{
+        } else {
             System.out.println("NFA");
         }
     }

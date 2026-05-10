@@ -15,6 +15,7 @@ public class RemoveLinkedListElements {
             result = result.next;
         }
     }
+
     public ListNode removeElements(ListNode head, int val) {
         ListNode ans = new ListNode(0, head);
         ListNode dummy = ans;
@@ -28,11 +29,13 @@ public class RemoveLinkedListElements {
 
         return ans.next;
     }
+
     public static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {}
+        ListNode() {
+        }
 
         ListNode(int val) {
             this.val = val;

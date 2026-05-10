@@ -1,14 +1,17 @@
 package BOJ.backtracking;
-import java.util.*;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class BOJ_18430 {
-    static int N,M,ans;
+    static int N, M, ans;
     static boolean[][] visited;
     static int arr[][];
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         N = Integer.parseInt(tk.nextToken());
         M = Integer.parseInt(tk.nextToken());
@@ -18,25 +21,25 @@ public class BOJ_18430 {
 
         ans = 0;
 
-        for(int i = 0; i < N; i++){
-            tk = new StringTokenizer(in.readLine()," ");
-            for(int j = 0; j < M; j++){
+        for (int i = 0; i < N; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
+            for (int j = 0; j < M; j++) {
                 arr[i][j] = Integer.parseInt(tk.nextToken());
             }
         }
-        go(0,0);
+        go(0, 0);
         System.out.println(ans);
     }
 
-    private static void go(int idx,int sum) {
-        if(idx == N*M){
+    private static void go(int idx, int sum) {
+        if (idx == N * M) {
             ans = Math.max(sum, ans);
             return;
         }
         int x = idx / M;
         int y = idx % M;
-        if(x + 1 < N && y - 1 >= 0){
-            if(!visited[x][y] && !visited[x][y - 1] && !visited[x + 1][y]) {
+        if (x + 1 < N && y - 1 >= 0) {
+            if (!visited[x][y] && !visited[x][y - 1] && !visited[x + 1][y]) {
                 visited[x][y] = true;
                 visited[x][y - 1] = true;
                 visited[x + 1][y] = true;
@@ -47,7 +50,7 @@ public class BOJ_18430 {
             }
         }
         if (x - 1 >= 0 && y - 1 >= 0) {
-            if(!visited[x][y] && !visited[x][y - 1] && !visited[x - 1][y]) {
+            if (!visited[x][y] && !visited[x][y - 1] && !visited[x - 1][y]) {
                 visited[x][y] = true;
                 visited[x][y - 1] = true;
                 visited[x - 1][y] = true;
@@ -58,7 +61,7 @@ public class BOJ_18430 {
             }
         }
         if (x - 1 >= 0 && y + 1 < M) {
-            if(!visited[x][y] && !visited[x][y + 1] && !visited[x - 1][y]) {
+            if (!visited[x][y] && !visited[x][y + 1] && !visited[x - 1][y]) {
                 visited[x][y] = true;
                 visited[x][y + 1] = true;
                 visited[x - 1][y] = true;
@@ -69,7 +72,7 @@ public class BOJ_18430 {
             }
         }
         if (x + 1 < N && y + 1 < M) {
-            if(!visited[x][y] && !visited[x][y + 1] && !visited[x + 1][y]) {
+            if (!visited[x][y] && !visited[x][y + 1] && !visited[x + 1][y]) {
                 visited[x][y] = true;
                 visited[x][y + 1] = true;
                 visited[x + 1][y] = true;

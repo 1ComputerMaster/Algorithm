@@ -96,6 +96,7 @@ public class BOJ_10216_Count_Circle_Groups {
 }
 */
 package BOJ.dfs;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -104,7 +105,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
-거리 간의 차이로 알아낸다. 갈 수 있는지 없는 지를
+ * 거리 간의 차이로 알아낸다. 갈 수 있는지 없는 지를
  */
 public class BOJ_10216_Count_Circle_Groups {
 
@@ -116,20 +117,20 @@ public class BOJ_10216_Count_Circle_Groups {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine()," ");
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int T = Integer.parseInt(st.nextToken());
 
         int flag = 0;
         dot = new ArrayList<>();
 
-        while(flag < T) {
+        while (flag < T) {
 
             st = new StringTokenizer(br.readLine());
             int k = Integer.parseInt(st.nextToken());
 
             dot = new ArrayList<>();
 
-            for(int i=0; i<k; ++i) {
+            for (int i = 0; i < k; ++i) {
 
                 st = new StringTokenizer(br.readLine());
 
@@ -142,10 +143,10 @@ public class BOJ_10216_Count_Circle_Groups {
 
             visit = new boolean[k];
             cnt = 0;
-            
-            for(int j=0; j<dot.size(); ++j) {
 
-                if(!visit[j]) {
+            for (int j = 0; j < dot.size(); ++j) {
+
+                if (!visit[j]) {
                     dfs(dot.get(j), j);
                     cnt++;
                 }
@@ -160,17 +161,17 @@ public class BOJ_10216_Count_Circle_Groups {
 
     static void dfs(Dot d, int index) {
 
-        if(visit[index]) return;
+        if (visit[index]) return;
 
         visit[index] = true;
 
-        for(int i=0; i<dot.size(); ++i) {
+        for (int i = 0; i < dot.size(); ++i) {
 
             Dot nd = dot.get(i);
 
             int dis = (d.x - nd.x) * (d.x - nd.x) + (d.y - nd.y) * (d.y - nd.y); //거리 차이가
 
-            if(dis <= (d.a + nd.a) * (d.a + nd.a)) { // 서로간의 가는 차이 보다 작으면
+            if (dis <= (d.a + nd.a) * (d.a + nd.a)) { // 서로간의 가는 차이 보다 작으면
                 dfs(nd, i); //같은 거리니깐 다시 넣어서 탐색을 막고
             }
 
@@ -179,9 +180,9 @@ public class BOJ_10216_Count_Circle_Groups {
     }
 
 
-     static class Dot {
+    static class Dot {
 
-        int x,y,a;
+        int x, y, a;
 
         Dot(int x, int y, int a) {
 

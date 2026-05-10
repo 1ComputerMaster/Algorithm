@@ -1,22 +1,6 @@
 package LeetCode;
 
 public class CountCompleteTreeNodes {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public static void main(String[] args) {
         CountCompleteTreeNodes c = new CountCompleteTreeNodes();
         TreeNode root = c.new TreeNode(1);
@@ -40,6 +24,22 @@ public class CountCompleteTreeNodes {
         cnt += countNodes(root.left);
         cnt += countNodes(root.right);
         return cnt + 1;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 
 }

@@ -12,21 +12,21 @@ public class BOJ_2512 {
         int left = 0;
         int right = 0;
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             list.add(sc.nextInt());
             right = Math.max(right, list.get(i));
         }
         int M = sc.nextInt();
 
-        while (left <= right){
+        while (left <= right) {
             int mid = (left + right) / 2;
             int budget = 0;
-            for (int i = 0; i < N; i++){
-                budget += Math.min(list.get(i),mid);
+            for (int i = 0; i < N; i++) {
+                budget += Math.min(list.get(i), mid);
             }
-            if(budget <= M){
+            if (budget <= M) {
                 left = mid + 1;
-            }else{
+            } else {
                 right = mid - 1;
             }
         }

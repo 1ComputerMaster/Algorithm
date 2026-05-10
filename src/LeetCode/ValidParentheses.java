@@ -11,6 +11,7 @@ public class ValidParentheses {
         System.out.println(validParentheses.isValid("([)]")); // Output: false
         System.out.println(validParentheses.isValid("{[]}")); // Output: true
     }
+
     //  좋은 코드 형식은
     //  https://leetcode.com/problems/valid-parentheses/solutions/6315696/best-solution-ever-easy-implementation-multi-language-your-coding-mvp/
     //  위 내용 참고
@@ -26,12 +27,12 @@ public class ValidParentheses {
         Stack<Integer> lastStatus = new Stack<>();
         while (!st.isEmpty()) {
             char cur = st.pop();
-            if (cur == '(' ) {
+            if (cur == '(') {
                 open1++;
                 lastStatus.add(1);
             }
-            if(cur == ')') {
-                if(lastStatus.isEmpty()){
+            if (cur == ')') {
+                if (lastStatus.isEmpty()) {
                     return false;
                 }
                 int status = lastStatus.pop();
@@ -44,8 +45,8 @@ public class ValidParentheses {
                 open2++;
                 lastStatus.add(2);
             }
-            if(cur == '}') {
-                if(lastStatus.isEmpty()){
+            if (cur == '}') {
+                if (lastStatus.isEmpty()) {
                     return false;
                 }
                 int status = lastStatus.pop();
@@ -59,8 +60,8 @@ public class ValidParentheses {
                 open3++;
                 lastStatus.add(3);
             }
-            if(cur == ']') {
-                if(lastStatus.isEmpty()){
+            if (cur == ']') {
+                if (lastStatus.isEmpty()) {
                     return false;
                 }
                 int status = lastStatus.pop();

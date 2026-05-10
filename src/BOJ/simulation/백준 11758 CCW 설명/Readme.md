@@ -4,12 +4,10 @@
 
 [CCW 정리](https://degurii.tistory.com/47)
 
-
-
 ![image](https://user-images.githubusercontent.com/87481266/149943190-0ec9252b-e79d-4f48-bbea-9923d5d51c9f.png)
 
 먼저, 빨간색 빗금을 곱셈해서 더해줌
-x1y2 + x2y3 + x3y1 
+x1y2 + x2y3 + x3y1
 
 ![image](https://user-images.githubusercontent.com/87481266/149943234-f6aa4ec7-261f-49fb-ac77-8eeb5330dd4d.png)
 
@@ -19,8 +17,7 @@ x2y1 + x3y2 + x1y3
 
 그 후 빨간색 빗금으로 구한 것과 파란색 빗금으로 구한 것을 서로 빼면 된다.
 
-x1y2 + x2y3 + x3y1 - (x2y1 + x3y2 + x1y3) 
-
+x1y2 + x2y3 + x3y1 - (x2y1 + x3y2 + x1y3)
 
 ```
 

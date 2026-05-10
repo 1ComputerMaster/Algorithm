@@ -7,7 +7,7 @@
 // public final class Period implements Serializable{
 //     private final Date start;
 //     private final Date end;
-    
+
 //     /**
 //      * @param start 시작 시각
 //      * @param end 종료 시각; 시작 시각보다 뒤여야 한다.
@@ -21,7 +21,7 @@
 //             throw new IllegalArgumentException(start + "가 " + end + "보다 늦다.");
 //         }
 //     }
-    
+
 //     public Date start() { return new Date(start.getTime()); }
 //     public Date end() { return new Date(end.getTime()); }
 //     public String toString() { return start + "-" + end; }

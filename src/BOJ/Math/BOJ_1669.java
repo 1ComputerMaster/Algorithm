@@ -15,18 +15,17 @@ public class BOJ_1669 {
             System.out.println(0);
             return;
         }
-        int diff = y-x;
+        int diff = y - x;
 
-        if(Math.pow((int)Math.sqrt(diff), 2) == diff)
-        {
-            System.out.println((long)(2 * (long)(Math.sqrt(diff)) - 1));
-        }else{
-            long num = (long) Math.pow((int)Math.sqrt(diff), 2);
-            long num2 = (long) Math.pow((int)Math.sqrt(num) + 1 , 2);
-            if(Math.abs(num - diff) < Math.abs(num2 - diff)){
-                System.out.println((long)(2 * ((int)Math.sqrt(diff)) - 1) + 1);
-            }else{
-                System.out.println((long)(2 * ((int)Math.sqrt(diff)) - 1) + 2);
+        if (Math.pow((int) Math.sqrt(diff), 2) == diff) {
+            System.out.println((long) (2 * (long) (Math.sqrt(diff)) - 1));
+        } else {
+            long num = (long) Math.pow((int) Math.sqrt(diff), 2);
+            long num2 = (long) Math.pow((int) Math.sqrt(num) + 1, 2);
+            if (Math.abs(num - diff) < Math.abs(num2 - diff)) {
+                System.out.println((long) (2 * ((int) Math.sqrt(diff)) - 1) + 1);
+            } else {
+                System.out.println((long) (2 * ((int) Math.sqrt(diff)) - 1) + 2);
             }
         }
     }

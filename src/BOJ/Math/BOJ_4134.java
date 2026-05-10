@@ -9,7 +9,7 @@ public class BOJ_4134 {
         int t = sc.nextInt();
         while (t-- > 0) {
             long n = sc.nextLong();
-            if(n == 0 || n == 1){
+            if (n == 0 || n == 1) {
                 System.out.println(1);
                 continue;
             }
@@ -19,7 +19,7 @@ public class BOJ_4134 {
     }
 
     private static boolean isPrime(long n) {
-        for (long i = 2; i*i <= n; i++) {
+        for (long i = 2; i * i <= n; i++) {
             if (n % i == 0) {
                 return false;
             }

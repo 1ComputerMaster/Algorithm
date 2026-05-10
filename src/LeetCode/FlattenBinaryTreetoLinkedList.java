@@ -1,25 +1,6 @@
 package LeetCode;
 
 public class FlattenBinaryTreetoLinkedList {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public static void main(String[] args) {
         FlattenBinaryTreetoLinkedList f = new FlattenBinaryTreetoLinkedList();
         TreeNode root = f.new TreeNode(1);
@@ -44,24 +25,43 @@ public class FlattenBinaryTreetoLinkedList {
     }
 
     private TreeNode flat(TreeNode node) {
-        if(node == null) return null;
+        if (node == null) return null;
 
         TreeNode leftTail = flat(node.left);
         TreeNode rightTail = flat(node.right);
 
-        if(node.left != null) {
+        if (node.left != null) {
             TreeNode savedRight = node.right;
             node.right = node.left;
             node.left = null;
             leftTail.right = savedRight;
         }
-        if(rightTail != null) {
+        if (rightTail != null) {
             return rightTail;
         }
-        if(leftTail != null) {
+        if (leftTail != null) {
             return leftTail;
         }
         return node;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 
 }

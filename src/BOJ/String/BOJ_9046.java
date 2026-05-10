@@ -1,8 +1,8 @@
 package BOJ.String;
 
-import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class BOJ_9046 {
     public static void main(String[] args) {

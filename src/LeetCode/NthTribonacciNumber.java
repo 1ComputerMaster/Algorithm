@@ -6,12 +6,13 @@ public class NthTribonacciNumber {
         int n = 25;
         System.out.println(obj.tribonacci(n)); // Output: 1389537
     }
+
     public int tribonacci(int n) {
-        if(n == 0){
+        if (n == 0) {
             return 0;
         }
 
-        if(n <= 2){
+        if (n <= 2) {
             return 1;
         }
 
@@ -20,7 +21,7 @@ public class NthTribonacciNumber {
         dp[1] = 1;
         dp[2] = 1;
 
-        for(int i = 3; i <= n; i++){
+        for (int i = 3; i <= n; i++) {
             dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
         }
 

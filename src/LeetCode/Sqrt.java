@@ -4,6 +4,7 @@ public class Sqrt {
     public static void main(String[] args) {
         System.out.println(mySqrt(8)); // Example usage
     }
+
     public static int mySqrt(int x) {
         if (x < 2) return x; // Handle cases for 0 and 1 directly
         int left = 2, right = x / 2;

@@ -5,14 +5,14 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ_22857 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         int N = Integer.parseInt(tk.nextToken());
         int K = Integer.parseInt(tk.nextToken());
-        tk = new StringTokenizer(in.readLine()," ");
+        tk = new StringTokenizer(in.readLine(), " ");
         int[] S = new int[N];
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             S[i] = Integer.parseInt(tk.nextToken());
         }
         // Sliding Window 방식으로 판단
@@ -22,12 +22,12 @@ public class BOJ_22857 {
         int oddCount = 0;
         int left = 0;
         int max = 0;
-        for (int right = 0; right < N; right++){
-            if(S[right] % 2 != 0){
+        for (int right = 0; right < N; right++) {
+            if (S[right] % 2 != 0) {
                 oddCount++;
             }
-            while (oddCount > K){
-                if(S[left] % 2 != 0){ //현재 상태에서 왼쪽 방향의 조건이 홀수 일 경우 oddCount를 내리고 left Case를 상승 시킴
+            while (oddCount > K) {
+                if (S[left] % 2 != 0) { //현재 상태에서 왼쪽 방향의 조건이 홀수 일 경우 oddCount를 내리고 left Case를 상승 시킴
                     oddCount--;
                 }
                 left++; //즉, 하나를 버리고 상승함

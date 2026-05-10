@@ -1,8 +1,10 @@
 package BOJ.Dynamic_Programming;
 
 import java.util.Scanner;
+
 public class BOJ_1010 {
     static long[][] dp = new long[31][31];
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int T = scanner.nextInt();

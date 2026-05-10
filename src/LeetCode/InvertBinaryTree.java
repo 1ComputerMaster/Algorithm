@@ -1,21 +1,6 @@
 package LeetCode;
 
 public class InvertBinaryTree {
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {
-        }
-        TreeNode(int val) {
-            this.val = val;
-        }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
     public static void main(String[] args) {
         InvertBinaryTree ibt = new InvertBinaryTree();
         TreeNode root = new TreeNode(4);
@@ -37,16 +22,37 @@ public class InvertBinaryTree {
         System.out.println(invertedRoot.right.right.val); // Should print 1
 
     }
+
     public TreeNode invertTree(TreeNode root) {
         return dfs(root);
     }
-    private TreeNode dfs(TreeNode node){
-        if(node == null) {
+
+    private TreeNode dfs(TreeNode node) {
+        if (node == null) {
             return null;
         }
         TreeNode go = new TreeNode(node.val);
         go.right = dfs(node.left);
         go.left = dfs(node.right);
         return go;
+    }
+
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 }

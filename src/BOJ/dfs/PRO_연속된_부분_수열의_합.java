@@ -1,12 +1,14 @@
 package BOJ.dfs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class PRO_연속된_부분_수열의_합 {
     public static void main(String[] args) {
-        int [] arr = solution(new int[]{1,1,1,2,3,4,5},5);
+        int[] arr = solution(new int[]{1, 1, 1, 2, 3, 4, 5}, 5);
 
-        for(int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i] + " ");
         }
     }
@@ -17,24 +19,23 @@ public class PRO_연속된_부분_수열의_합 {
         int right = 0;
         int ans = sequence[0];
         List<Sequence> list = new ArrayList<Sequence>();
-        while(true){
-            if (ans == k){
+        while (true) {
+            if (ans == k) {
                 list.add(new Sequence(left, right));
             }
-            if(left == sequence.length && right == sequence.length){
+            if (left == sequence.length && right == sequence.length) {
                 break;
             }
-            
-            if(ans <= k && right < sequence.length){
+
+            if (ans <= k && right < sequence.length) {
                 right++;
-                if(right < sequence.length){
+                if (right < sequence.length) {
                     ans += sequence[right];
                 }
-            }else{
-                if(left < sequence.length)
-                {
+            } else {
+                if (left < sequence.length) {
                     ans -= sequence[left];
-                } 
+                }
                 left++;
             }
         }
@@ -43,22 +44,25 @@ public class PRO_연속된_부분_수열의_합 {
         answer[1] = list.get(0).right;
         return answer;
     }
-    public static class Sequence implements Comparable<Sequence>{
+
+    public static class Sequence implements Comparable<Sequence> {
         int left;
         int right;
         int size;
+
         public Sequence(int left, int right) {
             this.left = left;
             this.right = right;
             this.size = right - left;
         }
+
         @Override
         public int compareTo(Sequence o) {
-            if(this.size == o.size){
+            if (this.size == o.size) {
                 return Integer.compare(this.left, o.left);
             }
             return this.size - o.size;
         }
-        
+
     }
 }

@@ -1,22 +1,6 @@
 package LeetCode;
 
 public class PartitionList {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
     public static void main(String[] args) {
 
         // Example usage
@@ -39,18 +23,35 @@ public class PartitionList {
         ListNode current = head;
         ListNode bigHead = bigTail;
         ListNode smallHead = smallTail;
-        while(current != null){
-            if(current.val >= x){
+        while (current != null) {
+            if (current.val >= x) {
                 bigTail.next = new ListNode(current.val);
                 bigTail = bigTail.next;
-            }else{
+            } else {
                 smallTail.next = new ListNode(current.val);
                 smallTail = smallTail.next;
             }
             current = current.next;
         }
-        if(bigHead.next != null)
+        if (bigHead.next != null)
             smallTail.next = bigHead.next;
         return smallHead.next;
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }

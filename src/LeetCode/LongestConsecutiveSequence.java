@@ -9,6 +9,7 @@ public class LongestConsecutiveSequence {
         int[] nums = {100, 4, 200, 1, 3, 2};
         System.out.println(lcs.longestConsecutive(nums)); // Should print 4
     }
+
     public int longestConsecutive(int[] nums) {
         Set<Integer> numSet = new HashSet<>();
         for (int num : nums) {
@@ -17,10 +18,10 @@ public class LongestConsecutiveSequence {
 
         int longest = 0;
 
-        for (int n : numSet){
-            if(!numSet.contains(n - 1)){
+        for (int n : numSet) {
+            if (!numSet.contains(n - 1)) {
                 int length = 1;
-                while(numSet.contains(n + length)){
+                while (numSet.contains(n + length)) {
                     length++;
                 }
                 longest = Math.max(longest, length);

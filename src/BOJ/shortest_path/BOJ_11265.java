@@ -1,4 +1,5 @@
 package BOJ.shortest_path;
+
 import java.util.Scanner;
 
 public class BOJ_11265 {
@@ -7,7 +8,7 @@ public class BOJ_11265 {
 
         int N = scanner.nextInt();
         int M = scanner.nextInt();
-        int[][] time = new int[N+1][N+1];
+        int[][] time = new int[N + 1][N + 1];
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= N; j++) {
                 time[i][j] = scanner.nextInt();

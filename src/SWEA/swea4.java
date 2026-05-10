@@ -9,29 +9,28 @@ public class swea4 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int t=1; t<=1; t++){
+        for (int t = 1; t <= 1; t++) {
             br.readLine();
             int[][] map = new int[100][100];
-            index start = new index(0,0);
+            index start = new index(0, 0);
 
-            for(int i=0; i<100; i++){
+            for (int i = 0; i < 100; i++) {
                 String[] input = br.readLine().split(" ");
-                for(int j=0; j<100; j++){
+                for (int j = 0; j < 100; j++) {
                     map[i][j] = Integer.parseInt(input[j]);
-                    if(map[i][j] == 2) {
+                    if (map[i][j] == 2) {
                         start = new index(i, j);
                     }
                 }
             }
 
-            while(start.x!=0) {
-                if(start.y-1 >= 0 && map[start.x][start.y-1]==1) {
-                    while(start.y-1>=0 && map[start.x][start.y-1]==1) {
+            while (start.x != 0) {
+                if (start.y - 1 >= 0 && map[start.x][start.y - 1] == 1) {
+                    while (start.y - 1 >= 0 && map[start.x][start.y - 1] == 1) {
                         start.y--;
                     }
-                }
-                else if(start.y+1<100 && map[start.x][start.y+1]==1) {
-                    while(start.y+1<100 && map[start.x][start.y+1]==1) {
+                } else if (start.y + 1 < 100 && map[start.x][start.y + 1] == 1) {
+                    while (start.y + 1 < 100 && map[start.x][start.y + 1] == 1) {
                         start.y++;
                     }
                 }
@@ -41,7 +40,8 @@ public class swea4 {
             System.out.println("#" + t + " " + start.y);
         }
     }
-    public static class index{
+
+    public static class index {
         int x;
         int y;
 

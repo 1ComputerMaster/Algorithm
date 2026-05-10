@@ -1,6 +1,9 @@
 package BOJ.shortest_path;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class BOJ_21940 {
 
@@ -14,7 +17,7 @@ public class BOJ_21940 {
             Arrays.fill(dist[i], Long.MAX_VALUE / 2);
             dist[i][i] = 0;
         }
-        for (int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             int from = sc.nextInt();
             int to = sc.nextInt();
             long weight = sc.nextLong();
@@ -22,7 +25,7 @@ public class BOJ_21940 {
         }
         int K = sc.nextInt();
         List<Integer> friends = new ArrayList<>();
-        for (int k = 0; k < K; k++){
+        for (int k = 0; k < K; k++) {
             friends.add(sc.nextInt());
         }
         // 플로이드-워셜 알고리즘
@@ -42,16 +45,15 @@ public class BOJ_21940 {
                     maxDistance = Math.max(maxDistance, dist[friend][go] + dist[go][friend]);
                 }
             }
-            if(minDist > maxDistance){
+            if (minDist > maxDistance) {
                 minDist = maxDistance;
                 ansList.clear();
                 ansList.add(go);
-            }
-            else if(minDist == maxDistance){
+            } else if (minDist == maxDistance) {
                 ansList.add(go);
             }
         }
-        for (int ans : ansList){
+        for (int ans : ansList) {
             System.out.print(ans + " ");
         }
     }

@@ -1,5 +1,8 @@
 package LeetCode;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FindFirstAndLastPos {
     static List<Integer> ans;
@@ -10,14 +13,15 @@ public class FindFirstAndLastPos {
         int[] result = searchRange(nums, target);
         System.out.println("First and Last Position: [" + result[0] + ", " + result[1] + "]");
     }
+
     public static int[] searchRange(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         ans = new ArrayList();
         binarySearch(right, left, nums, target);
-        if(ans.size() > 0){
+        if (ans.size() > 0) {
             Collections.sort(ans);
-            if(ans.size() == 1){
+            if (ans.size() == 1) {
                 int[] arr = new int[2];
                 arr[0] = ans.get(0);
                 arr[1] = ans.get(0);
@@ -31,21 +35,22 @@ public class FindFirstAndLastPos {
             arr[0] = min;
             arr[1] = max;
             return arr;
-        }else{
-            return new int[] {-1, -1};
+        } else {
+            return new int[]{-1, -1};
         }
     }
-    private static void binarySearch(int right, int left, int[] nums, int target){
-        while(left <= right){
+
+    private static void binarySearch(int right, int left, int[] nums, int target) {
+        while (left <= right) {
             int mid = (left + right) / 2;
-            if(nums[mid] == target){
+            if (nums[mid] == target) {
                 ans.add(mid);
                 binarySearch(mid - 1, left, nums, target);
                 binarySearch(right, mid + 1, nums, target);
                 return;
-            }else if(nums[mid] < target){
+            } else if (nums[mid] < target) {
                 left = mid + 1;
-            }else{
+            } else {
                 right = mid - 1;
             }
         }

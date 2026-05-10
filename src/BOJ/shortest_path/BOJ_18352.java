@@ -6,9 +6,11 @@ import java.util.*;
 
 public class BOJ_18352 {
     static List<Integer>[] graph;
-    public static void main(String[] args) throws Exception{
+    static int dist[];
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         int N = Integer.parseInt(tk.nextToken());
         int M = Integer.parseInt(tk.nextToken());
@@ -17,12 +19,12 @@ public class BOJ_18352 {
 
         graph = new ArrayList[N + 1];
 
-        for (int i = 0; i < N + 1; i++){
+        for (int i = 0; i < N + 1; i++) {
             graph[i] = new ArrayList<Integer>();
         }
 
-        for (int i = 0; i < M; i++){
-            tk = new StringTokenizer(in.readLine()," ");
+        for (int i = 0; i < M; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
             int from = Integer.parseInt(tk.nextToken());
             int to = Integer.parseInt(tk.nextToken());
             graph[from].add(to);
@@ -30,33 +32,33 @@ public class BOJ_18352 {
 
         }
 
-        dijkstra(X,N);
+        dijkstra(X, N);
         boolean non = false;
-        for (int i = 0; i <= N; i++){
-            if(dist[i] == K){
+        for (int i = 0; i <= N; i++) {
+            if (dist[i] == K) {
                 non = true;
                 System.out.println(i);
             }
         }
-        if(!non){
+        if (!non) {
             System.out.println(-1);
         }
 
     }
-    static int dist[];
+
     private static void dijkstra(int start, int N) {
         Queue<Integer> q = new LinkedList<>();
         q.add(start);
         boolean[] visited = new boolean[N + 1];
         dist = new int[N + 1];
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             int to = q.poll();
-            if(visited[to]){
+            if (visited[to]) {
                 continue;
             }
             visited[to] = true;
-            for (int t : graph[to]){
-                if(!visited[t] && dist[t] == 0) {
+            for (int t : graph[to]) {
+                if (!visited[t] && dist[t] == 0) {
                     q.offer(t);
                     dist[t] = dist[to] + 1;
                 }

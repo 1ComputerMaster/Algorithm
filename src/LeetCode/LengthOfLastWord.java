@@ -13,13 +13,14 @@ public class LengthOfLastWord {
         System.out.println(lengthOfLastWord(strTC3));
 
     }
+
     public static int lengthOfLastWord(String s) {
         String[] word = s.split(" ");
         int ans = 0;
         for (int i = 0; i < word.length; i++) {
-            if(word[i].isEmpty()){
+            if (word[i].isEmpty()) {
                 continue;
-            }else {
+            } else {
                 ans = (wordCount(word[i]));
             }
         }

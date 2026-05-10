@@ -9,8 +9,8 @@ public class BOJ_2292_벌집 {
         long N = sc.nextLong();
         long max = 1;
         int ans = 1;
-        while(max < N){
-            max += 6*ans;
+        while (max < N) {
+            max += 6 * ans;
             ans++;
         }
         System.out.println(ans);

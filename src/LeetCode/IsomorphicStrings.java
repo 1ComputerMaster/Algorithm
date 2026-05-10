@@ -1,10 +1,11 @@
 package LeetCode;
-import java.util.*;
+
 public class IsomorphicStrings {
     public static void main(String[] args) {
         String s = "paper", t = "title";
         System.out.println(isIsomorphic(s, t));
     }
+
     public static boolean isIsomorphic(String s, String t) {
         int n = s.length();
         if (n != t.length()) return false;
@@ -24,8 +25,7 @@ public class IsomorphicStrings {
                 // 서로 연결
                 mapS2T[cs] = ct + 1;
                 mapT2S[ct] = cs + 1;
-            }
-            else {
+            } else {
                 // 이미 매핑이 존재한다면, 기존 매핑과 일치하는지 확인
                 if (mapS2T[cs] != ct + 1 || mapT2S[ct] != cs + 1) {
                     return false;

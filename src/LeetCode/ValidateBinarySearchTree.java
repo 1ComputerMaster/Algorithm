@@ -4,24 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ValidateBinarySearchTree {
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    List<Integer> list;
 
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
     public static void main(String[] args) {
         ValidateBinarySearchTree obj = new ValidateBinarySearchTree();
         TreeNode root = new TreeNode(2);
@@ -41,27 +25,48 @@ public class ValidateBinarySearchTree {
         root.right = new TreeNode(2);
         System.out.println(obj.isValidBST(root)); // false
     }
-    List<Integer> list;
+
     public boolean isValidBST(TreeNode root) {
         list = new ArrayList<>();
         dfs(root);
         System.out.println(list.toString());
         return isSorted(list);
     }
-    private void dfs(TreeNode node){
-        if(node == null){
+
+    private void dfs(TreeNode node) {
+        if (node == null) {
             return;
         }
         dfs(node.left);
         list.add(node.val);
         dfs(node.right);
     }
-    private boolean isSorted(List<Integer> list){
-        for(int i = 0; i < list.size() - 1; i++){
-            if(list.get(i) >= list.get(i + 1)){ //left
+
+    private boolean isSorted(List<Integer> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) >= list.get(i + 1)) { //left
                 return false;
             }
         }
         return true;
+    }
+
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 }

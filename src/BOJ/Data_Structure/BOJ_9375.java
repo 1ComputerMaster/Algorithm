@@ -1,6 +1,8 @@
 package BOJ.Data_Structure;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class BOJ_9375 {
     public static void main(String[] args) {

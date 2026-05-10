@@ -18,6 +18,7 @@ public class ContainsDuplicate2 {
         k = 2;
         System.out.println(cd2.containsNearbyDuplicate(nums, k)); // Should print false
     }
+
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         Map<Integer, Integer> seen = new HashMap<>();
 

@@ -1,35 +1,37 @@
 package LeetCode;
 
 public class WordSearch {
+    static int[] dx = new int[]{-1, 1, 0, 0};
+    static int[] dy = new int[]{0, 0, 1, -1};
+    static int n, m;
+
     public static void main(String[] args) {
         WordSearch ws = new WordSearch();
         char[][] board = {
-            {'A','B','C','E'},
-            {'S','F','C','S'},
-            {'A','D','E','E'}
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
         };
         String word = "ABCB";
         System.out.println(ws.exist(board, word)); // true
     }
-    static int[] dx = new int[]{-1,1,0,0};
-    static int[] dy = new int[]{0,0,1,-1};
-    static int n,m;
+
     public boolean exist(char[][] board, String word) {
         n = board.length;
         m = board[0].length;
-        if(n == 1 && m == 1 && word.length() == 1 && word.charAt(0) != board[0][0]){
+        if (n == 1 && m == 1 && word.length() == 1 && word.charAt(0) != board[0][0]) {
             return false;
         }
         boolean[][] visited;
 
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 visited = new boolean[n][m];
-                if(board[i][j] != word.charAt(0)){
+                if (board[i][j] != word.charAt(0)) {
                     continue;
                 }
                 visited[i][j] = true;
-                if(dfs(i, j, visited, 1, word, board)){
+                if (dfs(i, j, visited, 1, word, board)) {
                     return true;
                 }
             }
@@ -37,19 +39,19 @@ public class WordSearch {
         return false;
     }
 
-    private boolean dfs(int x, int y, boolean[][] visited, int wordCnt, String word, char[][] board){
-        if(word.length() == wordCnt){
+    private boolean dfs(int x, int y, boolean[][] visited, int wordCnt, String word, char[][] board) {
+        if (word.length() == wordCnt) {
             return true;
-        }else{
-            for(int d = 0; d < 4; d++){
+        } else {
+            for (int d = 0; d < 4; d++) {
                 int nx = x + dx[d];
                 int ny = y + dy[d];
-                if(nx >= n || ny >= m || nx < 0 || ny < 0){
+                if (nx >= n || ny >= m || nx < 0 || ny < 0) {
                     continue;
                 }
-                if(!visited[nx][ny] && word.charAt(wordCnt) == board[nx][ny]){
+                if (!visited[nx][ny] && word.charAt(wordCnt) == board[nx][ny]) {
                     visited[nx][ny] = true;
-                    if(dfs(nx, ny, visited, wordCnt + 1, word, board)){
+                    if (dfs(nx, ny, visited, wordCnt + 1, word, board)) {
                         return true;
                     }
                     visited[nx][ny] = false;

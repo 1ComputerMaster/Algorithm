@@ -1,39 +1,6 @@
 package LeetCode;
 
 public class LowestCommonAncestorOfABinarySearchTree {
-/**
-     * Definition for a binary tree node.
-     * public class TreeNode {
-     *     int val;
-     *     TreeNode left;
-     *     TreeNode right;
-     *     TreeNode(int x) { val = x; }
-     * }
-     */
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(p.val > q.val){
-            TreeNode tmp = p;
-            p = q;
-            q = tmp;
-        }
-        while(root != null){
-            if(p.val <= root.val && root.val <= q.val){
-                return root;
-            }else if (p.val < root.val && q.val < root.val){
-                root = root.left;
-            }else{
-                root = root.right;
-            }
-        }
-        return root;
-    }
-
     public static void main(String[] args) {
         LowestCommonAncestorOfABinarySearchTree solution = new LowestCommonAncestorOfABinarySearchTree();
         TreeNode root = solution.new TreeNode(6);
@@ -51,5 +18,42 @@ public class LowestCommonAncestorOfABinarySearchTree {
 
         TreeNode lca = solution.lowestCommonAncestor(root, p, q);
         System.out.println("Lowest Common Ancestor of " + p.val + " and " + q.val + " is: " + lca.val); // Should print 6
+    }
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (p.val > q.val) {
+            TreeNode tmp = p;
+            p = q;
+            q = tmp;
+        }
+        while (root != null) {
+            if (p.val <= root.val && root.val <= q.val) {
+                return root;
+            } else if (p.val < root.val && q.val < root.val) {
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }
+        return root;
+    }
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode(int x) { val = x; }
+     * }
+     */
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

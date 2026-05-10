@@ -14,23 +14,23 @@ public class wordPattern {
         Map<String, Character> valueMap = new HashMap<>();
         String[] str = s.split(" ");
 
-        if(str.length != pattern.length()){
+        if (str.length != pattern.length()) {
             return false;
         }
 
-        for(int i = 0; i < pattern.length(); i++){
+        for (int i = 0; i < pattern.length(); i++) {
             char c = pattern.charAt(i);
-            if(!keyMap.containsKey(c)){
+            if (!keyMap.containsKey(c)) {
                 keyMap.put(c, str[i]);
-            }else{
-                if(!str[i].equals(keyMap.get(c))){
+            } else {
+                if (!str[i].equals(keyMap.get(c))) {
                     return false;
                 }
             }
-            if(!valueMap.containsKey(str[i])){
+            if (!valueMap.containsKey(str[i])) {
                 valueMap.put(str[i], c);
-            }else{
-                if(c != valueMap.get(str[i])){
+            } else {
+                if (c != valueMap.get(str[i])) {
                     return false;
                 }
             }

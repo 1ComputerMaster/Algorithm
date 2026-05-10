@@ -1,6 +1,9 @@
 package LeetCode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class InsertIntervals {
     public static void main(String[] args) {
@@ -12,6 +15,7 @@ public class InsertIntervals {
             System.out.print("[" + interval[0] + ", " + interval[1] + "] ");
         }
     }
+
     public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> res = new ArrayList<>();
         List<int[]> orderedList = new ArrayList<>(Arrays.asList(intervals));
@@ -21,12 +25,12 @@ public class InsertIntervals {
         int curStart = orderedList.get(0)[0];
         int curEnd = orderedList.get(0)[1];
 
-        for(int[] num : orderedList){
+        for (int[] num : orderedList) {
             int s = num[0], e = num[1];
 
-            if(curEnd >= s){
+            if (curEnd >= s) {
                 curEnd = Math.max(e, curEnd);
-            }else{
+            } else {
                 res.add(new int[]{curStart, curEnd});
                 curEnd = e;
                 curStart = s;

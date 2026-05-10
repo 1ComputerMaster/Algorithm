@@ -5,15 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BOJ_15681 {
-    static class Tree{
-        final List<Integer> subTree = new ArrayList<>();
-        int subTreeSize = -1;
-
-        public Tree() {
-        }
-    }
     static Tree[] trees;
     static boolean[] visited;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
@@ -21,7 +15,7 @@ public class BOJ_15681 {
         int Q = sc.nextInt();
         trees = new Tree[N + 1];
         visited = new boolean[N + 1];
-        for (int i = 0; i < N + 1; i++){
+        for (int i = 0; i < N + 1; i++) {
             trees[i] = new Tree();
         }
         for (int i = 0; i < N - 1; i++) {
@@ -44,14 +38,21 @@ public class BOJ_15681 {
     private static int getSubTrees(int node) {
         visited[node] = true;
         int ans = 1;
-        for(int child : trees[node].subTree){
-            if(!visited[child])
-            {
+        for (int child : trees[node].subTree) {
+            if (!visited[child]) {
                 ans += getSubTrees(child);
 
             }
         }
         trees[node].subTreeSize = ans;
         return ans;
+    }
+
+    static class Tree {
+        final List<Integer> subTree = new ArrayList<>();
+        int subTreeSize = -1;
+
+        public Tree() {
+        }
     }
 }

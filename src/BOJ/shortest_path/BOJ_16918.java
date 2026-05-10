@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class BOJ_16918 {
     static char[][] map;
 
-    static boolean[][]check;
+    static boolean[][] check;
     static int R, C, N;
 
     static int dx[] = {-1, 0, 1, 0};
@@ -64,7 +64,7 @@ public class BOJ_16918 {
     private static void explodeBombs() {
         char[][] newMap = new char[R][C];
         for (char[] c : newMap)
-            Arrays.fill(c,'O');
+            Arrays.fill(c, 'O');
 
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {

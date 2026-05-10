@@ -6,13 +6,14 @@ public class BinaryNumberwithAlternatingBits {
         int n = 5;
         System.out.println(b.hasAlternatingBits(n)); // Should return true
     }
+
     public boolean hasAlternatingBits(int n) {
         int prevBit = -1; // 이전 비트를 저장할 변수, 초기값은 -1로 설정
 
-        while(n > 0){
+        while (n > 0) {
             int currentBit = n & 1;
 
-            if(currentBit == prevBit){
+            if (currentBit == prevBit) {
                 return false; // 이전 비트와 현재 비트가 같으면 false 반환
             }
 

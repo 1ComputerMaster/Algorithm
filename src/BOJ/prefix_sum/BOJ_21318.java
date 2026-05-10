@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_21318 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int N = Integer.parseInt(in.readLine());
 
         List<Integer> melody = new ArrayList<Integer>();
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             melody.add(Integer.parseInt(tk.nextToken()));
         }
 
@@ -27,10 +27,10 @@ public class BOJ_21318 {
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N - 1; i++){
-            if(melody.get(i) > melody.get(i + 1)){
+        for (int i = 0; i < N - 1; i++) {
+            if (melody.get(i) > melody.get(i + 1)) {
                 sum[i + 1] = sum[i] + 1;
-            }else{
+            } else {
                 sum[i + 1] = sum[i];
             }
         }

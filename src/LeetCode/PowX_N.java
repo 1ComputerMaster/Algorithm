@@ -7,6 +7,7 @@ public class PowX_N {
         int n = 10;
         System.out.println(powX_n.myPow(x, n)); // Should return 1024.0
     }
+
     public double myPow(double x, int n) {
         long exp = n;           // int 최솟값 처리 위험 회피
         if (exp < 0) {

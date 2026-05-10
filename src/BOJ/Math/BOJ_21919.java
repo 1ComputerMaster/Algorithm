@@ -1,14 +1,15 @@
 package BOJ.Math;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class BOJ_21919 {
     private static long gcd(long a, long b) {
-        if(b == 0)
-        {
+        if (b == 0) {
             return a;
-        }
-        else{
-            return gcd(b,a%b);
+        } else {
+            return gcd(b, a % b);
         }
     }
 

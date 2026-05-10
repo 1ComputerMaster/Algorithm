@@ -9,6 +9,7 @@ public class DecodeString {
         System.out.println(ds.decodeString("3[a2[c]]")); // Should print "accaccacc"
         System.out.println(ds.decodeString("2[abc]3[cd]ef")); // Should print "abcabccdcdcdef"
     }
+
     public String decodeString(String s) {
         Stack<Character> alpha = new Stack<>();
         Stack<Integer> nums = new Stack<>();
@@ -31,7 +32,7 @@ public class DecodeString {
             if (c == ']') {
                 StringBuilder part = new StringBuilder();
 
-                while(!alpha.isEmpty() && alpha.peek() != '['){
+                while (!alpha.isEmpty() && alpha.peek() != '[') {
                     part.append(alpha.pop());
                 }
                 alpha.pop();

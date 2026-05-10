@@ -8,13 +8,13 @@ public class BOJ_2168 {
         int x = sc.nextInt();
         int y = sc.nextInt();
 
-        int n = GCD(x,y);
+        int n = GCD(x, y);
 
         System.out.println(((x / n) + (y / n) - 1) * n);
     }
 
     private static int GCD(int x, int y) {
-        if(y == 0){
+        if (y == 0) {
             return x;
         }
         return GCD(y, x % y);

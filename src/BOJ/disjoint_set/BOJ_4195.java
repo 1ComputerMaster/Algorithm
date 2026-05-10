@@ -10,12 +10,13 @@ public class BOJ_4195 {
     static int[] parent;
     static int[] size;
     static Map<String, Integer> friendMap;
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         int T = Integer.parseInt(tk.nextToken());
-        while(T-- > 0) {
+        while (T-- > 0) {
             parent = new int[200002]; // 충분히 큰 크기로 배열 초기화
             size = new int[200002];
             for (int i = 1; i <= 200001; i++) {
@@ -48,12 +49,11 @@ public class BOJ_4195 {
         int rootA = find(friendMap.get(friend));
         int rootB = find(friendMap.get(otherFriend));
 
-        if(rootA != rootB){
-            if(size[rootA] > size[rootB]){
+        if (rootA != rootB) {
+            if (size[rootA] > size[rootB]) {
                 parent[rootB] = parent[rootA];
                 size[rootA] += size[rootB];
-            }
-            else {
+            } else {
                 parent[rootA] = parent[rootB];
                 size[rootB] += size[rootA];
             }
@@ -61,7 +61,7 @@ public class BOJ_4195 {
     }
 
     private static int find(int a) {
-        if(parent[a] == a){
+        if (parent[a] == a) {
             return a;
         }
         return parent[a] = find(parent[a]);

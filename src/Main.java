@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class Main {
     public static boolean canMake100Points(String word) {
         int points = 0;
         for (char c : word.toCharArray()) {
-            points += (int)(c - 'a') + 1;
+            points += (int) (c - 'a') + 1;
         }
         return points == 100;
     }

@@ -1,27 +1,14 @@
 package BOJ.shortest_path;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class BOJ_20183 {
-    static class Data implements Comparable<Data> {
-        int node;
-        long distance;
-        long maxCost;
-
-        public Data(int node, long distance, long maxCost) {
-            this.node = node;
-            this.distance = distance;
-            this.maxCost = maxCost;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            // 최대 비용을 기준으로 정렬
-            return Long.compare(this.maxCost, o.maxCost);
-        }
-    }
-
     static List<Data>[] graph;
 
     public static void main(String[] args) throws IOException {
@@ -42,7 +29,7 @@ public class BOJ_20183 {
 
         // 최대 비용 추적
         long maxCost = 0;
-        for (int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int from = Integer.parseInt(st.nextToken());
             int to = Integer.parseInt(st.nextToken());
@@ -57,9 +44,9 @@ public class BOJ_20183 {
         long right = maxCost;
         long ans = -1;
 
-        while (left <= right){
+        while (left <= right) {
             long mid = (left + right) / 2;
-            if(dijkstra(N, A, B, C, mid)){
+            if (dijkstra(N, A, B, C, mid)) {
                 ans = mid;
                 right = mid - 1;
             } else {
@@ -76,7 +63,7 @@ public class BOJ_20183 {
 
         boolean[] visited = new boolean[n + 1];
 
-        while (!pq.isEmpty()){
+        while (!pq.isEmpty()) {
             Data cur = pq.poll();
 
             if (cur.node == end) return true;
@@ -84,7 +71,7 @@ public class BOJ_20183 {
             if (visited[cur.node]) continue;
             visited[cur.node] = true;
 
-            for (Data next : graph[cur.node]){
+            for (Data next : graph[cur.node]) {
                 // 경로의 최대 비용이 maxAllowedCost를 초과하지 않고
                 // 총 이동 비용이 C를 초과하지 않는 경우
                 long newMaxCost = Math.max(cur.maxCost, next.distance);
@@ -100,5 +87,23 @@ public class BOJ_20183 {
             }
         }
         return false;
+    }
+
+    static class Data implements Comparable<Data> {
+        int node;
+        long distance;
+        long maxCost;
+
+        public Data(int node, long distance, long maxCost) {
+            this.node = node;
+            this.distance = distance;
+            this.maxCost = maxCost;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            // 최대 비용을 기준으로 정렬
+            return Long.compare(this.maxCost, o.maxCost);
+        }
     }
 }

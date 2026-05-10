@@ -13,9 +13,9 @@ public class BOJ_1439_RE {
 
         int oneCnt = 0, zeroCnt = 0;
 
-        if(start == '1'){
+        if (start == '1') {
             oneCnt++;
-        }else{
+        } else {
             zeroCnt++;
         }
 

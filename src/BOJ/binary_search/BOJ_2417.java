@@ -6,15 +6,15 @@ public class BOJ_2417 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         long N = sc.nextLong();
-        if(N == 0){
+        if (N == 0) {
             System.out.println(0);
             return;
         }
         long left = 0;
-        long right = (long) Math.pow(2,32);
+        long right = (long) Math.pow(2, 32);
         long answer = 0;  // 최종 답안 저장
 
-        while (left <= right){
+        while (left <= right) {
             long mid = (left + right) / 2;
             if (mid <= N / mid) {
                 answer = mid;

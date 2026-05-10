@@ -1,21 +1,22 @@
 package Effective_Java;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Item54 {
-    
+
     private final List<Integer> cheesesInStock = null;
 
     public List<Integer> getCheeses() {
         return cheesesInStock.isEmpty() ? null
-            : new ArrayList<>(cheesesInStock);
+                : new ArrayList<>(cheesesInStock);
     }
 
     public void addCheeses(int i) {
         Collections.emptyList();
         cheesesInStock.add(i);
     }
-
-    
 
 
 }

@@ -1,20 +1,6 @@
 package LeetCode;
 
 public class MergeTwoSortedLists {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {
-        }
-        ListNode(int val) {
-            this.val = val;
-        }
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public static void main(String[] args) {
         MergeTwoSortedLists m = new MergeTwoSortedLists();
         ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
@@ -40,6 +26,23 @@ public class MergeTwoSortedLists {
         } else {
             list2.next = mergeTwoLists(list1, list2.next);
             return list2;
+        }
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
         }
     }
 

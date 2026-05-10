@@ -6,9 +6,9 @@ import java.util.StringTokenizer;
 
 
 public class BOJ_15486 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
 
         int N = Integer.parseInt(tk.nextToken());
 
@@ -16,8 +16,8 @@ public class BOJ_15486 {
         int[] P = new int[N + 1];
         int[] dp = new int[N + 2];
         int ans = 0;
-        for (int i = 1; i <= N; i++){
-            tk = new StringTokenizer(in.readLine()," ");
+        for (int i = 1; i <= N; i++) {
+            tk = new StringTokenizer(in.readLine(), " ");
             T[i] = Integer.parseInt(tk.nextToken());
             P[i] = Integer.parseInt(tk.nextToken());
         }
@@ -29,13 +29,13 @@ public class BOJ_15486 {
          * 추가 확인 수단으로 넣었습니다.
          *
          */
-        for (int i = 1; i <= N; i++){
+        for (int i = 1; i <= N; i++) {
             ans = Math.max(ans, dp[i]);
-            if(i + T[i] <= N + 1){
+            if (i + T[i] <= N + 1) {
                 dp[i + T[i]] = Math.max(ans + P[i], dp[i + T[i]]);
             }
         }
-        ans = Math.max(ans, dp[N+1]);
+        ans = Math.max(ans, dp[N + 1]);
         System.out.println(ans);
     }
 }

@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class BOJ_1325 {
     static boolean[] visited;
@@ -38,8 +40,8 @@ public class BOJ_1325 {
             visited = new boolean[N + 1];
             dfs(i);
         }
-        for (int i = 0; i < ans.length; i++){
-            max = Math.max(max,ans[i]);
+        for (int i = 0; i < ans.length; i++) {
+            max = Math.max(max, ans[i]);
         }
 
         StringBuilder sb = new StringBuilder();

@@ -14,7 +14,7 @@ public class BOJ_2110 {
 
         List<Integer> houses = new ArrayList<>();
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             houses.add(sc.nextInt());
         }
 
@@ -23,10 +23,10 @@ public class BOJ_2110 {
 
         int left = 1;
         int right = houses.get(houses.size() - 1);
-        while (left <= right){
+        while (left <= right) {
             int mid = (left + right) / 2;
             int router = countRouters(mid, houses);
-            if(router  >= C) { // 설치 가능한 경우
+            if (router >= C) { // 설치 가능한 경우
                 res = mid; // 일단 res를 mid로 갱신
                 left = mid + 1; // 더 큰 간격을 시도
             } else {

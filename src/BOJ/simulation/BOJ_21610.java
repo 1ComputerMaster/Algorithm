@@ -1,11 +1,11 @@
 package BOJ.simulation;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class BOJ_21610 {
     static int N, M;
@@ -19,12 +19,12 @@ public class BOJ_21610 {
     // 1: ← (0), 2: ↖ (1), 3: ↑ (2), 4: ↗ (3),
     // 5: → (4), 6: ↘ (5), 7: ↓ (6), 8: ↙ (7)
     // 아래 dx, dy는 index 0→←, 1→↖, 2→↑, 3→↗, ...
-    static int[] dx = { 0, -1, -1, -1,  0,  1,  1,  1 };
-    static int[] dy = {-1, -1,  0,  1,  1,  1,  0, -1 };
+    static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1};
+    static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
 
     // 대각선 방향(물복사버그용) ↖, ↗, ↘, ↙ (상하좌우는 제외)
-    static int[] diagX = {-1, -1,  1,  1};
-    static int[] diagY = {-1,  1, -1,  1};
+    static int[] diagX = {-1, -1, 1, 1};
+    static int[] diagY = {-1, 1, -1, 1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,22 +33,22 @@ public class BOJ_21610 {
         M = Integer.parseInt(st.nextToken());
 
         A = new int[N][N];
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            for(int j = 0; j < N; j++){
+            for (int j = 0; j < N; j++) {
                 A[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
         // 초기 구름: (N-1,0), (N-1,1), (N-2,0), (N-2,1)
         clouds = new ArrayList<>();
-        clouds.add(new Point(N-1, 0));
-        clouds.add(new Point(N-1, 1));
-        clouds.add(new Point(N-2, 0));
-        clouds.add(new Point(N-2, 1));
+        clouds.add(new Point(N - 1, 0));
+        clouds.add(new Point(N - 1, 1));
+        clouds.add(new Point(N - 2, 0));
+        clouds.add(new Point(N - 2, 1));
 
         // M번 명령 수행
-        for(int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int d = Integer.parseInt(st.nextToken()) - 1; // 0-based 방향
             int s = Integer.parseInt(st.nextToken());     // 이동 칸 수
@@ -58,7 +58,7 @@ public class BOJ_21610 {
 
             // 2. 구름이 있는 칸 물 1 증가
             boolean[][] visited = new boolean[N][N];
-            for (Point c : clouds){
+            for (Point c : clouds) {
                 visited[c.x][c.y] = true;
                 A[c.x][c.y]++;
             }
@@ -69,7 +69,7 @@ public class BOJ_21610 {
                 for (int idx = 0; idx < 4; idx++) {
                     int nx = c.x + diagX[idx];
                     int ny = c.y + diagY[idx];
-                    if(inRange(nx, ny) && A[nx][ny] > 0) {
+                    if (inRange(nx, ny) && A[nx][ny] > 0) {
                         count++;
                     }
                 }
@@ -79,11 +79,11 @@ public class BOJ_21610 {
             // 새 구름은 이번 턴에 구름이 없었던 칸 중 A[r][c]>=2 인 곳
             // 물 2 감소
             List<Point> newClouds = new ArrayList<>();
-            for (int r = 0; r < N; r++){
-                for (int c = 0; c < N; c++){
-                    if(A[r][c] >= 2 && !visited[r][c]){
+            for (int r = 0; r < N; r++) {
+                for (int c = 0; c < N; c++) {
+                    if (A[r][c] >= 2 && !visited[r][c]) {
                         A[r][c] -= 2;
-                        newClouds.add(new Point(r,c));
+                        newClouds.add(new Point(r, c));
                     }
                 }
             }
@@ -92,8 +92,8 @@ public class BOJ_21610 {
 
         // 모든 이동 후 물의 합 계산
         long ans = 0;
-        for(int r=0; r<N; r++){
-            for(int c=0; c<N; c++){
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
                 ans += A[r][c];
             }
         }
@@ -102,12 +102,12 @@ public class BOJ_21610 {
 
     // 구름 이동: 방향 d로 s칸
     // 격자는 torus처럼 연결 (wrap-around)
-    static void moveClouds(int d, int s){
+    static void moveClouds(int d, int s) {
         List<Point> moveClouds = new ArrayList<>();
         s = s % N;
         for (Point c : clouds) {
-            int nx = c.x + dx[d]*s;
-            int ny = c.y + dy[d]*s;
+            int nx = c.x + dx[d] * s;
+            int ny = c.y + dy[d] * s;
 
             nx = (nx % N + N) % N;
             ny = (ny % N + N) % N;
@@ -116,14 +116,16 @@ public class BOJ_21610 {
         clouds = moveClouds;
     }
 
-    static boolean inRange(int x, int y){
-        return (x>=0 && x<N && y>=0 && y<N);
+    static boolean inRange(int x, int y) {
+        return (x >= 0 && x < N && y >= 0 && y < N);
     }
 
-    static class Point{
+    static class Point {
         int x, y;
-        public Point(int x, int y){
-            this.x=x; this.y=y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 }

@@ -1,6 +1,8 @@
 package LeetCode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class InsertDeleteGetRandom {
     // Map과 List를 혼합하여 사용하여야 99.86% Beat 할 수 있고 이렇게 짜게 되면 5%만 Beat 할 수 있다.
@@ -21,12 +23,13 @@ public class InsertDeleteGetRandom {
 
 class RandomizedSet {
     List<Integer> list;
+
     public RandomizedSet() {
         list = new ArrayList<>();
     }
 
     public boolean insert(int val) {
-        if(!list.contains(val)){
+        if (!list.contains(val)) {
             list.add(val);
             return true;
         }
@@ -34,7 +37,7 @@ class RandomizedSet {
     }
 
     public boolean remove(int val) {
-        if(list.contains(val)){
+        if (list.contains(val)) {
             list.remove(list.indexOf(val));
             return true;
         }

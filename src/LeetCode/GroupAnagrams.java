@@ -9,14 +9,15 @@ public class GroupAnagrams {
         List<List<String>> result = groupAnagrams.groupAnagrams(strs);
         System.out.println(result); // Output: [[bat], [nat, tan], [ate, eat, tea]]
     }
+
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> anagram = new HashMap<>();
-        for(String str : strs){
+        for (String str : strs) {
             char[] crr = str.toCharArray();
             Arrays.sort(crr);
             String key = new String(crr);
 
-            if(!anagram.containsKey(key)){
+            if (!anagram.containsKey(key)) {
                 anagram.put(key, new ArrayList());
             }
             anagram.get(key).add(str);

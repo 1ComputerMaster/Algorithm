@@ -7,16 +7,17 @@ import java.util.Scanner;
 
 public class BOJ_3079 {
     /*
-    * 이분 탐색 + 중복 조합
-    * */
-    static int N,M;
+     * 이분 탐색 + 중복 조합
+     * */
+    static int N, M;
     static List<Long> simsa;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
         simsa = new ArrayList<>();
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             simsa.add(sc.nextLong());
         }
         long left = 1;  // 최소 시간
@@ -37,7 +38,7 @@ public class BOJ_3079 {
 
     private static boolean canCompleteWithinTime(long timeLimit) {
         long peopleProcessed = 0;
-        for (long time : simsa){
+        for (long time : simsa) {
             peopleProcessed += timeLimit / time; //심사대에서 timeLimit 이내에 배치된 time 으로 나누어서 진행한다.
             if (peopleProcessed >= M) {  // 이미 필요한 인원을 충족했다면 더 이상 계산할 필요 없음
                 return true;

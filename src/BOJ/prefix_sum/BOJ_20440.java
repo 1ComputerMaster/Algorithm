@@ -2,18 +2,15 @@ package BOJ.prefix_sum;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class BOJ_20440 {
-    static class Time {
-        int s, e;
-        public Time(int s, int e) {
-            this.s = s;
-            this.e = e;
-        }
-    }
     static int n;
     static Time[] time;
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -55,6 +52,15 @@ public class BOJ_20440 {
         System.out.println(cnt);
         System.out.println(s + " " + e);
 
+    }
+
+    static class Time {
+        int s, e;
+
+        public Time(int s, int e) {
+            this.s = s;
+            this.e = e;
+        }
     }
 }
 

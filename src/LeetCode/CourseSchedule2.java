@@ -6,17 +6,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class CourseSchedule2 {
+    static int[] visited;
+    static List<Integer>[] graph;
+    static List<Integer> ans;
+    static int idx = 0;
+
     public static void main(String[] args) {
         CourseSchedule2 cs = new CourseSchedule2();
         int numCourses = 2;
         int[][] prerequisites = {{1, 0}};
         System.out.println(Arrays.toString(cs.findOrder(numCourses, prerequisites))); // Should return true
     }
-
-    static int[] visited;
-    static List<Integer>[] graph;
-    static List<Integer> ans;
-    static int idx = 0;
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         visited = new int[numCourses]; // 0 : 초기, 1 : 방문 중, 2 : 방문 완료

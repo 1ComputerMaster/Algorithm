@@ -12,9 +12,10 @@ public class PRO_KAKAO_WINTER_개인정보_수집_유효기간 {
 
         PRO_KAKAO_WINTER_개인정보_수집_유효기간 sol = new PRO_KAKAO_WINTER_개인정보_수집_유효기간();
 
-        int[] ans = sol.solution(today,terms,privacies);
+        int[] ans = sol.solution(today, terms, privacies);
         System.out.println(Arrays.toString(ans));
     }
+
     public int[] solution(String today, String[] terms, String[] privacies) {
         int[] answer = {};
         List<Integer> ans = new ArrayList<>();

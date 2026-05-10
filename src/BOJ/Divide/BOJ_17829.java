@@ -9,15 +9,15 @@ import java.util.StringTokenizer;
 public class BOJ_17829 {
     static int[][] map;
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         int N = Integer.parseInt(tk.nextToken());
 
         map = new int[N][N];
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             tk = new StringTokenizer(in.readLine(), " ");
-            for (int j = 0; j < N; j++){
+            for (int j = 0; j < N; j++) {
                 map[i][j] = Integer.parseInt(tk.nextToken());
             }
         }

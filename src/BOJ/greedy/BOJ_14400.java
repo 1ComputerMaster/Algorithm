@@ -1,6 +1,8 @@
 package BOJ.greedy;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
+
 //맨하탄 거리 문제
 public class BOJ_14400 {
     public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class BOJ_14400 {
         long[] xs = new long[n];
         long[] ys = new long[n];
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             xs[i] = sc.nextLong();
             ys[i] = sc.nextLong();
         }
@@ -23,7 +25,7 @@ public class BOJ_14400 {
         long medianY = ys[n / 2];
 
         long totalDist = 0;
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             totalDist += Math.abs(xs[i] - medianX);
             totalDist += Math.abs(ys[i] - medianY);
         }

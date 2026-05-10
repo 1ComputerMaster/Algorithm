@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BOJ_16170 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Date cur = new Date();
         SimpleDateFormat yyyy = new SimpleDateFormat("yyyy");
         SimpleDateFormat mm = new SimpleDateFormat("MM");

@@ -2,25 +2,14 @@ package BOJ.shortest_path;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 public class BOJ_11265_RE {
     static int[][] map;
-    static class Node implements Comparable<Node> {
-        int index, distance;
 
-        public Node(int index, int distance) {
-            this.index = index;
-            this.distance = distance;
-        }
-
-        @Override
-        public int compareTo(Node o) {
-            return this.distance - o.distance;
-        }
-    }
-
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         int N = Integer.parseInt(tk.nextToken());
@@ -28,13 +17,13 @@ public class BOJ_11265_RE {
 
         map = new int[N][N];
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             tk = new StringTokenizer(in.readLine(), " ");
-            for (int j = 0; j < N; j++){
+            for (int j = 0; j < N; j++) {
                 map[i][j] = Integer.parseInt(tk.nextToken());
             }
         }
-        for (int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             tk = new StringTokenizer(in.readLine(), " ");
             int from = Integer.parseInt(tk.nextToken()) - 1;
             int to = Integer.parseInt(tk.nextToken()) - 1;
@@ -46,6 +35,7 @@ public class BOJ_11265_RE {
             }
         }
     }
+
     private static boolean dijkstra(int start, int end, int weight, int size) {
         int[] dist = new int[size];
         Arrays.fill(dist, Integer.MAX_VALUE);
@@ -72,5 +62,19 @@ public class BOJ_11265_RE {
         }
 
         return dist[end] <= weight;
+    }
+
+    static class Node implements Comparable<Node> {
+        int index, distance;
+
+        public Node(int index, int distance) {
+            this.index = index;
+            this.distance = distance;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return this.distance - o.distance;
+        }
     }
 }

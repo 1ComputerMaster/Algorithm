@@ -1,14 +1,6 @@
 package LeetCode;
 
 public class AddTwoNumbers {
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
-
     public static void main(String[] args) {
         AddTwoNumbers solution = new AddTwoNumbers();
         ListNode l1 = solution.new ListNode(2, solution.new ListNode(4, solution.new ListNode(3)));
@@ -21,6 +13,7 @@ public class AddTwoNumbers {
             result = result.next;
         }
     }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
@@ -39,5 +32,22 @@ public class AddTwoNumbers {
             if (l2 != null) l2 = l2.next;
         }
         return dummy.next;
+    }
+
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }

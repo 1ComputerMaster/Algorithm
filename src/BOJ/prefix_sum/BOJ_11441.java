@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ_11441 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk = new StringTokenizer(in.readLine());
 
@@ -14,14 +14,14 @@ public class BOJ_11441 {
         int[] A = new int[N];
         long[] sum = new long[N + 1];
         tk = new StringTokenizer(in.readLine());
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             A[i] = Integer.parseInt(tk.nextToken());
             sum[i + 1] = sum[i] + A[i];
         }
 
         int M = Integer.parseInt(in.readLine());
 
-        for (int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             tk = new StringTokenizer(in.readLine());
             int start = Integer.parseInt(tk.nextToken());
             int end = Integer.parseInt(tk.nextToken());

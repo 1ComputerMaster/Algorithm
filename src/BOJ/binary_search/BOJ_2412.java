@@ -1,4 +1,5 @@
 package BOJ.binary_search;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -13,7 +14,7 @@ public class BOJ_2412 {
         N = Integer.parseInt(tk.nextToken());
         T = Integer.parseInt(tk.nextToken());
         points = new ArrayList[20001];
-        for (int i = 0; i < 20001; i++){
+        for (int i = 0; i < 20001; i++) {
             points[i] = new ArrayList<Integer>();
         }
         for (int i = 0; i < N; i++) {
@@ -32,7 +33,7 @@ public class BOJ_2412 {
     private static int bfs() {
         Queue<int[]> queue = new LinkedList<>();
         int steps = 0;
-        queue.add(new int[] {0,0});
+        queue.add(new int[]{0, 0});
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int s = 0; s < size; s++) {

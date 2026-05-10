@@ -8,36 +8,37 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class BOJ_13397 {
-    static int N,M;
+    static int N, M;
     static List<Integer> numbers;
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         N = Integer.parseInt(tk.nextToken());
         M = Integer.parseInt(tk.nextToken());
-        tk = new StringTokenizer(in.readLine()," ");
+        tk = new StringTokenizer(in.readLine(), " ");
         numbers = new ArrayList<>();
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             numbers.add(Integer.parseInt(tk.nextToken()));
         }
         int left = 0;
         int right = Collections.max(numbers);
         int ans = right;
-        while (left <= right){
+        while (left <= right) {
             int mid = (left + right) / 2;
-            if(canIgo(mid) <= M){
+            if (canIgo(mid) <= M) {
                 right = mid - 1;
-                if (ans > mid)
-                {
+                if (ans > mid) {
                     ans = mid;
                 }
-            }else{
+            } else {
                 left = mid + 1;
             }
 
         }
         System.out.println(ans);
     }
+
     private static int canIgo(int mid) {
         //각 구간에서 <= mid가 되는지를 검사합니다.
         int t1 = numbers.get(0);

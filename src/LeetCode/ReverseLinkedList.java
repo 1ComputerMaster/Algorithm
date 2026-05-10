@@ -2,13 +2,6 @@ package LeetCode;
 
 public class ReverseLinkedList {
 
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-    }
     public static void main(String[] args) {
         ReverseLinkedList r = new ReverseLinkedList();
         ListNode head = r.new ListNode(1, r.new ListNode(2, r.new ListNode(3, r.new ListNode(4))));
@@ -19,15 +12,33 @@ public class ReverseLinkedList {
             reversedHead = reversedHead.next;
         }
     }
+
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode cur = head;
-        while(cur != null){
+        while (cur != null) {
             ListNode next = cur.next;
             cur.next = prev;
             prev = cur;
             cur = next;
         }
         return prev;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }

@@ -6,19 +6,12 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class NetworkDelayTime {
-    static class Data implements Comparable<Data>{
-        int where;
-        int priority;
-        public Data(int where, int priority){
-            this.where = where;
-            this.priority = priority;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            return Integer.compare(this.priority, o.priority);
-        }
+    public static void main(String[] args) {
+        NetworkDelayTime ndt = new NetworkDelayTime();
+        int ans = ndt.networkDelayTime(new int[][]{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}, 4, 2);
+        System.out.println(ans);
     }
+
     public int networkDelayTime(int[][] times, int n, int k) {
         List[] graph = new List[n + 1];
 
@@ -27,19 +20,19 @@ public class NetworkDelayTime {
         }
 
         Queue<Data> pq = new PriorityQueue<>();
-        for(int[] t : times){
+        for (int[] t : times) {
             int from = t[0];
             int to = t[1];
             int weight = t[2];
             graph[from].add(new Data(to, weight));
         }
         int[] dist = new int[n + 1];
-        for(int i = 1; i <= n; i++){
+        for (int i = 1; i <= n; i++) {
             dist[i] = Integer.MAX_VALUE;
         }
         dist[k] = 0;
         pq.offer(new Data(k, 0));
-        while(!pq.isEmpty()){
+        while (!pq.isEmpty()) {
             Data cur = pq.poll();
             for (Object obj : graph[cur.where]) {
                 Data next = (Data) obj;
@@ -49,15 +42,15 @@ public class NetworkDelayTime {
                 // 따라서, 최소 거리를 가지는 값으로 판별해야 하며 하나씩 PQ에서 꺼낼 때 마다 한 노드 위치에서 다른 노드 위치로 가는 것을
                 // dist += weight 형식으로 처리하면 안된다.
                 // 즉, dist 배열은 각 노드까지의 최단 거리를 저장하고 있어야 한다.
-                if(dist[next.where] > dist[cur.where] + next.priority){
+                if (dist[next.where] > dist[cur.where] + next.priority) {
                     dist[next.where] = dist[cur.where] + next.priority;
                     pq.offer(new Data(next.where, dist[next.where]));
                 }
             }
         }
         int answer = 0;
-        for(int i = 1; i <= n; i++){
-            if(dist[i] == Integer.MAX_VALUE){
+        for (int i = 1; i <= n; i++) {
+            if (dist[i] == Integer.MAX_VALUE) {
                 return -1;
             }
             answer = Math.max(answer, dist[i]);
@@ -65,10 +58,19 @@ public class NetworkDelayTime {
         return answer;
     }
 
-    public static void main(String[] args) {
-        NetworkDelayTime ndt = new NetworkDelayTime();
-        int ans = ndt.networkDelayTime(new int[][]{{2,1,1},{2,3,1},{3,4,1}},4,2);
-        System.out.println(ans);
+    static class Data implements Comparable<Data> {
+        int where;
+        int priority;
+
+        public Data(int where, int priority) {
+            this.where = where;
+            this.priority = priority;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            return Integer.compare(this.priority, o.priority);
+        }
     }
 
 }

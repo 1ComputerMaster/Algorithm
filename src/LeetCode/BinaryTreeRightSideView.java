@@ -15,27 +15,13 @@ public class BinaryTreeRightSideView {
         List<Integer> rightView = btrsv.rightSideView(root);
         System.out.println(rightView); // Should print [1, 3, 5]
     }
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-        public TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         dfs(root, 0, ans);
         return ans;
     }
+
     private void dfs(TreeNode node, int depth, List<Integer> view) {
         if (node == null) return;
         // 깊이 == view.size()이면 첫 방문이므로 값 기록
@@ -44,7 +30,23 @@ public class BinaryTreeRightSideView {
         }
         // 우측 자식부터 탐색
         dfs(node.right, depth + 1, view);
-        dfs(node.left,  depth + 1, view);
+        dfs(node.left, depth + 1, view);
+    }
+
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
     }
 
     /* 비효율적인 방법 - 1

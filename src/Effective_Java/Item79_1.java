@@ -15,7 +15,7 @@
 
 //    public static void main(String[] args) {
 //     ObservableSet<Integer> set = new ObservableSet<>(new HashSet<>());
-    
+
 //     set.addObserver(new SetObserver<>(){
 //         public void added(ObservableSet<Integer> s, Integer e) {
 //             System.out.println(e);
@@ -24,7 +24,7 @@
 //         }
 
 //     });
-    
+
 
 //     }
 

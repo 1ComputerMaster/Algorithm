@@ -10,18 +10,19 @@ public class BOJ_21313 {
 
         boolean odd = false;
 
-        if(N % 2 == 1){
+        if (N % 2 == 1) {
             odd = true;
             N--;
         }
-        while (N > 0){
-            if(N % 2 == 0){
+        while (N > 0) {
+            if (N % 2 == 0) {
                 System.out.print("1 ");
-            }else{
+            } else {
                 System.out.print("2 ");
-            }N--;
+            }
+            N--;
         }
-        if(odd){
+        if (odd) {
             System.out.print("3 ");
         }
     }

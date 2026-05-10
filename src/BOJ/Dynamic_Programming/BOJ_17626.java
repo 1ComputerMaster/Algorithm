@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class BOJ_17626 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(in.readLine());
 
@@ -23,9 +23,9 @@ public class BOJ_17626 {
          */
         dp[0] = 0;
         dp[1] = 1;
-        for (int i = 2; i < 50001; i++){
+        for (int i = 2; i < 50001; i++) {
             int ans = 100000;
-            for(int j = 1; j*j <= i; j++){
+            for (int j = 1; j * j <= i; j++) {
                 ans = Math.min(dp[i - (j * j)], ans);
             }
             dp[i] = ans + 1;

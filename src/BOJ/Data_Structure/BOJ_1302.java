@@ -10,14 +10,14 @@ public class BOJ_1302 {
 
         int N = Integer.parseInt(in.readLine());
         Map<String, Integer> nameCountMap = new HashMap<>();
-        for (int i = 0; i < N ; i++){
+        for (int i = 0; i < N; i++) {
             String name = in.readLine();
             nameCountMap.put(name, nameCountMap.getOrDefault(name, 0) + 1);
         }
         int max = Collections.max(nameCountMap.values());
         List<String> names = new ArrayList<>();
-        for (String key : nameCountMap.keySet()){
-            if(nameCountMap.get(key) == max){
+        for (String key : nameCountMap.keySet()) {
+            if (nameCountMap.get(key) == max) {
                 names.add(key);
             }
         }

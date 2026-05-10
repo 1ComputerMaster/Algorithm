@@ -1,6 +1,8 @@
 package BOJ.Divide;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class BOJ_5904 {
     public static void main(String[] args) throws IOException {
@@ -29,7 +31,7 @@ public class BOJ_5904 {
         } else if (n <= len - prevLen) {
             return n == prevLen + 1 ? "m" : "o";
         } else {
-            return findCharacter((int)(n - (prevLen + k + 3)));
+            return findCharacter((int) (n - (prevLen + k + 3)));
         }
     }
 }

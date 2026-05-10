@@ -4,17 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CopyListWithRandomPointer {
-    class Node {
-        int val;
-        Node next;
-        Node random;
-
-        public Node(int val) {
-            this.val = val;
-            this.next = null;
-            this.random = null;
-        }
-    }
+    Map<Node, Node> visitedMap;
 
     public static void main(String[] args) {
         CopyListWithRandomPointer solution = new CopyListWithRandomPointer();
@@ -32,16 +22,17 @@ public class CopyListWithRandomPointer {
             cur = cur.next;
         }
     }
-    Map<Node, Node> visitedMap;
+
     public Node copyRandomList(Node head) {
         visitedMap = new HashMap();
         return dfs(head);
     }
-    private Node dfs(Node head){
-        if(head == null){
+
+    private Node dfs(Node head) {
+        if (head == null) {
             return null;
         }
-        if(visitedMap.containsKey(head)){
+        if (visitedMap.containsKey(head)) {
             return visitedMap.get(head);
         }
         Node newNode = new Node(head.val);
@@ -52,5 +43,17 @@ public class CopyListWithRandomPointer {
         newNode.random = dfs(head.random);
 
         return newNode;
+    }
+
+    class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
     }
 }

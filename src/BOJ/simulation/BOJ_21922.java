@@ -1,6 +1,8 @@
 package BOJ.simulation;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class BOJ_21922 {
@@ -9,15 +11,6 @@ public class BOJ_21922 {
     static int[] dx = {0, 1, 0, -1};
     static int[] dy = {1, 0, -1, 0};
     static boolean[][][] visited; // visited[x][y][dir]
-
-    static class AirDirection {
-        int x, y, dir; // dir: 바람의 진행 방향
-        public AirDirection(int x, int y, int dir) {
-            this.x = x;
-            this.y = y;
-            this.dir = dir;
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         // 입력 처리
@@ -30,11 +23,11 @@ public class BOJ_21922 {
         List<Integer> acX = new ArrayList<>();
         List<Integer> acY = new ArrayList<>();
 
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(in.readLine(), " ");
-            for (int j = 0; j < M; j++){
+            for (int j = 0; j < M; j++) {
                 map[i][j] = Integer.parseInt(st.nextToken());
-                if(map[i][j] == 9) { // 에어컨이면
+                if (map[i][j] == 9) { // 에어컨이면
                     acX.add(i);
                     acY.add(j);
                 }
@@ -50,10 +43,10 @@ public class BOJ_21922 {
 
     private static int countingVisitedMap(int N, int M) {
         int ans = 0;
-        for (int i = 0; i < N; i++){
-            for (int j = 0; j < M; j++){
-                for (int d = 0; d < 4; d++){
-                    if (visited[i][j][d]){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                for (int d = 0; d < 4; d++) {
+                    if (visited[i][j][d]) {
                         ans++;
                         break;
                     }
@@ -66,9 +59,9 @@ public class BOJ_21922 {
     private static void BFS(List<Integer> acX, List<Integer> acY, int[][] map, int N, int M) {
         // 다중 출발점: 모든 에어컨에서 4방향으로 시작
         Queue<AirDirection> q = new LinkedList<>();
-        for (int k = 0; k < acX.size(); k++){
+        for (int k = 0; k < acX.size(); k++) {
             int x = acX.get(k), y = acY.get(k);
-            for (int d = 0; d < 4; d++){
+            for (int d = 0; d < 4; d++) {
                 if (!visited[x][y][d]) {
                     visited[x][y][d] = true;
                     q.add(new AirDirection(x, y, d));
@@ -77,14 +70,14 @@ public class BOJ_21922 {
         }
 
         // BFS (실제로는 각 상태마다 고유의 후행 경로가 1개이므로 DFS와 동일하게 동작)
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             AirDirection cur = q.poll();
             // 현재 칸 (cur.x, cur.y)에서 바람의 진행 방향 cur.dir로 도달한 상태.
             // 이 칸에 있는 물체(또는 빈 칸, 에어컨)에 따라 바람의 진행 방향이 바뀜.
             int nd = changeDir(map[cur.x][cur.y], cur.dir);
             int nx = cur.x + dx[nd], ny = cur.y + dy[nd];
             if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
-            if (!visited[nx][ny][nd]){
+            if (!visited[nx][ny][nd]) {
                 visited[nx][ny][nd] = true;
                 q.add(new AirDirection(nx, ny, nd));
             }
@@ -123,5 +116,15 @@ public class BOJ_21922 {
         }
         // object가 0(빈 칸)이나 9(에어컨)인 경우 변화 없음.
         return dir;
+    }
+
+    static class AirDirection {
+        int x, y, dir; // dir: 바람의 진행 방향
+
+        public AirDirection(int x, int y, int dir) {
+            this.x = x;
+            this.y = y;
+            this.dir = dir;
+        }
     }
 }

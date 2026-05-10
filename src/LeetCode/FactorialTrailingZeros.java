@@ -6,9 +6,10 @@ public class FactorialTrailingZeros {
         int n = 5;
         System.out.println(f.trailingZeroes(n));
     }
+
     public int trailingZeroes(int n) {
         int ans = 0;
-        while(n >= 5){
+        while (n >= 5) {
             n /= 5;
             ans += n;
         }

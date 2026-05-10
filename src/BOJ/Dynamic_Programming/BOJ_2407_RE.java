@@ -11,20 +11,19 @@ public class BOJ_2407_RE {
 
         BigInteger[][] bigIntegers = new BigInteger[101][101];
 
-        for (int i = 0; i < 101; i++){
-            for (int j = 0; j < 101; j++){
+        for (int i = 0; i < 101; i++) {
+            for (int j = 0; j < 101; j++) {
                 bigIntegers[i][j] = new BigInteger("0");
             }
         }
 
-        for (int i = 0; i < 101; i++){
+        for (int i = 0; i < 101; i++) {
             bigIntegers[i][i] = new BigInteger("1");
             bigIntegers[i][1] = new BigInteger(String.valueOf(i));
         }
-        for (int i = 3; i < 101; i++){
-            for (int j = 1; j < i; j++){
-                if(bigIntegers[i][j].equals(new BigInteger("0")))
-                {
+        for (int i = 3; i < 101; i++) {
+            for (int j = 1; j < i; j++) {
+                if (bigIntegers[i][j].equals(new BigInteger("0"))) {
                     bigIntegers[i][j] = bigIntegers[i - 1][j].add(bigIntegers[i - 1][j - 1]);
                 }
             }

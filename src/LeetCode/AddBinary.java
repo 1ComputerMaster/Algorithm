@@ -4,6 +4,7 @@ public class AddBinary {
     public static void main(String[] args) {
         System.out.println(addBinary("11", "1")); // Example usage
     }
+
     public static String addBinary(String a, String b) {
         StringBuilder sb = new StringBuilder();
         int carry = 0;

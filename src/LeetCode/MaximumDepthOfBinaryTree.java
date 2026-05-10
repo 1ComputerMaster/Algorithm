@@ -4,20 +4,6 @@ import java.util.Objects;
 
 
 public class MaximumDepthOfBinaryTree {
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-        public TreeNode right;
-
-    }
-
     public static void main(String[] args) {
         // 예시 트리 생성
         TreeNode root = new TreeNode(1,
@@ -32,10 +18,23 @@ public class MaximumDepthOfBinaryTree {
 
     // 풀이 3 : DFS
     public static int maxDepth(TreeNode root) {
-        if(!Objects.nonNull(root)){
+        if (!Objects.nonNull(root)) {
             return 0;
         }
-        return 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
     }
 
     /*

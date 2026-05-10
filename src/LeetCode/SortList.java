@@ -2,23 +2,6 @@ package LeetCode;
 
 public class SortList {
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public static void main(String[] args) {
         ListNode head = new SortList().new ListNode(4);
         head.next = new SortList().new ListNode(2);
@@ -46,18 +29,35 @@ public class SortList {
     }
 
     private ListNode insertInSortedOrder(ListNode node, ListNode sortedList) {
-        if(sortedList == null || node.val <= sortedList.val){
+        if (sortedList == null || node.val <= sortedList.val) {
             return node;
         }
         ListNode currentNode = sortedList;
 
-        while (currentNode.next != null && currentNode.next.val < node.val){
+        while (currentNode.next != null && currentNode.next.val < node.val) {
             currentNode = currentNode.next;
         }
         node.next = currentNode.next;
         currentNode.next = node;
 
         return sortedList;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 
 }

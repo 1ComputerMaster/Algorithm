@@ -13,18 +13,6 @@ public class BOJ_20165 {
     static int N;
     static int M;
 
-    static class Point {
-        int x;
-        int y;
-        int power;
-
-        public Point(int x, int y, int power) {
-            this.x = x;
-            this.y = y;
-            this.power = power;
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -78,7 +66,6 @@ public class BOJ_20165 {
         };
     }
 
-
     private static int attack(int startX, int startY, int distance) {
         Queue<Point> weightQueue = new LinkedList<>();
         int fallingCount = 0;
@@ -102,6 +89,18 @@ public class BOJ_20165 {
 
     private static boolean isValid(int nx, int ny) {
         return (nx >= 0 && nx < N && ny < M && ny >= 0);
+    }
+
+    static class Point {
+        int x;
+        int y;
+        int power;
+
+        public Point(int x, int y, int power) {
+            this.x = x;
+            this.y = y;
+            this.power = power;
+        }
     }
 }
 

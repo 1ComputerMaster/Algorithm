@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MinStack {
+    private List<int[]> list;
+
+    public MinStack() {
+        list = new ArrayList<>();
+    }
+
     public static void main(String[] args) {
         MinStack minStack = new MinStack();
         minStack.push(-2);
@@ -13,11 +19,6 @@ public class MinStack {
         minStack.pop();
         System.out.println(minStack.top());    // Returns 0.
         System.out.println(minStack.getMin()); // Returns -2.
-    }
-    private List<int[]> list;
-
-    public MinStack() {
-        list = new ArrayList<>();
     }
 
     public void push(int val) {

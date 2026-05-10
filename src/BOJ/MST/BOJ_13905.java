@@ -5,23 +5,8 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class BOJ_13905 {
-    /**
-     * 문제 
-     * - 혜빈이 한태 숭이는 최대로 가져 갈 수 있는 빼빼로 갯수를 구해야 함
-     * 
-     * 원인
-     * - 각 거리마다 무게 제한이 있고 무게 제한 이상으로 빼빼로를 들고 갈 수는 없음
-     *  -> 따라서, BFS로 모두 탐색을 하자. 그런데 Binary Search를 곁들인
-     */
-    static class Data {
-        int next;
-        long weight;
-        public Data(int next, long weight){
-            this.next = next;
-            this.weight = weight;
-        }
-    }
     static List<Data>[] listOfData;
+
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
@@ -46,9 +31,9 @@ public class BOJ_13905 {
             long C = Long.parseLong(tk.nextToken());
             listOfData[A].add(new Data(B, C));
             listOfData[B].add(new Data(A, C));
-            right = Math.max(right,C);
+            right = Math.max(right, C);
         }
-        binarySearch(s,e,V + 1,right);
+        binarySearch(s, e, V + 1, right);
 
     }
 
@@ -56,12 +41,12 @@ public class BOJ_13905 {
         long left = 0;
         long right = firstRight;
         long ans = 0;
-        while (left <= right){
+        while (left <= right) {
             long mid = (left + right) / 2;
-            if(canIGo(start,end,mid,n)){
+            if (canIGo(start, end, mid, n)) {
                 left = mid + 1;
                 ans = mid;
-            } else{
+            } else {
                 right = mid - 1;
             }
         }
@@ -73,16 +58,33 @@ public class BOJ_13905 {
         boolean[] visited = new boolean[n];
         visited[start] = true;
         q.add(start);
-        while (!q.isEmpty())
-        {
+        while (!q.isEmpty()) {
             int x = q.poll();
-            for (Data next : listOfData[x]){
-                if(next.weight >= mid && !visited[next.next]){
+            for (Data next : listOfData[x]) {
+                if (next.weight >= mid && !visited[next.next]) {
                     q.add(next.next);
                     visited[next.next] = true;
                 }
             }
         }
         return visited[end];
+    }
+
+    /**
+     * 문제
+     * - 혜빈이 한태 숭이는 최대로 가져 갈 수 있는 빼빼로 갯수를 구해야 함
+     * <p>
+     * 원인
+     * - 각 거리마다 무게 제한이 있고 무게 제한 이상으로 빼빼로를 들고 갈 수는 없음
+     * -> 따라서, BFS로 모두 탐색을 하자. 그런데 Binary Search를 곁들인
+     */
+    static class Data {
+        int next;
+        long weight;
+
+        public Data(int next, long weight) {
+            this.next = next;
+            this.weight = weight;
+        }
     }
 }

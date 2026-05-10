@@ -35,7 +35,6 @@ public class EvaluateDivision {
         }
 
 
-
         for (int k = 0; k < equations.size(); k++) {
             List<String> eq = equations.get(k);
             int u = idMap.get(eq.get(0));
@@ -50,8 +49,7 @@ public class EvaluateDivision {
                 if (map[i][k] == 0) continue; // 연결 없으면 건너뜀
                 for (int j = 0; j < n; j++) {
                     if (map[k][j] == 0) continue;
-                    if(map[i][j] == 0)
-                    {
+                    if (map[i][j] == 0) {
                         map[i][j] = (map[i][k] * map[k][j]);
                     }
                 }

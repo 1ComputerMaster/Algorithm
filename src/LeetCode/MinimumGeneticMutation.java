@@ -5,8 +5,9 @@ import java.util.*;
 public class MinimumGeneticMutation {
     public static void main(String[] args) {
         System.out.println(minMutation("AACCGGTT", "AAACGGTA"
-                , new String[]{"AACCGGTA","AACCGCTA","AAACGGTA"}));
+                , new String[]{"AACCGGTA", "AACCGCTA", "AAACGGTA"}));
     }
+
     public static int minMutation(String startGene, String endGene, String[] bank) {
         Queue<String> q = new LinkedList<>();
         Set<String> vis = new HashSet<>();
@@ -15,11 +16,11 @@ public class MinimumGeneticMutation {
 
         q.add(startGene);
 
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             int initQueueSize = q.size();
             for (int i = 0; i < initQueueSize; i++) {
                 String s = q.poll();
-                if(s.equals(endGene)){
+                if (s.equals(endGene)) {
                     return steps;
                 }
                 char[] ca = s.toCharArray();

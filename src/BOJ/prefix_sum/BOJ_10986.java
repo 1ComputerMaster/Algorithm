@@ -1,6 +1,6 @@
 package BOJ.prefix_sum;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class BOJ_10986 {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class BOJ_10986 {
         long ans = 0;
         for (int i = 1; i <= N; i++) {
             sum[i] = (sum[i - 1] + sc.nextLong()) % M;
-            if(sum[i] == 0){
+            if (sum[i] == 0) {
                 ans++;
             }
             cnt[(int) (sum[i])]++;

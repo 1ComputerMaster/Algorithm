@@ -33,17 +33,16 @@ public class BOJ_2824 {
             for (int j = 0; j < M; j++) {
                 int gcd = GCD(AList.get(i), BList.get(j));
                 num *= gcd;
-                if(num >= 1000_000_000){
+                if (num >= 1000_000_000) {
                     check = true;
                 }
                 num %= 1000_000_000;
 
             }
         }
-        if(check)
-        {
+        if (check) {
             System.out.printf("%09d\n", num);
-        }else{
+        } else {
             System.out.println(num);
         }
 

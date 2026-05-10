@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class BOJ_20154 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
 
@@ -17,13 +17,13 @@ public class BOJ_20154 {
             map.put(alphabets[i], numbers[i]);
         }
         int ans = 0;
-        for (int i = 0; i < str.length(); i++){
+        for (int i = 0; i < str.length(); i++) {
             ans += map.get(str.charAt(i));
         }
 
-        if(ans % 2 == 0){
+        if (ans % 2 == 0) {
             System.out.println("You're the winner?");
-        }else {
+        } else {
             System.out.println("I'm a winner!");
         }
     }

@@ -39,12 +39,12 @@ public class BOJ_20436_RE {
 
         int time = 0;
 
-        for (char ch : input.toCharArray()){
+        for (char ch : input.toCharArray()) {
             int[] targetPos = keyboard.get(ch);
-            if(isLeftHand(ch)){
+            if (isLeftHand(ch)) {
                 time += calculateDistance(leftPos, targetPos);
                 leftPos = targetPos;
-            }else{
+            } else {
                 time += calculateDistance(rightPos, targetPos);
                 rightPos = targetPos;
             }
@@ -61,7 +61,7 @@ public class BOJ_20436_RE {
     }
 
     // 두 위치 간의 거리 계산
-    private static int calculateDistance(int[] src, int[] des){
+    private static int calculateDistance(int[] src, int[] des) {
         return Math.abs(src[0] - des[0]) + Math.abs(src[1] - des[1]);
     }
 }

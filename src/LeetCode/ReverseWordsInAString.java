@@ -4,13 +4,14 @@ public class ReverseWordsInAString {
     public static void main(String[] args) {
         System.out.println(reverseWords("  hello world  "));
     }
+
     public static String reverseWords(String s) {
         String[] str = s.split(" ");
         StringBuilder ans = new StringBuilder();
-        for(int i = str.length - 1; i >= 0 ; i--){
-            if(str[i].isEmpty()){
+        for (int i = str.length - 1; i >= 0; i--) {
+            if (str[i].isEmpty()) {
                 continue;
-            }else{
+            } else {
                 ans.append(str[i] + " ");
             }
         }

@@ -9,6 +9,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         String s = "pepew";
         System.out.println(lswrc.lengthOfLongestSubstring(s)); // Should return 3
     }
+
     public int lengthOfLongestSubstring(String s) {
         int maxLength = 0;
         int left = 0;

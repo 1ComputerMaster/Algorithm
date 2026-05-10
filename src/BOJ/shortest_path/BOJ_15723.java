@@ -9,7 +9,7 @@ public class BOJ_15723 {
         int[][] map = new int[26][26];
 
 
-        for (int[] m : map){
+        for (int[] m : map) {
             Arrays.fill(m, 1000_000_000);
         }
         int N = sc.nextInt(); // 전제의 개수

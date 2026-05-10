@@ -13,15 +13,15 @@ public class BOJ_1890 {
         long[][] dp = new long[N][N];
         int moveMentsCnt = 0;
         dp[0][0] = 1;
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             tk = new StringTokenizer(in.readLine(), " ");
-            for (int j = 0; j < N; j++){
+            for (int j = 0; j < N; j++) {
                 moveMentsCnt = Integer.parseInt(tk.nextToken());
-                if(moveMentsCnt > 0){
-                    if(i + moveMentsCnt < N) {
+                if (moveMentsCnt > 0) {
+                    if (i + moveMentsCnt < N) {
                         dp[i + moveMentsCnt][j] += dp[i][j];
                     }
-                    if(j + moveMentsCnt < N) {
+                    if (j + moveMentsCnt < N) {
                         dp[i][j + moveMentsCnt] += dp[i][j];
                     }
                 }

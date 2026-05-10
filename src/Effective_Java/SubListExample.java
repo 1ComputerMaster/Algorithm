@@ -13,7 +13,7 @@ public class SubListExample {
         }
         return subLists;
     }
-    
+
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         list.add(1);

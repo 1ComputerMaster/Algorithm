@@ -14,36 +14,37 @@ public class BOJ_18352_re {
         int[] dist = new int[N + 1];
         Arrays.fill(dist, 1000_000_000);
 
-        for (int i = 0; i <= N; i++){
+        for (int i = 0; i <= N; i++) {
             graph[i] = new ArrayList<>();
         }
 
-        for (int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             int from = sc.nextInt();
             int to = sc.nextInt();
             graph[from].add(to);
         }
         dijkstra(X, dist, graph);
         boolean check = false;
-        for (int i = 0; i < dist.length; i++){
-            if(dist[i] == K){
+        for (int i = 0; i < dist.length; i++) {
+            if (dist[i] == K) {
                 System.out.println(i);
                 check = true;
             }
         }
-        if(!check){
+        if (!check) {
             System.out.println(-1);
         }
     }
-    private static void dijkstra(int x, int[] dist, List<Integer>[] graph){
+
+    private static void dijkstra(int x, int[] dist, List<Integer>[] graph) {
         Queue<Integer> pq = new PriorityQueue<>();
         pq.add(x);
         dist[x] = 0;
-        while (!pq.isEmpty()){
+        while (!pq.isEmpty()) {
             int cur = pq.poll();
-            for (int i = 0; i < graph[cur].size(); i++){
+            for (int i = 0; i < graph[cur].size(); i++) {
                 int next = graph[cur].get(i);
-                if(dist[next] > dist[cur] + 1){
+                if (dist[next] > dist[cur] + 1) {
                     pq.offer(next);
                     dist[next] = dist[cur] + 1;
                 }

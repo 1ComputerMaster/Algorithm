@@ -13,12 +13,12 @@ public class BOJ_20444 {
         long k = sc.nextLong();
         long width = 0;
         long height = n;
-        while (width <= height){
+        while (width <= height) {
             long mid = (width + height) / 2;
-            if ((mid + 1) * (n - mid + 1) == k){
+            if ((mid + 1) * (n - mid + 1) == k) {
                 System.out.println("YES");
                 return;
-            }else if((mid + 1) * (n - mid + 1) < k){
+            } else if ((mid + 1) * (n - mid + 1) < k) {
                 width = mid + 1;
             } else {
                 height = mid - 1;

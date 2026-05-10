@@ -11,10 +11,10 @@ public class BOJ_1269 {
         int B = sc.nextInt();
         Map<Integer, Integer> aMap = new HashMap<>();
         Map<Integer, Integer> bMap = new HashMap<>();
-        for (int i = 0; i < A; i++){
+        for (int i = 0; i < A; i++) {
             aMap.put(sc.nextInt(), 1);
         }
-        for (int i = 0; i < B; i++){
+        for (int i = 0; i < B; i++) {
             bMap.put(sc.nextInt(), 1);
         }
 
@@ -23,8 +23,8 @@ public class BOJ_1269 {
 
     private static int mapChecker(Map<Integer, Integer> aMap, Map<Integer, Integer> bMap) {
         int cnt = 0;
-        for (int a : aMap.keySet()){
-            if(!bMap.containsKey(a)){
+        for (int a : aMap.keySet()) {
+            if (!bMap.containsKey(a)) {
                 cnt++;
             }
         }

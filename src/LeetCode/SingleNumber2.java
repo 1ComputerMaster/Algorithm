@@ -6,6 +6,7 @@ public class SingleNumber2 {
         int[] nums = {1525, 1332, 1525, 1525};
         System.out.println(s.singleNumber(nums)); // Should return 3
     }
+
     public int singleNumber(int[] nums) {
         int ones = 0;
         int twos = 0;

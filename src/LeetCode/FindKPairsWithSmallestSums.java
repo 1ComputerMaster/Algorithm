@@ -14,6 +14,7 @@ public class FindKPairsWithSmallestSums {
         System.out.println(result); // Expected output: [[1, 2], [1, 4], [1, 6]]
 
     }
+
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums1.length == 0 || nums2.length == 0 || k <= 0) {

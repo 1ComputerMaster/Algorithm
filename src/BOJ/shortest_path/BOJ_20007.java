@@ -6,21 +6,6 @@ import java.util.*;
  * 거리를 우선 먼저 다 구한 후 일반적인 구현 문제 처럼 푼다는게 핵심 포인트입니다.
  */
 public class BOJ_20007 {
-    static class Data implements Comparable<Data> {
-        int node;
-        long distance;
-
-        public Data(int node, long distance) {
-            this.node = node;
-            this.distance = distance;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            return Long.compare(this.distance, o.distance);
-        }
-    }
-
     static List<Data>[] graph;
 
     public static void main(String[] args) {
@@ -54,8 +39,8 @@ public class BOJ_20007 {
     }
 
     private static boolean canVisitAll(long[] dist, long x) {
-        for (int i = 0; i < dist.length; i++){
-            if(dist[i] * 2 > x || dist[i] == Long.MAX_VALUE){
+        for (int i = 0; i < dist.length; i++) {
+            if (dist[i] * 2 > x || dist[i] == Long.MAX_VALUE) {
                 return false;
             }
         }
@@ -67,10 +52,10 @@ public class BOJ_20007 {
         int day = 0;
         long dayDistance = 0;
         int i = 0;
-        for (long d : dist){
-            if(dayDistance + d * 2 > x){
+        for (long d : dist) {
+            if (dayDistance + d * 2 > x) {
                 day++;
-               dayDistance = 0;
+                dayDistance = 0;
             }
             dayDistance += d * 2;
         }
@@ -86,20 +71,35 @@ public class BOJ_20007 {
         Arrays.fill(dist, Long.MAX_VALUE);
         dist[start] = 0;
 
-        while (!pq.isEmpty()){
+        while (!pq.isEmpty()) {
             Data cur = pq.poll();
-            if(visited[cur.node]){
+            if (visited[cur.node]) {
                 continue;
             }
             visited[cur.node] = true;
 
-            for (Data next : graph[cur.node]){
-                if(!visited[next.node] && dist[next.node] > cur.distance + next.distance) {
+            for (Data next : graph[cur.node]) {
+                if (!visited[next.node] && dist[next.node] > cur.distance + next.distance) {
                     pq.add(new Data(next.node, cur.distance + next.distance));
                     dist[next.node] = cur.distance + next.distance;
                 }
             }
         }
         return dist;
+    }
+
+    static class Data implements Comparable<Data> {
+        int node;
+        long distance;
+
+        public Data(int node, long distance) {
+            this.node = node;
+            this.distance = distance;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            return Long.compare(this.distance, o.distance);
+        }
     }
 }

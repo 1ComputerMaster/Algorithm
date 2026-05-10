@@ -19,33 +19,32 @@ public class BOJ_11723_집합 {
         int S = 0;
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             tk = new StringTokenizer(in.readLine(), " ");
             token = tk.nextToken();
 
-            if(token.equals("all")){
+            if (token.equals("all")) {
                 S = (1 << 21) - 1;
-            }
-            else if(token.equals("empty")){
+            } else if (token.equals("empty")) {
                 S = 0;
-            }else{
+            } else {
                 int num = Integer.parseInt(tk.nextToken());
-                if(token.equals("add")){
+                if (token.equals("add")) {
                     S |= (1 << num);
-                }else if(token.equals("remove")){
+                } else if (token.equals("remove")) {
                     int temp = 1 << num;
                     temp = ~temp;
-                    S &= temp; 
-                }else if(token.equals("check")){
+                    S &= temp;
+                } else if (token.equals("check")) {
                     int temp = 1 << num;
-                    if((S & temp) != 0){
+                    if ((S & temp) != 0) {
                         sb.append(1).append("\n");
-                    }else{
+                    } else {
                         sb.append(0).append("\n");
                     }
-                }else if(token.equals("toggle")){
+                } else if (token.equals("toggle")) {
                     int temp = 1 << num;
-                    S^=temp;
+                    S ^= temp;
                 }
             }
         }

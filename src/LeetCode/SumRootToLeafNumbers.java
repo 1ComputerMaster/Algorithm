@@ -1,22 +1,7 @@
 package LeetCode;
 
 public class SumRootToLeafNumbers {
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-        public TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
+    int ans;
 
     public static void main(String[] args) {
         SumRootToLeafNumbers s = new SumRootToLeafNumbers();
@@ -25,8 +10,6 @@ public class SumRootToLeafNumbers {
         root.right = new TreeNode(3);
         System.out.println(s.sumNumbers(root));
     }
-
-    int ans;
 
     public int sumNumbers(TreeNode root) {
         ans = 0;
@@ -44,5 +27,21 @@ public class SumRootToLeafNumbers {
         build(path, node.left);
         build(path, node.right);
 
+    }
+
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
     }
 }

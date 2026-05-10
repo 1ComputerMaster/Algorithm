@@ -28,9 +28,9 @@ public class BOJ_3343 {
 
         for (int i = 0; i < C; i++) {
             int j = 0;
-            if(Math.ceil((double) (N - A * i) / C) >= 0){
-                j = (int) Math.ceil((double)(N - A * i) / C);
-            } else{
+            if (Math.ceil((double) (N - A * i) / C) >= 0) {
+                j = (int) Math.ceil((double) (N - A * i) / C);
+            } else {
                 break;
             }
             money = Math.min(money, i * B + j * D);

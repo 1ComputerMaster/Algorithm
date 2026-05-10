@@ -9,21 +9,6 @@ import java.util.StringTokenizer;
 
 
 public class BOJ_16398 {
-    static class Data implements Comparable<Data> {
-        int end;
-        int weight;
-
-        public Data(int end, int weight) {
-            this.end = end;
-            this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Data o) {
-            return this.weight - o.weight;
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -69,5 +54,20 @@ public class BOJ_16398 {
         }
 
         return max;
+    }
+
+    static class Data implements Comparable<Data> {
+        int end;
+        int weight;
+
+        public Data(int end, int weight) {
+            this.end = end;
+            this.weight = weight;
+        }
+
+        @Override
+        public int compareTo(Data o) {
+            return this.weight - o.weight;
+        }
     }
 }

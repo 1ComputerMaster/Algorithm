@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 public class RotateArray {
     public static void main(String[] args) {
-        int [] nums = new int[] {1,2};
-        rotate(nums,3);
+        int[] nums = new int[]{1, 2};
+        rotate(nums, 3);
         System.out.println(Arrays.toString(nums));
     }
+
     public static void rotate(int[] nums, int k) {
         int n = nums.length;
         k = k % n;
@@ -17,7 +18,7 @@ public class RotateArray {
     }
 
     private static void arrayReverse(int[] nums, int s, int e) {
-        while(e > s){
+        while (e > s) {
             int temp = nums[s];
             nums[s] = nums[e];
             nums[e] = temp;

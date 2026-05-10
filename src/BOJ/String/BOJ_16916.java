@@ -4,7 +4,7 @@ import java.io.*;
 
 public class BOJ_16916 {
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String S = in.readLine();

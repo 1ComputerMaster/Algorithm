@@ -7,12 +7,13 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class BOJ_15652 {
-    static int N,M;
+    static int N, M;
     static StringBuilder sb;
     static int[] arr, visited;
-    public static void main(String[] args) throws Exception{
+
+    public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer tk = new StringTokenizer(in.readLine()," ");
+        StringTokenizer tk = new StringTokenizer(in.readLine(), " ");
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         sb = new StringBuilder();
 
@@ -27,14 +28,14 @@ public class BOJ_15652 {
     }
 
     private static void backtracking(int cnt, int start) {
-        if(cnt == M){
+        if (cnt == M) {
             for (int i = 0; i < M; i++) {
                 sb.append(arr[i]).append(" ");
             }
             sb.append("\n");
             return;
         }
-        for (int i = start; i < N; i++){
+        for (int i = start; i < N; i++) {
             arr[cnt] = i + 1;
             backtracking(cnt + 1, i);
         }

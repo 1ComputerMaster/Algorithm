@@ -14,7 +14,7 @@ public class BOJ_12764_RE {
 
 
         StringTokenizer tk;
-        for (int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             tk = new StringTokenizer(in.readLine());
             times[i][0] = Integer.parseInt(tk.nextToken());
             times[i][1] = Integer.parseInt(tk.nextToken());
@@ -28,25 +28,25 @@ public class BOJ_12764_RE {
         PriorityQueue<int[]> occupiedSeat = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
         PriorityQueue<Integer> freedSeat = new PriorityQueue<>();
         List<Integer> usingCount = new ArrayList<>();
-        for (int [] time : times){
+        for (int[] time : times) {
             int start = time[0];
             int end = time[1];
 
-            while (!occupiedSeat.isEmpty() && occupiedSeat.peek()[0] < start){
+            while (!occupiedSeat.isEmpty() && occupiedSeat.peek()[0] < start) {
                 int[] occupied = occupiedSeat.poll();
                 freedSeat.add(occupied[1]);
             }
 
             int seat;
 
-            if(freedSeat.isEmpty()){
+            if (freedSeat.isEmpty()) {
                 seat = usingCount.size();
-               usingCount.add(0);
+                usingCount.add(0);
             } else {
-              seat = freedSeat.poll();
+                seat = freedSeat.poll();
             }
             usingCount.set(seat, usingCount.get(seat) + 1);
-            occupiedSeat.add(new int[] {end, seat});
+            occupiedSeat.add(new int[]{end, seat});
         }
         System.out.println(usingCount.size());
         for (Integer count : usingCount) {

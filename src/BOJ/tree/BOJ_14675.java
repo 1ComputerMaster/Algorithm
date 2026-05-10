@@ -31,12 +31,12 @@ public class BOJ_14675 {
             tk = new StringTokenizer(in.readLine(), " ");
             int t = Integer.parseInt(tk.nextToken());
             int k = Integer.parseInt(tk.nextToken());
-            if(t == 2){
+            if (t == 2) {
                 System.out.println("yes");
-            }else{
-                if(list[k].size() == 1 || list[k].size() == 0){
+            } else {
+                if (list[k].size() == 1 || list[k].size() == 0) {
                     System.out.println("no");
-                }else{
+                } else {
                     System.out.println("yes");
                 }
             }

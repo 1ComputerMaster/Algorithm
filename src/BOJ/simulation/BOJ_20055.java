@@ -3,9 +3,10 @@ package BOJ.simulation;
 import java.util.Scanner;
 
 public class BOJ_20055 {
-    static int N,K; // 컨베이어 벨트 상단 칸의 개수
+    static int N, K; // 컨베이어 벨트 상단 칸의 개수
     static int[] belt; // 전체 벨트 내구도 배열 (길이 2*N)
     static boolean[] robot; // 상단 벨트에 로봇 존재 여부 배열
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -16,12 +17,12 @@ public class BOJ_20055 {
 
         robot = new boolean[N];
 
-        for (int i = 0; i < N * 2; i++){
+        for (int i = 0; i < N * 2; i++) {
             belt[i] = sc.nextInt();
         }
 
         int cnt = 0;
-        while (!beltDurabilityCheck()){
+        while (!beltDurabilityCheck()) {
             cnt++;
             rotateBelt();
             robotMove();
@@ -29,36 +30,38 @@ public class BOJ_20055 {
         }
         System.out.println(cnt);
     }
-    static boolean beltDurabilityCheck(){
+
+    static boolean beltDurabilityCheck() {
         int cnt = 0;
-        for (int i = 0; i < N * 2; i++){
-            if(belt[i] == 0){
+        for (int i = 0; i < N * 2; i++) {
+            if (belt[i] == 0) {
                 cnt++;
             }
         }
         return cnt >= K;
     }
 
-    static void beltBreaker(){
-        if(belt[0] > 0 && !robot[0]){
+    static void beltBreaker() {
+        if (belt[0] > 0 && !robot[0]) {
             robot[0] = true;
             belt[0] -= 1;
         }
     }
 
-    static void robotMove(){
+    static void robotMove() {
         for (int i = N - 1; i >= 1; i--) {
-            if(belt[i] > 0 && robot[i - 1] && !robot[i]){
+            if (belt[i] > 0 && robot[i - 1] && !robot[i]) {
                 belt[i]--;
                 robot[i - 1] = false;
                 robot[i] = true;
             }
         }
-        if(robot[N - 1]){
+        if (robot[N - 1]) {
             robot[N - 1] = false;
         }
 
     }
+
     static void rotateBelt() {
         // 1. 벨트 배열 회전: 마지막 칸을 첫 칸으로 이동
         int last = belt[2 * N - 1];

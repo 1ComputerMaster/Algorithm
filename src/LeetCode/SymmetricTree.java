@@ -3,22 +3,6 @@ package LeetCode;
 
 public class SymmetricTree {
 
-    public static class TreeNode {
-        public int val;
-        public TreeNode left;
-
-        public TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-        public TreeNode right;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
     public static void main(String[] args) {
         SymmetricTree st = new SymmetricTree();
         TreeNode root = new TreeNode(1);
@@ -31,10 +15,12 @@ public class SymmetricTree {
 
         System.out.println(st.isSymmetric(root)); // Should return true
     }
+
     public boolean isSymmetric(TreeNode root) {
         return dfs(root.left, root.right);
     }
-    private boolean dfs(TreeNode left, TreeNode right){
+
+    private boolean dfs(TreeNode left, TreeNode right) {
         if (left == null && right == null) {
             return true;
         }
@@ -45,5 +31,21 @@ public class SymmetricTree {
 
         return left.val == right.val && dfs(left.left, right.right) && dfs(left.right, right.left);
 
+    }
+
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+
+        public TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
     }
 }
