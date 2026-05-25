@@ -9,6 +9,7 @@ public class PathWithMaximumProbability {
         PathWithMaximumProbability pathWithMaximumProbability = new PathWithMaximumProbability();
         System.out.println(pathWithMaximumProbability.maxProbability(3, new int[][]{{0, 1}, {1, 2}, {0, 2}}, new double[]{0.5, 0.5, 0.2}, 0, 2));
     }
+
     public double maxProbability(int n, int[][] edges, double[] succProb, int start_node, int end_node) {
         List<double[]>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
@@ -33,10 +34,10 @@ public class PathWithMaximumProbability {
             if (node == end_node) {
                 return weight;
             }
-            for (double[] neighbor : graph[node]){
+            for (double[] neighbor : graph[node]) {
                 int nextNode = (int) neighbor[0];
                 double nW = neighbor[1];
-                if(dist[node] * nW  > dist[nextNode]){
+                if (dist[node] * nW > dist[nextNode]) {
                     dist[nextNode] = dist[node] * nW;
                     pq.offer(new double[]{nextNode, dist[nextNode]});
                 }

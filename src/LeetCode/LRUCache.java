@@ -9,6 +9,7 @@ public class LRUCache {
     private Map<Integer, Node> cache;
     private Node oldest;
     private Node latest;
+
     public LRUCache(int capacity) {
         this.cap = capacity;
         this.cache = new HashMap<>();

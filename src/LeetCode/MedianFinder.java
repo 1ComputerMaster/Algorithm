@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 public class MedianFinder {
     PriorityQueue<Integer> maxHeap;
     PriorityQueue<Integer> minHeap;
+
     public MedianFinder() {
         minHeap = new PriorityQueue<Integer>();
         maxHeap = new PriorityQueue<Integer>((a, b) -> b - a);

@@ -1,6 +1,7 @@
 package LeetCode;
 
 import java.util.Arrays;
+
 public class kClosestPointsToOrigin {
     public int[][] kClosest(int[][] points, int k) {
         Arrays.sort(points, (a, b) ->
