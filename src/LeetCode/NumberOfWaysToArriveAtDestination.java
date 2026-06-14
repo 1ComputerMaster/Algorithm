@@ -10,7 +10,7 @@ public class NumberOfWaysToArriveAtDestination {
         System.out.println(obj.countPaths(n, roads));
     }
     public int countPaths(int n, int[][] roads) {
-        long mod = (long)1e9 + 7;
+        long mod = (long) 1e9 + 7;
 
         long[] dist = new long[n];
         long[] ways = new long[n];
@@ -34,23 +34,21 @@ public class NumberOfWaysToArriveAtDestination {
         dist[0] = 0;
         ways[0] = 1;
 
-        PriorityQueue<long[]> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a[1]));
-
+        PriorityQueue<long[]> pq = new PriorityQueue<>(
+                Comparator.comparingLong(a -> a[1])
+        );
         pq.offer(new long[]{0, 0});
 
         while (!pq.isEmpty()) {
             long[] curr = pq.poll();
-
             int node = (int) curr[0];
             long time = curr[1];
-
-            if (time > dist[node]) {
+            if(time > dist[node]){
                 continue;
             }
-
-            for (int[] neighbor : graph[node]) {
-                int nextNode = neighbor[0];
-                long nextTime = time + neighbor[1];
+            for (int[] next : graph[node]){
+                int nextNode = next[0];
+                long nextTime = next[1] + time;
 
                 if (nextTime < dist[nextNode]) {
                     dist[nextNode] = nextTime;
@@ -61,8 +59,6 @@ public class NumberOfWaysToArriveAtDestination {
                 }
             }
         }
-
         return (int) ways[n - 1];
     }
-
 }

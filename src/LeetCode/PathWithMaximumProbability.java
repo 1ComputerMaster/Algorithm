@@ -23,23 +23,28 @@ public class PathWithMaximumProbability {
             graph[u].add(new double[]{v, prob});
             graph[v].add(new double[]{u, prob});
         }
+
         PriorityQueue<double[]> pq = new PriorityQueue<>((a, b) -> Double.compare(b[1], a[1]));
         pq.offer(new double[]{start_node, 1.0});
-        double[] dist = new double[n];
+
+        double[] dist = new double[n + 1];
         dist[start_node] = 1.0;
-        while (!pq.isEmpty()) {
+        while(!pq.isEmpty()){
             double[] curr = pq.poll();
             int node = (int) curr[0];
-            double weight = curr[1];
-            if (node == end_node) {
-                return weight;
+            double prob = curr[1];
+
+            if(node == end_node){
+                return prob;
             }
-            for (double[] neighbor : graph[node]) {
-                int nextNode = (int) neighbor[0];
-                double nW = neighbor[1];
-                if (dist[node] * nW > dist[nextNode]) {
-                    dist[nextNode] = dist[node] * nW;
-                    pq.offer(new double[]{nextNode, dist[nextNode]});
+
+            for(double[] neighbor : graph[node]){
+                int neighborNode = (int) neighbor[0];
+                double neighborProb = neighbor[1];
+
+                if(dist[neighborNode] < neighborProb * dist[node]){
+                    dist[neighborNode] = neighborProb * dist[node];
+                    pq.offer(new double[]{neighborNode, neighborProb * dist[node]});
                 }
             }
         }
