@@ -10,24 +10,23 @@ public class TopKFrequenctElements {
     }
 
     public int[] topKFrequent(int[] nums, int k) {
-        Queue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue().compareTo(a.getValue()));
+        Queue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(Map.Entry.comparingByValue());
         Map<Integer, Integer> freqMap = new HashMap<>();
 
         for (int n : nums) {
             freqMap.put(n, freqMap.getOrDefault(n, 0) + 1);
         }
 
-        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
-            pq.add(entry);
+        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()){
+            pq.offer(entry);
+
+            if(pq.size() > k){
+                pq.poll();
+            }
         }
-        List<Integer> res = new ArrayList<>();
-        while (k-- > 0) {
-            Map.Entry<Integer, Integer> entry = pq.poll();
-            res.add(entry.getKey());
-        }
-        int[] ans = new int[res.size()];
-        for (int i = 0; i < res.size(); i++) {
-            ans[i] = res.get(i);
+        int[] ans = new int[k];
+        for (int i = 0; i < k; i++){
+            ans[i] = pq.poll().getKey();
         }
         return ans;
     }
