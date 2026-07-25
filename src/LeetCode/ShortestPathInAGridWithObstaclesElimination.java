@@ -1,5 +1,9 @@
 package LeetCode;
 
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * LeetCode 1293. Shortest Path in a Grid with Obstacles Elimination
  *
@@ -68,9 +72,54 @@ package LeetCode;
  * </p>
  */
 public class ShortestPathInAGridWithObstaclesElimination {
+    int[] dx = new int[]{-1, 0, 1, 0};
+    int[] dy = new int[]{0, -1, 0, 1};
     
     public int shortestPath(int[][] grid, int k) {
-        throw new UnsupportedOperationException("TODO: solve LeetCode 1293");
+        if (grid.length == 1 && grid[0].length == 1) {
+            return 0;
+        }
+        boolean[][][] visited = new boolean[grid.length][grid[0].length][k + 1];
+        return BFS(visited, grid, k);
+    }
+
+    private int BFS(boolean[][][] visited, int[][] grid, int k){
+        int min = Integer.MAX_VALUE;
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[] {0, 0, k, 0});
+        visited[0][0][k] = true;
+        int n = grid.length;
+        int m = grid[0].length;
+        while (!q.isEmpty()){
+            int[] now = q.poll();
+            int x = now[0];
+            int y = now[1];
+            int go = now[2];
+            int nowDist = now[3];
+            for (int d = 0; d < 4; d++){
+                int nx = x + dx[d];
+                int ny = y + dy[d];
+                if(nx == n - 1 && ny == m - 1){
+                    min = Math.min(nowDist + 1, min);
+                }
+                if (nx >= n || ny >= m || nx < 0 || ny < 0){
+                    continue;
+                }
+                if (grid[nx][ny] == 1){
+                    if (go - 1 >= 0 && !visited[nx][ny][go - 1]){
+                        visited[nx][ny][go - 1] = true;
+                        q.offer(new int[]{nx, ny, go - 1, nowDist + 1});
+                    }
+                }else{
+                    if(visited[nx][ny][go]){
+                        continue;
+                    }
+                    visited[nx][ny][go] = true;
+                    q.offer(new int[]{nx, ny, go, nowDist + 1});
+                }
+            }
+        }
+        return min == Integer.MAX_VALUE ? -1 : min;
     }
 
     public static void main(String[] args) {
